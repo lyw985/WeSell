@@ -1,0 +1,39 @@
+
+/**
+ * This is the widgets basic CSS. Note that you can change
+ * the classes names using the plugin settings. But you can
+ * use directly the default classes names, this names.
+ */
+
+.widget-place {
+  margin: 0;
+  padding: 0;
+  float: left;
+  height: auto;
+  list-style: none;
+  min-height: 400px;
+}
+
+.widget-placeholder {
+  border: #000 dashed 1px;
+}
+
+.widget {}
+
+  .widget-header {
+	display: block;
+  }
+
+  .widget-menu {
+  }
+
+    .widget-menu a {
+      margin: 0 0 0 0.5em;
+    }
+
+  .widget-editbox {}
+  
+  .widget-content {
+	display: block;
+  }
+  

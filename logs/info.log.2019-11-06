@@ -1,0 +1,454 @@
+2019-11-06 12:09:29,622 [INFO] com.hodanet.common.interceptor.GlobalExceptionResolver GlobalException >>:For input string: "undefined"
+2019-11-06 12:09:29,643 [INFO] com.hodanet.common.interceptor.GlobalExceptionResolver x-requested-with:XMLHttpRequest
+2019-11-06 14:07:01,283 [INFO] com.hodanet.common.interceptor.GlobalExceptionResolver GlobalException >>:PreparedStatementCallback; SQL [update yuma_order a set a.pay_price = a.pay_price + ?, a.original_price = a.original_price + ? where a.id = ?]; Parameter index out of range (4 > number of parameters, which is 3).; nested exception is java.sql.SQLException: Parameter index out of range (4 > number of parameters, which is 3).
+2019-11-06 14:08:17,879 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============一共有110条数据需要导入==============
+2019-11-06 14:08:17,879 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 1/110条数据==============
+2019-11-06 14:08:17,881 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳4条一斤		1	60		已发货				60		安玲	15987131059	云南省	昆明市	西山区	云南省 昆明市 西山区 丽苑路西武小区2幢1单元101					0			15987131059			借记卡	
+2019-11-06 14:08:17,881 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 2/110条数据==============
+2019-11-06 14:08:17,882 [INFO] com.hodanet.yuma.controller.YumaOrderController 虾皮	虾皮半斤		2	35		已发货				35		安玲	15987131059	云南省	昆明市	西山区	云南省 昆明市 西山区 丽苑路西武小区2幢1单元101					0			15987131059			借记卡	
+2019-11-06 14:08:17,882 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 3/110条数据==============
+2019-11-06 14:08:17,882 [INFO] com.hodanet.yuma.controller.YumaOrderController 干贝	干贝半斤		2	80		已发货				80		安玲	15987131059	云南省	昆明市	西山区	云南省 昆明市 西山区 丽苑路西武小区2幢1单元101					0			15987131059			借记卡	
+2019-11-06 14:08:17,882 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 4/110条数据==============
+2019-11-06 14:08:17,883 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳4条一斤		2	60		已发货				60		杨洁	13621963274	上海	杨浦区		上海市 杨浦区 友谊新村179号					0			13621963274			借记卡	
+2019-11-06 14:08:17,883 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 5/110条数据==============
+2019-11-06 14:08:17,883 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳3斤特惠(4条一斤)		1	138		已发货				138		黄芳	13701668577	上海	徐汇区		上海市 徐汇区 龙华西路285弄19号103室					0			13701668577			借记卡	
+2019-11-06 14:08:17,883 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 6/110条数据==============
+2019-11-06 14:08:17,884 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳2斤特惠(3条一斤)		2	138		已发货				138		孙雯	13641699554	上海	浦东新区		上海市 浦东新区 栖山路400弄1号304室					0			13641699554			借记卡	
+2019-11-06 14:08:17,884 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 7/110条数据==============
+2019-11-06 14:08:17,884 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳3斤特惠(4条一斤)		1	138		已发货				138		孙雯	13641699554	上海	浦东新区		上海市 浦东新区 栖山路400弄1号304室					0			13641699554			借记卡	
+2019-11-06 14:08:17,884 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 8/110条数据==============
+2019-11-06 14:08:17,885 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳2斤特惠(3条一斤)		1	138		已发货				138		方冰	13641699554	上海	浦东新区		上海市 浦东新区 巨峰路399弄53号1402室(证大家园三期)					0			13641699554			借记卡	
+2019-11-06 14:08:17,885 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 9/110条数据==============
+2019-11-06 14:08:17,885 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		方冰	13641699554	上海	浦东新区		上海市 浦东新区 巨峰路399弄53号1402室(证大家园三期)					0			13641699554			借记卡	
+2019-11-06 14:08:17,885 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 10/110条数据==============
+2019-11-06 14:08:17,886 [INFO] com.hodanet.yuma.controller.YumaOrderController 烤虾	大烤虾半斤		4	62.5		已发货				62.5		冯军	13501813123	上海	普陀区		上海市 普陀区 古浪路183弄10号401祥和星宇二期					0			13501813123			借记卡	
+2019-11-06 14:08:17,886 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 11/110条数据==============
+2019-11-06 14:08:17,886 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童28条2.8斤		1	420		已发货				420		杨明	13901521902	江苏省	无锡市	江阴市	江苏省 无锡市 江阴市 澄江街道扬子华都18-2502					0			13901521902			借记卡	
+2019-11-06 14:08:17,886 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 12/110条数据==============
+2019-11-06 14:08:17,887 [INFO] com.hodanet.yuma.controller.YumaOrderController 风带鱼	风带鱼一斤		1	65		已发货				65		胡春红	13641653100	上海市	闵行区		上海市 闵行区 伊犁南路34弄2号1407					0			13641653100			借记卡	
+2019-11-06 14:08:17,887 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 13/110条数据==============
+2019-11-06 14:08:17,887 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		2	20		已发货				20		胡春红	13641653100	上海市	闵行区		上海市 闵行区 伊犁南路34弄2号1407					0			13641653100			借记卡	
+2019-11-06 14:08:17,887 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 14/110条数据==============
+2019-11-06 14:08:17,888 [INFO] com.hodanet.yuma.controller.YumaOrderController 风带鱼	风带鱼一斤		1	65		已发货				65		刘文伟	13701822383	上海市	徐汇区		上海市 徐汇区 龙水北路900弄23号501室					0			13701822383			借记卡	
+2019-11-06 14:08:17,888 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 15/110条数据==============
+2019-11-06 14:08:17,888 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		1	20		已发货				20		刘文伟	13701822383	上海市	徐汇区		上海市 徐汇区 龙水北路900弄23号501室					0			13701822383			借记卡	
+2019-11-06 14:08:17,888 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 16/110条数据==============
+2019-11-06 14:08:17,889 [INFO] com.hodanet.yuma.controller.YumaOrderController 烤虾	中烤虾半斤		2	49		已发货				49		刘文伟	13701822383	上海市	徐汇区		上海市 徐汇区 龙水北路900弄23号501室					0			13701822383			借记卡	
+2019-11-06 14:08:17,889 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 17/110条数据==============
+2019-11-06 14:08:17,889 [INFO] com.hodanet.yuma.controller.YumaOrderController 干贝	干贝半斤		2	80		已发货				80		朱琦	13681600783	上海市	杨浦区		上海市 杨浦区 江湾城路1299弄80号1201					0			13681600783			借记卡	
+2019-11-06 14:08:17,889 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 18/110条数据==============
+2019-11-06 14:08:17,890 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鳗	海鳗一条1.75斤左右		1	80		已发货				80		曹超	18616530883	上海市	宝山区		上海市 宝山区 淞南镇淞南五村326号101					0			18616530883			借记卡	
+2019-11-06 14:08:17,890 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 19/110条数据==============
+2019-11-06 14:08:17,890 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鳗	海鳗一条1.75斤左右		1	80		已发货				80		沈先生	13901688866	上海市	静安区		上海市 静安区 新闸路1892号					0			13901688866			借记卡	
+2019-11-06 14:08:17,890 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 20/110条数据==============
+2019-11-06 14:08:17,891 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶4斤特惠		1	110		已发货				110		沈先生	13901688866	上海市	静安区		上海市 静安区 新闸路1892号					0			13901688866			借记卡	
+2019-11-06 14:08:17,891 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 21/110条数据==============
+2019-11-06 14:08:17,891 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鳗	海鳗一条1.75斤左右		1	80		已发货				80		任璐	13916315631	上海市	闸北区		上海市 闸北区 宜川路733弄3号1404					0			13916315631			借记卡	
+2019-11-06 14:08:17,891 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 22/110条数据==============
+2019-11-06 14:08:17,892 [INFO] com.hodanet.yuma.controller.YumaOrderController 蟹糊	小娘蟹糊一瓶		1	50		已发货				50		任璐	13916315631	上海市	闸北区		上海市 闸北区 宜川路733弄3号1404					0			13916315631			借记卡	
+2019-11-06 14:08:17,892 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 23/110条数据==============
+2019-11-06 14:08:17,892 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		2	158		已发货				158		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:08:17,892 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 24/110条数据==============
+2019-11-06 14:08:17,892 [INFO] com.hodanet.yuma.controller.YumaOrderController 梭子蟹	小娘蟹2斤6只左右		1	168		已发货				168		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:08:17,892 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 25/110条数据==============
+2019-11-06 14:08:17,893 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳3条1.22斤		1	109		已发货				109		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:08:17,893 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 26/110条数据==============
+2019-11-06 14:08:17,893 [INFO] com.hodanet.yuma.controller.YumaOrderController 带鱼	带鱼3条2斤左右		1	138		已发货				138		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:08:17,893 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 27/110条数据==============
+2019-11-06 14:08:17,894 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鳗	海鳗一条1.75斤左右		1	80		已发货				80		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:08:17,894 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 28/110条数据==============
+2019-11-06 14:08:17,894 [INFO] com.hodanet.yuma.controller.YumaOrderController 风带鱼	风带鱼一斤		1	65		已发货				65		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:08:17,894 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 29/110条数据==============
+2019-11-06 14:08:17,895 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞一条		2	30		已发货				30		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:08:17,895 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 30/110条数据==============
+2019-11-06 14:08:17,895 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		2	158		已发货				158		张海英	13801688076	上海市	浦东新区		上海市 浦东新区 晚霞路715弄53号102室					0			13801688076			借记卡	
+2019-11-06 14:08:17,895 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 31/110条数据==============
+2019-11-06 14:08:17,896 [INFO] com.hodanet.yuma.controller.YumaOrderController 干贝	干贝半斤		2	80		已发货				80		张海英	13801688076	上海市	浦东新区		上海市 浦东新区 晚霞路715弄53号102室					0			13801688076			借记卡	
+2019-11-06 14:08:17,896 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 32/110条数据==============
+2019-11-06 14:08:17,896 [INFO] com.hodanet.yuma.controller.YumaOrderController 紫菜	紫菜2两		1	25		已发货				25		张海英	13801688076	上海市	浦东新区		上海市 浦东新区 晚霞路715弄53号102室					0			13801688076			借记卡	
+2019-11-06 14:08:17,896 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 33/110条数据==============
+2019-11-06 14:08:17,897 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		王琼	13918271384	上海市	长宁区		上海市 长宁区 中山西路669弄3号1005室					0			13918271384			借记卡	
+2019-11-06 14:08:17,897 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 34/110条数据==============
+2019-11-06 14:08:17,897 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		王荣林	62404725	上海市	长宁区		上海市 长宁区 幸福路441弄4号604室					0			62404725			借记卡	
+2019-11-06 14:08:17,897 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 35/110条数据==============
+2019-11-06 14:08:17,898 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		潘女士	18918379750	上海市	浦东新区		上海市 浦东新区 潍坊五村533号203室					0			18918379750			借记卡	
+2019-11-06 14:08:17,898 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 36/110条数据==============
+2019-11-06 14:08:17,898 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		金萍	13370255718	上海市	浦东新区		上海市 浦东新区 花木街道严镇路96弄3号301室					0			13370255718			借记卡	
+2019-11-06 14:08:17,898 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 37/110条数据==============
+2019-11-06 14:08:17,899 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		黄秋萍	13801687781	上海市	黄浦区		上海市 黄浦区 延安中路545弄73号3楼					0			13801687781			借记卡	
+2019-11-06 14:08:17,899 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 38/110条数据==============
+2019-11-06 14:08:17,899 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		张军	13311677922	上海市	闵行区		上海市 闵行区 畹町路99弄66号302室					0			13311677922			借记卡	
+2019-11-06 14:08:17,899 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 39/110条数据==============
+2019-11-06 14:08:17,900 [INFO] com.hodanet.yuma.controller.YumaOrderController 风带鱼	风带鱼一斤		1	65		已发货				65		张军	13311677922	上海市	闵行区		上海市 闵行区 畹町路99弄66号302室					0			13311677922			借记卡	
+2019-11-06 14:08:17,900 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 40/110条数据==============
+2019-11-06 14:08:17,900 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		1	20		已发货				20		张军	13311677922	上海市	闵行区		上海市 闵行区 畹町路99弄66号302室					0			13311677922			借记卡	
+2019-11-06 14:08:17,900 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 41/110条数据==============
+2019-11-06 14:08:17,900 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		慧玲	13816994843	上海市	浦东新区		上海市 浦东新区 凌兆路127弄28号402室					0			13816994843			借记卡	
+2019-11-06 14:08:17,900 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 42/110条数据==============
+2019-11-06 14:08:17,900 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶3斤特惠		1	88		已发货				88		慧玲	13816994843	上海市	浦东新区		上海市 浦东新区 凌兆路127弄28号402室					0			13816994843			借记卡	
+2019-11-06 14:08:17,900 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 43/110条数据==============
+2019-11-06 14:08:17,901 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		陆欣	13641940918	上海市	杨浦区		上海市 杨浦区 政和路999弄80号1703室					0			13641940918			借记卡	
+2019-11-06 14:08:17,901 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 44/110条数据==============
+2019-11-06 14:08:17,901 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶3斤特惠		1	88		已发货				88		陆欣	13641940918	上海市	杨浦区		上海市 杨浦区 政和路999弄80号1703室					0			13641940918			借记卡	
+2019-11-06 14:08:17,901 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 45/110条数据==============
+2019-11-06 14:08:17,902 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		邹瑶	18939926725	上海市	青浦区	赵巷镇	上海市 青浦区 赵巷镇 嘉松中路6633弄凯迪澳澜湾小区57号					0			18939926725			借记卡	
+2019-11-06 14:08:17,902 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 46/110条数据==============
+2019-11-06 14:08:17,902 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		周洁	13818823564	上海市	宝山区		上海市 宝山区 逸仙路3456弄34号602室					0			13818823564			借记卡	
+2019-11-06 14:08:17,902 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 47/110条数据==============
+2019-11-06 14:08:17,902 [INFO] com.hodanet.yuma.controller.YumaOrderController 米馒头	米馒头一斤		2	15		已发货				15		周洁	13818823564	上海市	宝山区		上海市 宝山区 逸仙路3456弄34号602室					0			13818823564			借记卡	
+2019-11-06 14:08:17,902 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 48/110条数据==============
+2019-11-06 14:08:17,902 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		汪全	13818119022	上海市	徐汇区		上海市 徐汇区 龙兰路388弄2号楼502室					0			13818119022			借记卡	
+2019-11-06 14:08:17,902 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 49/110条数据==============
+2019-11-06 14:08:17,903 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		2	80		已发货				80		汪全	13818119022	上海市	徐汇区		上海市 徐汇区 龙兰路388弄2号楼502室					0			13818119022			借记卡	
+2019-11-06 14:08:17,903 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 50/110条数据==============
+2019-11-06 14:08:17,903 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄泥螺	黄泥螺3瓶特惠		1	125		已发货				125		费红	18918282001	上海市	松江区		上海市 松江区 思贤路1855弄246号101					0			18918282001			借记卡	
+2019-11-06 14:08:17,903 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 51/110条数据==============
+2019-11-06 14:08:17,903 [INFO] com.hodanet.yuma.controller.YumaOrderController 蟹糊	小娘蟹糊3瓶特惠		1	140		已发货				140		费红	18918282001	上海市	松江区		上海市 松江区 思贤路1855弄246号101					0			18918282001			借记卡	
+2019-11-06 14:08:17,903 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 52/110条数据==============
+2019-11-06 14:08:17,904 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳4条一斤		2	60		已发货				60		费红	18918282001	上海市	松江区		上海市 松江区 思贤路1855弄246号101					0			18918282001			借记卡	
+2019-11-06 14:08:17,904 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 53/110条数据==============
+2019-11-06 14:08:17,904 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		费红	18918282001	上海市	松江区		上海市 松江区 思贤路1855弄246号101					0			18918282001			借记卡	
+2019-11-06 14:08:17,904 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 54/110条数据==============
+2019-11-06 14:08:17,904 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		2	20		已发货				20		费红	18918282001	上海市	松江区		上海市 松江区 思贤路1855弄246号101					0			18918282001			借记卡	
+2019-11-06 14:08:17,904 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 55/110条数据==============
+2019-11-06 14:08:17,904 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞4条特惠		1	118		已发货				118		蔡女士	18817910377	上海市	静安区		上海市 静安区 长寿路999号2号802室					0			18817910377			借记卡	
+2019-11-06 14:08:17,904 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 56/110条数据==============
+2019-11-06 14:08:17,905 [INFO] com.hodanet.yuma.controller.YumaOrderController 虾皮	虾皮半斤		2	35		已发货				35		蔡女士	18817910377	上海市	静安区		上海市 静安区 长寿路999号2号802室					0			18817910377			借记卡	
+2019-11-06 14:08:17,905 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 57/110条数据==============
+2019-11-06 14:08:17,905 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		1	20		已发货				20		蔡女士	18817910377	上海市	静安区		上海市 静安区 长寿路999号2号802室					0			18817910377			借记卡	
+2019-11-06 14:08:17,905 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 58/110条数据==============
+2019-11-06 14:08:17,905 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞4条特惠		1	118		已发货				118		贾先生	13585987928	上海市	松江区		上海市 松江区 松汇中路518弄云间名门物业管理站					0			13585987928			借记卡	
+2019-11-06 14:08:17,905 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 59/110条数据==============
+2019-11-06 14:08:17,905 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		3	20		已发货				20		贾先生	13585987928	上海市	松江区		上海市 松江区 松汇中路518弄云间名门物业管理站					0			13585987928			借记卡	
+2019-11-06 14:08:17,905 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 60/110条数据==============
+2019-11-06 14:08:17,906 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞4条特惠		1	118		已发货				118		徐先生	13621664750	上海市	松江区		上海市 松江区 玉树路2715弄21号903室（荣欣苑小区）					0			13621664750			借记卡	
+2019-11-06 14:08:17,906 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 61/110条数据==============
+2019-11-06 14:08:17,906 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		3	20		已发货				20		徐先生	13621664750	上海市	松江区		上海市 松江区 玉树路2715弄21号903室（荣欣苑小区）					0			13621664750			借记卡	
+2019-11-06 14:08:17,906 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 62/110条数据==============
+2019-11-06 14:08:17,907 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶3斤特惠		1	88		已发货				88		刘叶荣	18516558264	上海市	静安区		上海市 静安区 闻喜路930弄17号102室					0			18516558264			借记卡	
+2019-11-06 14:08:17,907 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 63/110条数据==============
+2019-11-06 14:08:17,907 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶4斤特惠		1	110		已发货				110		陈耀丽	13501611612	江苏省	苏州市	昆山市	江苏省 苏州市 昆山市 淀山湖镇万园路88号富力湾D区452号					0			13501611612			借记卡	
+2019-11-06 14:08:17,907 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 64/110条数据==============
+2019-11-06 14:08:17,908 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童33条1.86斤		1	148		已发货				148		陈伟兰	13601850571	上海市	静安区		上海市 静安区 威海路333弄1号楼18E室(中凯城市之光花园)					0			13601850571			借记卡	
+2019-11-06 14:08:17,908 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 65/110条数据==============
+2019-11-06 14:08:17,908 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		3	80		已发货				80		黄瑾	13901685792	上海市	长宁区		上海市 长宁区 中山西路1350弄20号3501室					0			13901685792			借记卡	
+2019-11-06 14:08:17,908 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 66/110条数据==============
+2019-11-06 14:08:17,908 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		2	80		已发货				80		吴浩云	13701526907	江苏省	无锡市	江阴市	江苏省 无锡市 江阴市天安城市花园39号					0			13701526907			借记卡	
+2019-11-06 14:08:17,908 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 67/110条数据==============
+2019-11-06 14:08:17,909 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		1	80		已发货				80		小K妈咪	13611847363	上海市	虹口区		上海市 虹口区 株洲路258弄12号2101室					0			13611847363			借记卡	
+2019-11-06 14:08:17,909 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 68/110条数据==============
+2019-11-06 14:08:17,909 [INFO] com.hodanet.yuma.controller.YumaOrderController 风带鱼	风带鱼一斤		1	65		已发货				65		小K妈咪	13611847363	上海市	虹口区		上海市 虹口区 株洲路258弄12号2101室					0			13611847363			借记卡	
+2019-11-06 14:08:17,909 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 69/110条数据==============
+2019-11-06 14:08:17,910 [INFO] com.hodanet.yuma.controller.YumaOrderController 虾皮	虾皮半斤		2	35		已发货				35		苏小姐	13061772929	上海市	长宁区		上海市 长宁区 延安西路1020号1807室					0			13061772929			借记卡	
+2019-11-06 14:08:17,910 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 70/110条数据==============
+2019-11-06 14:08:17,910 [INFO] com.hodanet.yuma.controller.YumaOrderController 紫菜	紫菜2两		1	25		已发货				25		苏小姐	13061772929	上海市	长宁区		上海市 长宁区 延安西路1020号1807室					0			13061772929			借记卡	
+2019-11-06 14:08:17,910 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 71/110条数据==============
+2019-11-06 14:08:17,910 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		5	20		已发货				20		杨杨	13611867372	上海市	静安区		上海市 静安区 长寿路999弄7号5A（达安花园）					0			13611867372			借记卡	
+2019-11-06 14:08:17,910 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 72/110条数据==============
+2019-11-06 14:08:17,911 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹3只1.05斤		1	88		已发货				88		周红霞	13701855603	上海市	浦东新区		上海市 浦东新区 巨野路61弄6号1202室					0			13701855603			借记卡	
+2019-11-06 14:08:17,911 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 73/110条数据==============
+2019-11-06 14:08:17,911 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳2斤特惠(3条一斤)		1	138		已发货				138		周红霞	13701855603	上海市	浦东新区		上海市 浦东新区 巨野路61弄6号1202室					0			13701855603			借记卡	
+2019-11-06 14:08:17,911 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 74/110条数据==============
+2019-11-06 14:08:17,911 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹3只1.05斤		1	88		已发货				88		赵倍丽	13918615479	上海市	浦东新区		上海市 浦东新区 板泉路1201弄40号501室					0			13918615479			借记卡	
+2019-11-06 14:08:17,911 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 75/110条数据==============
+2019-11-06 14:08:17,912 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		1	80		已发货				80		赵倍丽	13918615479	上海市	浦东新区		上海市 浦东新区 板泉路1201弄40号501室					0			13918615479			借记卡	
+2019-11-06 14:08:17,912 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 76/110条数据==============
+2019-11-06 14:08:17,912 [INFO] com.hodanet.yuma.controller.YumaOrderController 米馒头	米馒头一斤		1	15		已发货				15		赵倍丽	13918615479	上海市	浦东新区		上海市 浦东新区 板泉路1201弄40号501室					0			13918615479			借记卡	
+2019-11-06 14:08:17,912 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 77/110条数据==============
+2019-11-06 14:08:17,912 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹9只3.5斤		1	266		已发货				266		张英	13002140089	上海市	普陀区		上海市 普陀区 金沙江路2348弄47号302室					0			13002140089			借记卡	
+2019-11-06 14:08:17,912 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 78/110条数据==============
+2019-11-06 14:08:17,913 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹3斤特惠(1斤3只左右)		1	228		已发货				228		田根妹	13817550150	上海市	宝山区	顾村镇	上海市 宝山区 顾村镇 菊盛路851弄32号301室					0			13817550150			借记卡	
+2019-11-06 14:08:17,913 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 79/110条数据==============
+2019-11-06 14:08:17,913 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶4斤特惠		1	110		已发货				110		田根妹	13817550150	上海市	宝山区	顾村镇	上海市 宝山区 顾村镇 菊盛路851弄32号301室					0			13817550150			借记卡	
+2019-11-06 14:08:17,913 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 80/110条数据==============
+2019-11-06 14:08:17,913 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		唐晓莹	13661651910	上海市	宝山区		上海市 宝山区 菊联路232弄7号401室					0			13661651910			借记卡	
+2019-11-06 14:08:17,913 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 81/110条数据==============
+2019-11-06 14:08:17,914 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		穆宏	13918585857	上海市	静安区		上海市 静安区 华康路69弄2号802室					0			13918585857			借记卡	
+2019-11-06 14:08:17,914 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 82/110条数据==============
+2019-11-06 14:08:17,914 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		卫小姐	13901807040	上海市	闵行区		上海市 闵行区 绿莲路100弄20号203					0			13901807040			借记卡	
+2019-11-06 14:08:17,914 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 83/110条数据==============
+2019-11-06 14:08:17,915 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		凌蔚佳	15800589801	上海市	徐汇区		上海市 徐汇区 桂林东街28弄11号1102室					0			15800589801			借记卡	
+2019-11-06 14:08:17,915 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 84/110条数据==============
+2019-11-06 14:08:17,915 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		吴小波	15800589801	上海市	徐汇区		上海市 徐汇区 田林东路100弄（爱建园）47号1101室					0			15800589801			借记卡	
+2019-11-06 14:08:17,915 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 85/110条数据==============
+2019-11-06 14:08:17,915 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		张爱娣	13801812191	上海市	杨浦区		上海市 杨浦区 河间路827弄14号902室					0			13801812191			借记卡	
+2019-11-06 14:08:17,915 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 86/110条数据==============
+2019-11-06 14:08:17,916 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		郑芳芳	13901640570	上海市	黄浦区		上海市 黄浦区 汉口路583号					0			13901640570			借记卡	
+2019-11-06 14:08:17,916 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 87/110条数据==============
+2019-11-06 14:08:17,916 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		许桂珍	15800798445	上海市	松江区		上海市 松江区 中山二路51弄11号202室					0			15800798445			借记卡	
+2019-11-06 14:08:17,916 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 88/110条数据==============
+2019-11-06 14:08:17,917 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳2斤特惠(3条一斤)		1	138		已发货				138		许桂珍	15800798445	上海市	松江区		上海市 松江区 中山二路51弄11号202室					0			15800798445			借记卡	
+2019-11-06 14:08:17,917 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 89/110条数据==============
+2019-11-06 14:08:17,917 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		2	80		已发货				80		许桂珍	15800798445	上海市	松江区		上海市 松江区 中山二路51弄11号202室					0			15800798445			借记卡	
+2019-11-06 14:08:17,917 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 90/110条数据==============
+2019-11-06 14:08:17,917 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		许桂珍	15800798445	上海市	松江区		上海市 松江区 中山二路51弄11号202室					0			15800798445			借记卡	
+2019-11-06 14:08:17,917 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 91/110条数据==============
+2019-11-06 14:08:17,918 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:08:17,918 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 92/110条数据==============
+2019-11-06 14:08:17,918 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳2斤特惠(3条一斤)		1	138		已发货				138		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:08:17,918 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 93/110条数据==============
+2019-11-06 14:08:17,918 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		1	80		已发货				80		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:08:17,918 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 94/110条数据==============
+2019-11-06 14:08:17,919 [INFO] com.hodanet.yuma.controller.YumaOrderController 香螺	香螺一斤		1	65		已发货				65		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:08:17,919 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 95/110条数据==============
+2019-11-06 14:08:17,919 [INFO] com.hodanet.yuma.controller.YumaOrderController 带鱼	带鱼3条2斤左右		1	138		已发货				138		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:08:17,919 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 96/110条数据==============
+2019-11-06 14:08:17,919 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶一斤		1	28		已发货				28		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:08:17,919 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 97/110条数据==============
+2019-11-06 14:08:17,920 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		钟燕	18658890619	浙江省	杭州市	西湖区	浙江省 杭州市 西湖区 武林巷36号4单元501室					0			18658890619			借记卡	
+2019-11-06 14:08:17,920 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 98/110条数据==============
+2019-11-06 14:08:17,920 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		钟燕	18658890619	浙江省	杭州市	西湖区	浙江省 杭州市 西湖区 武林巷36号4单元501室					0			18658890619			借记卡	
+2019-11-06 14:08:17,920 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 99/110条数据==============
+2019-11-06 14:08:17,921 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:08:17,921 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 100/110条数据==============
+2019-11-06 14:08:17,922 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞4条特惠		1	118		已发货				118		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:08:17,922 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 101/110条数据==============
+2019-11-06 14:08:17,922 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳4条一斤		1	60		已发货				60		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:08:17,922 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 102/110条数据==============
+2019-11-06 14:08:17,922 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		1	20		已发货				20		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:08:17,922 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 103/110条数据==============
+2019-11-06 14:08:17,923 [INFO] com.hodanet.yuma.controller.YumaOrderController 虾皮	虾皮半斤		2	35		已发货				35		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:08:17,923 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 104/110条数据==============
+2019-11-06 14:08:17,923 [INFO] com.hodanet.yuma.controller.YumaOrderController 紫菜	紫菜2两		1	25		已发货				25		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:08:17,923 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 105/110条数据==============
+2019-11-06 14:08:17,923 [INFO] com.hodanet.yuma.controller.YumaOrderController 蟹糊	小娘蟹糊3瓶特惠		1	140		已发货				140		冯素芬	13761808098	上海市	嘉定区		上海市 嘉定区 丰庄西路551弄78号202室					0			13761808098			借记卡	
+2019-11-06 14:08:17,923 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 106/110条数据==============
+2019-11-06 14:08:17,924 [INFO] com.hodanet.yuma.controller.YumaOrderController 蟹糊	小娘蟹糊3瓶特惠		1	140		已发货				140		丁爱华	13501703472	上海市	闵行区		上海市 闵行区 虹莘路28支弄3号802室					0			13501703472			借记卡	
+2019-11-06 14:08:17,924 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 107/110条数据==============
+2019-11-06 14:08:17,924 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		1	20		已发货				20		丁爱华	13501703472	上海市	闵行区		上海市 闵行区 虹莘路28支弄3号802室					0			13501703472			借记卡	
+2019-11-06 14:08:17,924 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 108/110条数据==============
+2019-11-06 14:08:17,924 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞4条特惠		1	118		已发货				118		丁爱华	13501703472	上海市	闵行区		上海市 闵行区 虹莘路28支弄3号802室					0			13501703472			借记卡	
+2019-11-06 14:08:17,924 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 109/110条数据==============
+2019-11-06 14:08:17,925 [INFO] com.hodanet.yuma.controller.YumaOrderController 蟹糊	小娘蟹糊3瓶特惠		1	140		已发货				140		刘俪	13501942014	上海市	浦东新区		上海市 浦东新区 利津路185弄42号602室					0			13501942014			借记卡	
+2019-11-06 14:08:17,925 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 110/110条数据==============
+2019-11-06 14:08:17,925 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶4斤特惠		1	110		已发货				110		刘俪	13501942014	上海市	浦东新区		上海市 浦东新区 利津路185弄42号602室					0			13501942014			借记卡	
+2019-11-06 14:08:17,925 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============导入数据 110 条数据开始==============
+2019-11-06 14:08:18,093 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============导入数据 110 条数据完成==============
+2019-11-06 14:12:04,147 [INFO] com.hodanet.yuma.task.SyncYumaWeidianDataTask 共有110条数据需要同步
+2019-11-06 14:15:04,097 [INFO] com.hodanet.yuma.task.SyncYumaWeidianDataTask 共有110条数据需要同步
+2019-11-06 14:18:04,065 [INFO] com.hodanet.yuma.task.SyncYumaWeidianDataTask 共有1条数据需要同步
+2019-11-06 14:19:04,045 [INFO] com.hodanet.yuma.task.SyncYumaWeidianDataTask 共有1条数据需要同步
+2019-11-06 14:28:44,364 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============一共有110条数据需要导入==============
+2019-11-06 14:28:44,364 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 1/110条数据==============
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳4条一斤		1	60		已发货				60		安玲	15987131059	云南省	昆明市	西山区	云南省 昆明市 西山区 丽苑路西武小区2幢1单元101					0			15987131059			借记卡	
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 2/110条数据==============
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController 虾皮	虾皮半斤		2	35		已发货				35		安玲	15987131059	云南省	昆明市	西山区	云南省 昆明市 西山区 丽苑路西武小区2幢1单元101					0			15987131059			借记卡	
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 3/110条数据==============
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController 干贝	干贝半斤		2	80		已发货				80		安玲	15987131059	云南省	昆明市	西山区	云南省 昆明市 西山区 丽苑路西武小区2幢1单元101					0			15987131059			借记卡	
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 4/110条数据==============
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳4条一斤		2	60		已发货				60		杨洁	13621963274	上海	杨浦区		上海市 杨浦区 友谊新村179号					0			13621963274			借记卡	
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 5/110条数据==============
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳3斤特惠(4条一斤)		1	138		已发货				138		黄芳	13701668577	上海	徐汇区		上海市 徐汇区 龙华西路285弄19号103室					0			13701668577			借记卡	
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 6/110条数据==============
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳2斤特惠(3条一斤)		2	138		已发货				138		孙雯	13641699554	上海	浦东新区		上海市 浦东新区 栖山路400弄1号304室					0			13641699554			借记卡	
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 7/110条数据==============
+2019-11-06 14:28:44,365 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳3斤特惠(4条一斤)		1	138		已发货				138		孙雯	13641699554	上海	浦东新区		上海市 浦东新区 栖山路400弄1号304室					0			13641699554			借记卡	
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 8/110条数据==============
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳2斤特惠(3条一斤)		1	138		已发货				138		方冰	13641699554	上海	浦东新区		上海市 浦东新区 巨峰路399弄53号1402室(证大家园三期)					0			13641699554			借记卡	
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 9/110条数据==============
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		方冰	13641699554	上海	浦东新区		上海市 浦东新区 巨峰路399弄53号1402室(证大家园三期)					0			13641699554			借记卡	
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 10/110条数据==============
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController 烤虾	大烤虾半斤		4	62.5		已发货				62.5		冯军	13501813123	上海	普陀区		上海市 普陀区 古浪路183弄10号401祥和星宇二期					0			13501813123			借记卡	
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 11/110条数据==============
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童28条2.8斤		1	420		已发货				420		杨明	13901521902	江苏省	无锡市	江阴市	江苏省 无锡市 江阴市 澄江街道扬子华都18-2502					0			13901521902			借记卡	
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 12/110条数据==============
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController 风带鱼	风带鱼一斤		1	65		已发货				65		胡春红	13641653100	上海市	闵行区		上海市 闵行区 伊犁南路34弄2号1407					0			13641653100			借记卡	
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 13/110条数据==============
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		2	20		已发货				20		胡春红	13641653100	上海市	闵行区		上海市 闵行区 伊犁南路34弄2号1407					0			13641653100			借记卡	
+2019-11-06 14:28:44,366 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 14/110条数据==============
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController 风带鱼	风带鱼一斤		1	65		已发货				65		刘文伟	13701822383	上海市	徐汇区		上海市 徐汇区 龙水北路900弄23号501室					0			13701822383			借记卡	
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 15/110条数据==============
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		1	20		已发货				20		刘文伟	13701822383	上海市	徐汇区		上海市 徐汇区 龙水北路900弄23号501室					0			13701822383			借记卡	
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 16/110条数据==============
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController 烤虾	中烤虾半斤		2	49		已发货				49		刘文伟	13701822383	上海市	徐汇区		上海市 徐汇区 龙水北路900弄23号501室					0			13701822383			借记卡	
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 17/110条数据==============
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController 干贝	干贝半斤		2	80		已发货				80		朱琦	13681600783	上海市	杨浦区		上海市 杨浦区 江湾城路1299弄80号1201					0			13681600783			借记卡	
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 18/110条数据==============
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鳗	海鳗一条1.75斤左右		1	80		已发货				80		曹超	18616530883	上海市	宝山区		上海市 宝山区 淞南镇淞南五村326号101					0			18616530883			借记卡	
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 19/110条数据==============
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鳗	海鳗一条1.75斤左右		1	80		已发货				80		沈先生	13901688866	上海市	静安区		上海市 静安区 新闸路1892号					0			13901688866			借记卡	
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 20/110条数据==============
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶4斤特惠		1	110		已发货				110		沈先生	13901688866	上海市	静安区		上海市 静安区 新闸路1892号					0			13901688866			借记卡	
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 21/110条数据==============
+2019-11-06 14:28:44,367 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鳗	海鳗一条1.75斤左右		1	80		已发货				80		任璐	13916315631	上海市	闸北区		上海市 闸北区 宜川路733弄3号1404					0			13916315631			借记卡	
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 22/110条数据==============
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController 蟹糊	小娘蟹糊一瓶		1	50		已发货				50		任璐	13916315631	上海市	闸北区		上海市 闸北区 宜川路733弄3号1404					0			13916315631			借记卡	
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 23/110条数据==============
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		2	158		已发货				158		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 24/110条数据==============
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController 梭子蟹	小娘蟹2斤6只左右		1	168		已发货				168		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 25/110条数据==============
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳3条1.22斤		1	109		已发货				109		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 26/110条数据==============
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController 带鱼	带鱼3条2斤左右		1	138		已发货				138		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 27/110条数据==============
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鳗	海鳗一条1.75斤左右		1	80		已发货				80		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 28/110条数据==============
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController 风带鱼	风带鱼一斤		1	65		已发货				65		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 29/110条数据==============
+2019-11-06 14:28:44,368 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞一条		2	30		已发货				30		顾国英	13671668085	上海市	虹口区	江湾镇	上海市 虹口区 江湾镇 春生街69弄11号					0			13671668085			借记卡	
+2019-11-06 14:28:44,369 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 30/110条数据==============
+2019-11-06 14:28:44,369 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		2	158		已发货				158		张海英	13801688076	上海市	浦东新区		上海市 浦东新区 晚霞路715弄53号102室					0			13801688076			借记卡	
+2019-11-06 14:28:44,369 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 31/110条数据==============
+2019-11-06 14:28:44,369 [INFO] com.hodanet.yuma.controller.YumaOrderController 干贝	干贝半斤		2	80		已发货				80		张海英	13801688076	上海市	浦东新区		上海市 浦东新区 晚霞路715弄53号102室					0			13801688076			借记卡	
+2019-11-06 14:28:44,369 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 32/110条数据==============
+2019-11-06 14:28:44,370 [INFO] com.hodanet.yuma.controller.YumaOrderController 紫菜	紫菜2两		1	25		已发货				25		张海英	13801688076	上海市	浦东新区		上海市 浦东新区 晚霞路715弄53号102室					0			13801688076			借记卡	
+2019-11-06 14:28:44,370 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 33/110条数据==============
+2019-11-06 14:28:44,370 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		王琼	13918271384	上海市	长宁区		上海市 长宁区 中山西路669弄3号1005室					0			13918271384			借记卡	
+2019-11-06 14:28:44,370 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 34/110条数据==============
+2019-11-06 14:28:44,370 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		王荣林	62404725	上海市	长宁区		上海市 长宁区 幸福路441弄4号604室					0			62404725			借记卡	
+2019-11-06 14:28:44,370 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 35/110条数据==============
+2019-11-06 14:28:44,370 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		潘女士	18918379750	上海市	浦东新区		上海市 浦东新区 潍坊五村533号203室					0			18918379750			借记卡	
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 36/110条数据==============
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		金萍	13370255718	上海市	浦东新区		上海市 浦东新区 花木街道严镇路96弄3号301室					0			13370255718			借记卡	
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 37/110条数据==============
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		黄秋萍	13801687781	上海市	黄浦区		上海市 黄浦区 延安中路545弄73号3楼					0			13801687781			借记卡	
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 38/110条数据==============
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		张军	13311677922	上海市	闵行区		上海市 闵行区 畹町路99弄66号302室					0			13311677922			借记卡	
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 39/110条数据==============
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController 风带鱼	风带鱼一斤		1	65		已发货				65		张军	13311677922	上海市	闵行区		上海市 闵行区 畹町路99弄66号302室					0			13311677922			借记卡	
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 40/110条数据==============
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		1	20		已发货				20		张军	13311677922	上海市	闵行区		上海市 闵行区 畹町路99弄66号302室					0			13311677922			借记卡	
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 41/110条数据==============
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		慧玲	13816994843	上海市	浦东新区		上海市 浦东新区 凌兆路127弄28号402室					0			13816994843			借记卡	
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 42/110条数据==============
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶3斤特惠		1	88		已发货				88		慧玲	13816994843	上海市	浦东新区		上海市 浦东新区 凌兆路127弄28号402室					0			13816994843			借记卡	
+2019-11-06 14:28:44,371 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 43/110条数据==============
+2019-11-06 14:28:44,372 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		陆欣	13641940918	上海市	杨浦区		上海市 杨浦区 政和路999弄80号1703室					0			13641940918			借记卡	
+2019-11-06 14:28:44,377 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 44/110条数据==============
+2019-11-06 14:28:44,377 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶3斤特惠		1	88		已发货				88		陆欣	13641940918	上海市	杨浦区		上海市 杨浦区 政和路999弄80号1703室					0			13641940918			借记卡	
+2019-11-06 14:28:44,377 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 45/110条数据==============
+2019-11-06 14:28:44,377 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		邹瑶	18939926725	上海市	青浦区	赵巷镇	上海市 青浦区 赵巷镇 嘉松中路6633弄凯迪澳澜湾小区57号					0			18939926725			借记卡	
+2019-11-06 14:28:44,377 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 46/110条数据==============
+2019-11-06 14:28:44,377 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		周洁	13818823564	上海市	宝山区		上海市 宝山区 逸仙路3456弄34号602室					0			13818823564			借记卡	
+2019-11-06 14:28:44,378 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 47/110条数据==============
+2019-11-06 14:28:44,378 [INFO] com.hodanet.yuma.controller.YumaOrderController 米馒头	米馒头一斤		2	15		已发货				15		周洁	13818823564	上海市	宝山区		上海市 宝山区 逸仙路3456弄34号602室					0			13818823564			借记卡	
+2019-11-06 14:28:44,378 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 48/110条数据==============
+2019-11-06 14:28:44,378 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		汪全	13818119022	上海市	徐汇区		上海市 徐汇区 龙兰路388弄2号楼502室					0			13818119022			借记卡	
+2019-11-06 14:28:44,378 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 49/110条数据==============
+2019-11-06 14:28:44,378 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		2	80		已发货				80		汪全	13818119022	上海市	徐汇区		上海市 徐汇区 龙兰路388弄2号楼502室					0			13818119022			借记卡	
+2019-11-06 14:28:44,378 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 50/110条数据==============
+2019-11-06 14:28:44,378 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄泥螺	黄泥螺3瓶特惠		1	125		已发货				125		费红	18918282001	上海市	松江区		上海市 松江区 思贤路1855弄246号101					0			18918282001			借记卡	
+2019-11-06 14:28:44,378 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 51/110条数据==============
+2019-11-06 14:28:44,379 [INFO] com.hodanet.yuma.controller.YumaOrderController 蟹糊	小娘蟹糊3瓶特惠		1	140		已发货				140		费红	18918282001	上海市	松江区		上海市 松江区 思贤路1855弄246号101					0			18918282001			借记卡	
+2019-11-06 14:28:44,379 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 52/110条数据==============
+2019-11-06 14:28:44,379 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳4条一斤		2	60		已发货				60		费红	18918282001	上海市	松江区		上海市 松江区 思贤路1855弄246号101					0			18918282001			借记卡	
+2019-11-06 14:28:44,379 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 53/110条数据==============
+2019-11-06 14:28:44,379 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		费红	18918282001	上海市	松江区		上海市 松江区 思贤路1855弄246号101					0			18918282001			借记卡	
+2019-11-06 14:28:44,379 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 54/110条数据==============
+2019-11-06 14:28:44,379 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		2	20		已发货				20		费红	18918282001	上海市	松江区		上海市 松江区 思贤路1855弄246号101					0			18918282001			借记卡	
+2019-11-06 14:28:44,379 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 55/110条数据==============
+2019-11-06 14:28:44,379 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞4条特惠		1	118		已发货				118		蔡女士	18817910377	上海市	静安区		上海市 静安区 长寿路999号2号802室					0			18817910377			借记卡	
+2019-11-06 14:28:44,379 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 56/110条数据==============
+2019-11-06 14:28:44,380 [INFO] com.hodanet.yuma.controller.YumaOrderController 虾皮	虾皮半斤		2	35		已发货				35		蔡女士	18817910377	上海市	静安区		上海市 静安区 长寿路999号2号802室					0			18817910377			借记卡	
+2019-11-06 14:28:44,380 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 57/110条数据==============
+2019-11-06 14:28:44,380 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		1	20		已发货				20		蔡女士	18817910377	上海市	静安区		上海市 静安区 长寿路999号2号802室					0			18817910377			借记卡	
+2019-11-06 14:28:44,380 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 58/110条数据==============
+2019-11-06 14:28:44,380 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞4条特惠		1	118		已发货				118		贾先生	13585987928	上海市	松江区		上海市 松江区 松汇中路518弄云间名门物业管理站					0			13585987928			借记卡	
+2019-11-06 14:28:44,384 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 59/110条数据==============
+2019-11-06 14:28:44,385 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		3	20		已发货				20		贾先生	13585987928	上海市	松江区		上海市 松江区 松汇中路518弄云间名门物业管理站					0			13585987928			借记卡	
+2019-11-06 14:28:44,385 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 60/110条数据==============
+2019-11-06 14:28:44,385 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞4条特惠		1	118		已发货				118		徐先生	13621664750	上海市	松江区		上海市 松江区 玉树路2715弄21号903室（荣欣苑小区）					0			13621664750			借记卡	
+2019-11-06 14:28:44,386 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 61/110条数据==============
+2019-11-06 14:28:44,387 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		3	20		已发货				20		徐先生	13621664750	上海市	松江区		上海市 松江区 玉树路2715弄21号903室（荣欣苑小区）					0			13621664750			借记卡	
+2019-11-06 14:28:44,388 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 62/110条数据==============
+2019-11-06 14:28:44,388 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶3斤特惠		1	88		已发货				88		刘叶荣	18516558264	上海市	静安区		上海市 静安区 闻喜路930弄17号102室					0			18516558264			借记卡	
+2019-11-06 14:28:44,388 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 63/110条数据==============
+2019-11-06 14:28:44,388 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶4斤特惠		1	110		已发货				110		陈耀丽	13501611612	江苏省	苏州市	昆山市	江苏省 苏州市 昆山市 淀山湖镇万园路88号富力湾D区452号					0			13501611612			借记卡	
+2019-11-06 14:28:44,388 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 64/110条数据==============
+2019-11-06 14:28:44,388 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童33条1.86斤		1	148		已发货				148		陈伟兰	13601850571	上海市	静安区		上海市 静安区 威海路333弄1号楼18E室(中凯城市之光花园)					0			13601850571			借记卡	
+2019-11-06 14:28:44,388 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 65/110条数据==============
+2019-11-06 14:28:44,388 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		3	80		已发货				80		黄瑾	13901685792	上海市	长宁区		上海市 长宁区 中山西路1350弄20号3501室					0			13901685792			借记卡	
+2019-11-06 14:28:44,388 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 66/110条数据==============
+2019-11-06 14:28:44,389 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		2	80		已发货				80		吴浩云	13701526907	江苏省	无锡市	江阴市	江苏省 无锡市 江阴市天安城市花园39号					0			13701526907			借记卡	
+2019-11-06 14:28:44,389 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 67/110条数据==============
+2019-11-06 14:28:44,389 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		1	80		已发货				80		小K妈咪	13611847363	上海市	虹口区		上海市 虹口区 株洲路258弄12号2101室					0			13611847363			借记卡	
+2019-11-06 14:28:44,389 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 68/110条数据==============
+2019-11-06 14:28:44,389 [INFO] com.hodanet.yuma.controller.YumaOrderController 风带鱼	风带鱼一斤		1	65		已发货				65		小K妈咪	13611847363	上海市	虹口区		上海市 虹口区 株洲路258弄12号2101室					0			13611847363			借记卡	
+2019-11-06 14:28:44,389 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 69/110条数据==============
+2019-11-06 14:28:44,389 [INFO] com.hodanet.yuma.controller.YumaOrderController 虾皮	虾皮半斤		2	35		已发货				35		苏小姐	13061772929	上海市	长宁区		上海市 长宁区 延安西路1020号1807室					0			13061772929			借记卡	
+2019-11-06 14:28:44,389 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 70/110条数据==============
+2019-11-06 14:28:44,389 [INFO] com.hodanet.yuma.controller.YumaOrderController 紫菜	紫菜2两		1	25		已发货				25		苏小姐	13061772929	上海市	长宁区		上海市 长宁区 延安西路1020号1807室					0			13061772929			借记卡	
+2019-11-06 14:28:44,389 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 71/110条数据==============
+2019-11-06 14:28:44,391 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		5	20		已发货				20		杨杨	13611867372	上海市	静安区		上海市 静安区 长寿路999弄7号5A（达安花园）					0			13611867372			借记卡	
+2019-11-06 14:28:44,391 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 72/110条数据==============
+2019-11-06 14:28:44,392 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹3只1.05斤		1	88		已发货				88		周红霞	13701855603	上海市	浦东新区		上海市 浦东新区 巨野路61弄6号1202室					0			13701855603			借记卡	
+2019-11-06 14:28:44,392 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 73/110条数据==============
+2019-11-06 14:28:44,392 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳2斤特惠(3条一斤)		1	138		已发货				138		周红霞	13701855603	上海市	浦东新区		上海市 浦东新区 巨野路61弄6号1202室					0			13701855603			借记卡	
+2019-11-06 14:28:44,392 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 74/110条数据==============
+2019-11-06 14:28:44,392 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹3只1.05斤		1	88		已发货				88		赵倍丽	13918615479	上海市	浦东新区		上海市 浦东新区 板泉路1201弄40号501室					0			13918615479			借记卡	
+2019-11-06 14:28:44,392 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 75/110条数据==============
+2019-11-06 14:28:44,392 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		1	80		已发货				80		赵倍丽	13918615479	上海市	浦东新区		上海市 浦东新区 板泉路1201弄40号501室					0			13918615479			借记卡	
+2019-11-06 14:28:44,392 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 76/110条数据==============
+2019-11-06 14:28:44,392 [INFO] com.hodanet.yuma.controller.YumaOrderController 米馒头	米馒头一斤		1	15		已发货				15		赵倍丽	13918615479	上海市	浦东新区		上海市 浦东新区 板泉路1201弄40号501室					0			13918615479			借记卡	
+2019-11-06 14:28:44,392 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 77/110条数据==============
+2019-11-06 14:28:44,393 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹9只3.5斤		1	266		已发货				266		张英	13002140089	上海市	普陀区		上海市 普陀区 金沙江路2348弄47号302室					0			13002140089			借记卡	
+2019-11-06 14:28:44,393 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 78/110条数据==============
+2019-11-06 14:28:44,393 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹3斤特惠(1斤3只左右)		1	228		已发货				228		田根妹	13817550150	上海市	宝山区	顾村镇	上海市 宝山区 顾村镇 菊盛路851弄32号301室					0			13817550150			借记卡	
+2019-11-06 14:28:44,393 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 79/110条数据==============
+2019-11-06 14:28:44,393 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶4斤特惠		1	110		已发货				110		田根妹	13817550150	上海市	宝山区	顾村镇	上海市 宝山区 顾村镇 菊盛路851弄32号301室					0			13817550150			借记卡	
+2019-11-06 14:28:44,393 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 80/110条数据==============
+2019-11-06 14:28:44,393 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		唐晓莹	13661651910	上海市	宝山区		上海市 宝山区 菊联路232弄7号401室					0			13661651910			借记卡	
+2019-11-06 14:28:44,393 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 81/110条数据==============
+2019-11-06 14:28:44,393 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		穆宏	13918585857	上海市	静安区		上海市 静安区 华康路69弄2号802室					0			13918585857			借记卡	
+2019-11-06 14:28:44,393 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 82/110条数据==============
+2019-11-06 14:28:44,393 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		卫小姐	13901807040	上海市	闵行区		上海市 闵行区 绿莲路100弄20号203					0			13901807040			借记卡	
+2019-11-06 14:28:44,394 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 83/110条数据==============
+2019-11-06 14:28:44,394 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		凌蔚佳	15800589801	上海市	徐汇区		上海市 徐汇区 桂林东街28弄11号1102室					0			15800589801			借记卡	
+2019-11-06 14:28:44,394 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 84/110条数据==============
+2019-11-06 14:28:44,394 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		吴小波	15800589801	上海市	徐汇区		上海市 徐汇区 田林东路100弄（爱建园）47号1101室					0			15800589801			借记卡	
+2019-11-06 14:28:44,394 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 85/110条数据==============
+2019-11-06 14:28:44,394 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		张爱娣	13801812191	上海市	杨浦区		上海市 杨浦区 河间路827弄14号902室					0			13801812191			借记卡	
+2019-11-06 14:28:44,394 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 86/110条数据==============
+2019-11-06 14:28:44,394 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		郑芳芳	13901640570	上海市	黄浦区		上海市 黄浦区 汉口路583号					0			13901640570			借记卡	
+2019-11-06 14:28:44,394 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 87/110条数据==============
+2019-11-06 14:28:44,394 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		许桂珍	15800798445	上海市	松江区		上海市 松江区 中山二路51弄11号202室					0			15800798445			借记卡	
+2019-11-06 14:28:44,394 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 88/110条数据==============
+2019-11-06 14:28:44,395 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳2斤特惠(3条一斤)		1	138		已发货				138		许桂珍	15800798445	上海市	松江区		上海市 松江区 中山二路51弄11号202室					0			15800798445			借记卡	
+2019-11-06 14:28:44,395 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 89/110条数据==============
+2019-11-06 14:28:44,395 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		2	80		已发货				80		许桂珍	15800798445	上海市	松江区		上海市 松江区 中山二路51弄11号202室					0			15800798445			借记卡	
+2019-11-06 14:28:44,395 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 90/110条数据==============
+2019-11-06 14:28:44,395 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		许桂珍	15800798445	上海市	松江区		上海市 松江区 中山二路51弄11号202室					0			15800798445			借记卡	
+2019-11-06 14:28:44,395 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 91/110条数据==============
+2019-11-06 14:28:44,395 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:28:44,395 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 92/110条数据==============
+2019-11-06 14:28:44,395 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳2斤特惠(3条一斤)		1	138		已发货				138		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:28:44,395 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 93/110条数据==============
+2019-11-06 14:28:44,395 [INFO] com.hodanet.yuma.controller.YumaOrderController 梅童	梅童17-18条一斤		1	80		已发货				80		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:28:44,396 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 94/110条数据==============
+2019-11-06 14:28:44,396 [INFO] com.hodanet.yuma.controller.YumaOrderController 香螺	香螺一斤		1	65		已发货				65		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:28:44,396 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 95/110条数据==============
+2019-11-06 14:28:44,396 [INFO] com.hodanet.yuma.controller.YumaOrderController 带鱼	带鱼3条2斤左右		1	138		已发货				138		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:28:44,396 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 96/110条数据==============
+2019-11-06 14:28:44,396 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶一斤		1	28		已发货				28		韩凤山	13918873906	上海市	崇明县		上海市 崇明县 前進农场海燕别墅区11号					0			13918873906			借记卡	
+2019-11-06 14:28:44,396 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 97/110条数据==============
+2019-11-06 14:28:44,396 [INFO] com.hodanet.yuma.controller.YumaOrderController 海鸭	母海鸭一只		1	158		已发货				158		钟燕	18658890619	浙江省	杭州市	西湖区	浙江省 杭州市 西湖区 武林巷36号4单元501室					0			18658890619			借记卡	
+2019-11-06 14:28:44,396 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 98/110条数据==============
+2019-11-06 14:28:44,396 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		钟燕	18658890619	浙江省	杭州市	西湖区	浙江省 杭州市 西湖区 武林巷36号4单元501室					0			18658890619			借记卡	
+2019-11-06 14:28:44,396 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 99/110条数据==============
+2019-11-06 14:28:44,397 [INFO] com.hodanet.yuma.controller.YumaOrderController 小娘蟹	小娘蟹2斤6只左右		1	168		已发货				168		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:28:44,397 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 100/110条数据==============
+2019-11-06 14:28:44,397 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞4条特惠		1	118		已发货				118		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:28:44,397 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 101/110条数据==============
+2019-11-06 14:28:44,397 [INFO] com.hodanet.yuma.controller.YumaOrderController 白鲳	白鲳4条一斤		1	60		已发货				60		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:28:44,397 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 102/110条数据==============
+2019-11-06 14:28:44,397 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		1	20		已发货				20		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:28:44,397 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 103/110条数据==============
+2019-11-06 14:28:44,397 [INFO] com.hodanet.yuma.controller.YumaOrderController 虾皮	虾皮半斤		2	35		已发货				35		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:28:44,397 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 104/110条数据==============
+2019-11-06 14:28:44,398 [INFO] com.hodanet.yuma.controller.YumaOrderController 紫菜	紫菜2两		1	25		已发货				25		杨亚星	18962225686	江苏省	苏州市	张家港市	江苏省 苏州市 张家港市 塘桥镇欧桥村6组24号					0			18962225686			借记卡	
+2019-11-06 14:28:44,398 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 105/110条数据==============
+2019-11-06 14:28:44,398 [INFO] com.hodanet.yuma.controller.YumaOrderController 蟹糊	小娘蟹糊3瓶特惠		1	140		已发货				140		冯素芬	13761808098	上海市	嘉定区		上海市 嘉定区 丰庄西路551弄78号202室					0			13761808098			借记卡	
+2019-11-06 14:28:44,398 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 106/110条数据==============
+2019-11-06 14:28:44,398 [INFO] com.hodanet.yuma.controller.YumaOrderController 蟹糊	小娘蟹糊3瓶特惠		1	140		已发货				140		丁爱华	13501703472	上海市	闵行区		上海市 闵行区 虹莘路28支弄3号802室					0			13501703472			借记卡	
+2019-11-06 14:28:44,398 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 107/110条数据==============
+2019-11-06 14:28:44,398 [INFO] com.hodanet.yuma.controller.YumaOrderController 龙头鱼	龙头鱼一斤		1	20		已发货				20		丁爱华	13501703472	上海市	闵行区		上海市 闵行区 虹莘路28支弄3号802室					0			13501703472			借记卡	
+2019-11-06 14:28:44,398 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 108/110条数据==============
+2019-11-06 14:28:44,398 [INFO] com.hodanet.yuma.controller.YumaOrderController 黄鱼鲞	黄鱼鲞4条特惠		1	118		已发货				118		丁爱华	13501703472	上海市	闵行区		上海市 闵行区 虹莘路28支弄3号802室					0			13501703472			借记卡	
+2019-11-06 14:28:44,398 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 109/110条数据==============
+2019-11-06 14:28:44,399 [INFO] com.hodanet.yuma.controller.YumaOrderController 蟹糊	小娘蟹糊3瓶特惠		1	140		已发货				140		刘俪	13501942014	上海市	浦东新区		上海市 浦东新区 利津路185弄42号602室					0			13501942014			借记卡	
+2019-11-06 14:28:44,399 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============初始化第 110/110条数据==============
+2019-11-06 14:28:44,399 [INFO] com.hodanet.yuma.controller.YumaOrderController 毛蚶	大毛蚶4斤特惠		1	110		已发货				110		刘俪	13501942014	上海市	浦东新区		上海市 浦东新区 利津路185弄42号602室					0			13501942014			借记卡	
+2019-11-06 14:28:44,399 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============导入数据 110 条数据开始==============
+2019-11-06 14:28:44,456 [INFO] com.hodanet.yuma.controller.YumaOrderController ===============导入数据 110 条数据完成==============
+2019-11-06 14:29:04,072 [INFO] com.hodanet.yuma.task.SyncYumaWeidianDataTask 共有110条数据需要同步

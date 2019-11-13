@@ -1,0 +1,47 @@
+body{
+    background-color: #d7e8fa;
+}
+.handle span{
+	position: absolute;
+	left: 0;
+	font-weight: bold;
+	font-size: 14px;
+	color: #024b93;
+	display: inline-block;
+	padding-left: 20px;
+    background: url(../images/icon.gif) no-repeat 0 center;
+}
+
+.tabCls{
+	font-size: 12px;
+	width:100%;
+	border-collapse:collapse;
+	border:none;
+}
+.tabCls td ,.tabCls th{
+	border: 1px solid  #92b2d3;
+}
+.tabCls tr th{
+    text-align: right;
+    word-break:keep-all;
+}
+.tabCls tr td{
+    text-align: left;
+}
+.tabCls tr td input{
+	width : 95%;
+	background-color : #FFFFFF;
+}
+.tabCls tr td textarea , .tabCls tr td select {
+	width : 99%;
+	background-color : #FFFFFF;
+}
+.tabCls tr td input[type='checkbox']{
+	width : 20px;
+	background-color: #d7e8fa;
+}
+.tabCls2{
+}
+.tabCls2 tr th , .tabCls2 tr td{
+	text-align: center;
+}

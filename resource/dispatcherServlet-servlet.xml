@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://cxf.apache.org/jaxws 
+		http://cxf.apache.org/schemas/jaxws.xsd"
+		default-autowire="byType" default-lazy-init="true">
+	
+	<!-- 启用注解 -->
+	<context:annotation-config />
+	<!-- 组件扫描 -->
+	<context:component-scan base-package="com.hodanet" />
+	<!-- 启用SpringMVC注解 -->
+	<mvc:annotation-driven />
+	<mvc:interceptors>
+		<bean class="com.hodanet.common.interceptor.SpringContextInterceptor"></bean>
+	</mvc:interceptors>
+	<!-- <mvc:resources location="/css/" mapping="/css/**"/>
+	<mvc:resources location="/js/" mapping="/js/**"/> -->
+
+	<!-- JSP映射 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+		<property name="attributes" ref="systemProperties"></property>
+	</bean>
+	
+	<!-- 国际化资源文件 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>message</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="exceptionResolver" class="com.hodanet.common.interceptor.GlobalExceptionResolver"></bean>
+	
+	<!-- 文件上传控制 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="200000000000"></property>
+		<property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+	
+	<!-- 事务模式定义 -->
+	<tx:advice id="txAdvice" transaction-manager="hibernateTransactionManager">
+		<tx:attributes>
+			<tx:method name="*" read-only="true" propagation="NEVER"/>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="deal*" propagation="REQUIRED"/>
+			<tx:method name="issue*" propagation="REQUIRED"/>
+			<tx:method name="check*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="pmsSave*" propagation="REQUIRED"/>
+			<tx:method name="pmsUpdate*" propagation="REQUIRED"/>
+			<tx:method name="pmsSet*" propagation="REQUIRED"/>
+			<tx:method name="lockSet*" propagation="REQUIRED"/>
+			<tx:method name="set*" propagation="REQUIRED"/>
+			<tx:method name="eisSave*" propagation="REQUIRED"/>
+			<tx:method name="send*" propagation="REQUIRED"/>
+			<tx:method name="getSysPromptInfo" propagation="REQUIRED" />
+			<tx:method name="eosGetSysPromptInfo" propagation="REQUIRED" />
+			<tx:method name="eosReply*" propagation="REQUIRED" />
+			<tx:method name="reply*" propagation="REQUIRED" />
+			<tx:method name="fileUpload*" propagation="REQUIRED" />
+			<tx:method name="upload*" propagation="REQUIRED" />
+			<tx:method name="eisUpload*" propagation="REQUIRED" />
+			<tx:method name="copy*" propagation="REQUIRED"/>
+			<tx:method name="query*" propagation="REQUIRED"/>
+			<tx:method name="get*" propagation="REQUIRED"/>
+			<tx:method name="userChange*" propagation="REQUIRED"/>
+			<tx:method name="change*" propagation="REQUIRED"/>
+			<tx:method name="generate*" propagation="REQUIRED"/>
+			<tx:method name="cancle*" propagation="REQUIRED"/>
+			<tx:method name="pay*" propagation="REQUIRED"/>
+			<tx:method name="notify*" propagation="REQUIRED"/>
+			<tx:method name="refund*" propagation="REQUIRED"/>
+			<tx:method name="deliver*" propagation="REQUIRED"/>
+			<tx:method name="clear*" propagation="REQUIRED"/>
+			<tx:method name="create*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- 事务匹配逻辑 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.hodanet.*.service.*.*(..))" id="servicesOperation"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicesOperation"/>
+	</aop:config>
+	
+	<!-- 切面注解
+	<aop:aspectj-autoproxy/> -->
+	
+	<!-- 所有控制器方法日志拦截 -->
+	<bean id="controllerAspect" class="com.hodanet.common.interceptor.ControllerAspect"></bean>
+	<bean id="serviceAspect" class="com.hodanet.common.interceptor.ServiceAspect"></bean>
+	
+	
+	<aop:config proxy-target-class="true">
+		<aop:aspect ref="controllerAspect">
+			<aop:around method="around" pointcut="execution(* com.hodanet.*.controller.*.*(..))"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="serviceAspect">
+			<aop:around method="around" pointcut="execution(* com.hodanet.*.impl.*.*(..))"/>
+		</aop:aspect>
+		
+	</aop:config>
+	
+	<!-- 公共配置文件 -->
+	<util:properties id="jdbcProperties" location="jdbc.properties"/>
+	<!-- <util:properties id="commonProperties" location="common.properties"/> -->
+    
+</beans>

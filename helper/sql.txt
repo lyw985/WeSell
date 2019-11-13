@@ -1,0 +1,13 @@
+/*
+delete from province;
+delete from city;
+delete from area;
+delete from yuma_weidian_item;
+delete from yuma_weidian_item_model;
+delete from yuma_order;
+delete from yuma_order_item;
+delete from yuma_receiver;
+delete from yuma_user;
+delete from yuma_weidian_data;
+
+update yuma_weidian_data set sync_status = 0

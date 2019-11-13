@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<!-- Quartz Config -->
+	<bean id="scheduledFactoryBean"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- 
+				<ref bean="autoGetAccessTokenBean" />
+				<ref bean="processUnsendMessageBean" />
+				<ref bean="finishCommunicateBean" />
+				<ref bean="noticeSoonExpireUserBean" />
+				 -->
+				 <ref bean="syncYumaWeidianDataBean" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 定时同步微店数据 -->
+	<bean id="syncYumaWeidianDataBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="syncYumaWeidianDataTask"></property>
+		<property name="cronExpression" value="4 * * * * ?" />
+	</bean>
+
+	<bean id="syncYumaWeidianDataTask" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass"
+			value="com.hodanet.yuma.task.SyncYumaWeidianDataTask"></property>
+	</bean>
+
+	<!-- 每1小时重新获取一次accessToken值 -->
+	<bean id="autoGetAccessTokenBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="autoGetAccessTokenTask"></property>
+		<property name="cronExpression" value="0 1 * * * ?" />
+	</bean>
+
+	<bean id="autoGetAccessTokenTask" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass"
+			value="com.hodanet.weixin.task.AutoGetAccessTokenTask"></property>
+	</bean>
+	
+	<!-- 家庭医生每1分钟处理未发送内容 -->
+	<bean id="processUnsendMessageBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="processUnsendMessageTask"></property>
+		<property name="cronExpression" value="1 * * * * ?" />
+	</bean>
+
+	<bean id="processUnsendMessageTask" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass"
+			value="com.hodanet.jtys.task.ProcessUnsendMessageTask"></property>
+	</bean>
+	
+	<!-- 家庭医生每1分钟处理交互完结 -->
+	<bean id="finishCommunicateBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="finishCommunicateTask"></property>
+		<property name="cronExpression" value="2 * * * * ?" />
+	</bean>
+
+	<bean id="finishCommunicateTask" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass"
+			value="com.hodanet.jtys.task.FinishCommunicateTask"></property>
+	</bean>
+	
+	<!-- 家庭医生每天下午6点提醒将要过期的用户 -->
+	<bean id="noticeSoonExpireUserBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="noticeSoonExpireUserTask"></property>
+		<property name="cronExpression" value="3 0 18 * * ?" />
+	</bean>
+
+	<bean id="noticeSoonExpireUserTask" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass"
+			value="com.hodanet.jtys.task.NoticeSoonExpireUserTask"></property>
+	</bean>
+	
+
+</beans>
