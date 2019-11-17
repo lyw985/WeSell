@@ -253,6 +253,7 @@
 				<th width="5%"><input type="checkbox" class="selAll"></th>
 				<th width="10%">商品名称</th>
 				<th width="20%">型号列表</th>
+				<th width="10%">计量单位</th>
 				<th width="10%">状态</th>
 				<th width="20%">操作</th>
 			</tr>
@@ -267,6 +268,9 @@
 									${yumaItemModel.name} <c:if test="${yumaItemModel.status==0}"><font color="red">(${yumaItemModel.statusStr})</font></c:if>
 									<c:if test="${yumaItemModel.status==1}"><font color="green">(${yumaItemModel.statusStr})</font></c:if><br/>
 								</c:forEach>
+							</td>
+							<td>
+								${yumaItem.typeStr}
 							</td>
 							<td>
 								<c:if test="${yumaItem.status==0}"><font color="red">${yumaItem.statusStr}</font></c:if>

@@ -1,12 +1,19 @@
 package com.hodanet.yuma.entity.po;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -30,6 +37,11 @@ public class YumaWeidianItemModel {
 	@JoinColumn(name = "weidian_item_id")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private YumaWeidianItem yumaWeidianItem;
+
+	@OneToMany(targetEntity = YumaWeidianItemModelMapping.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@Fetch(FetchMode.JOIN)
+	@JoinColumn(name = "weidian_item_model_id", updatable = false)
+	private List<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings;
 
 	public Integer getId() {
 		return id;
@@ -55,5 +67,20 @@ public class YumaWeidianItemModel {
 		this.yumaWeidianItem = yumaWeidianItem;
 	}
 
+	public YumaWeidianItem getYumaWeidianItem() {
+		return yumaWeidianItem;
+	}
+
+	public void setYumaWeidianItem(YumaWeidianItem yumaWeidianItem) {
+		this.yumaWeidianItem = yumaWeidianItem;
+	}
+
+	public List<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappings() {
+		return yumaWeidianItemModelMappings;
+	}
+
+	public void setYumaWeidianItemModelMappings(List<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings) {
+		this.yumaWeidianItemModelMappings = yumaWeidianItemModelMappings;
+	}
 
 }

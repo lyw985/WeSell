@@ -15,20 +15,20 @@ import com.hodanet.common.service.AreaService;
 import com.hodanet.common.service.CityService;
 import com.hodanet.common.service.ProvinceService;
 import com.hodanet.yuma.constant.SyncStatus;
-import com.hodanet.yuma.entity.po.YumaWeidianItem;
-import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
 import com.hodanet.yuma.entity.po.YumaOrder;
 import com.hodanet.yuma.entity.po.YumaOrderItem;
 import com.hodanet.yuma.entity.po.YumaReceiver;
 import com.hodanet.yuma.entity.po.YumaUser;
 import com.hodanet.yuma.entity.po.YumaWeidianData;
-import com.hodanet.yuma.service.YumaWeidianItemModelService;
-import com.hodanet.yuma.service.YumaWeidianItemService;
+import com.hodanet.yuma.entity.po.YumaWeidianItem;
+import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
 import com.hodanet.yuma.service.YumaOrderItemService;
 import com.hodanet.yuma.service.YumaOrderService;
 import com.hodanet.yuma.service.YumaReceiverService;
 import com.hodanet.yuma.service.YumaUserService;
 import com.hodanet.yuma.service.YumaWeidianDataService;
+import com.hodanet.yuma.service.YumaWeidianItemModelService;
+import com.hodanet.yuma.service.YumaWeidianItemService;
 
 /**
  * @anthor lyw

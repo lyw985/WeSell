@@ -10,7 +10,6 @@ import com.hodanet.common.dao.AbstractDaoService;
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.common.util.DateConverterUtil;
 import com.hodanet.common.util.StringUtil;
-import com.hodanet.yuma.constant.SyncStatus;
 import com.hodanet.yuma.constant.YumaOrderStatus;
 import com.hodanet.yuma.entity.po.YumaOrder;
 import com.hodanet.yuma.entity.po.YumaReceiver;

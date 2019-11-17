@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.hodanet.common.dao.AbstractDaoService;
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.yuma.constant.YumaItemStatus;
+import com.hodanet.yuma.constant.YumaItemType;
 import com.hodanet.yuma.entity.po.YumaItem;
 import com.hodanet.yuma.service.YumaItemService;
 
@@ -50,11 +51,13 @@ public class YumaItemServiceImpl extends AbstractDaoService implements
 		}
 		if (yumaItem.getId() == null) {
 			yumaItem.setStatus(YumaItemStatus.INAVAILABLE.getValue());
+			yumaItem.setType(YumaItemType.WEIGHT_JIN.getValue());
 			this.getDao().save(yumaItem);
 		} else {
 			YumaItem orginal = getYumaItemById(yumaItem.getId());
 			orginal.setName(yumaItem.getName());
 			orginal.setStatus(yumaItem.getStatus());
+			orginal.setType(yumaItem.getType());
 			// TODO
 		}
 		return yumaItem;

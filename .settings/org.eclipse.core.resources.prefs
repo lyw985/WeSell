@@ -21,6 +21,7 @@ encoding//src/com/hodanet/weixin/util/HttpTest.java=UTF-8
 encoding//src/com/hodanet/yuma/constant=UTF-8
 encoding//src/com/hodanet/yuma/constant/SyncStatus.java=UTF-8
 encoding//src/com/hodanet/yuma/constant/YumaItemStatus.java=UTF-8
+encoding//src/com/hodanet/yuma/constant/YumaItemType.java=UTF-8
 encoding//src/com/hodanet/yuma/constant/YumaWeidianDataOrderStatus.java=UTF-8
 encoding//src/com/hodanet/yuma/entity/po/YumaWeidianData.java=UTF-8
 encoding/<project>=UTF-8

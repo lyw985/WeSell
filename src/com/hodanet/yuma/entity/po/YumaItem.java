@@ -18,6 +18,7 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.hodanet.yuma.constant.YumaItemStatus;
+import com.hodanet.yuma.constant.YumaItemType;
 
 /**
  * @anthor lyw
@@ -36,6 +37,8 @@ public class YumaItem {
 	private String name;
 
 	private Integer status;
+	
+	private Integer type;
 
 	@OneToMany(targetEntity = YumaItemModel.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@Fetch(FetchMode.JOIN)
@@ -74,6 +77,14 @@ public class YumaItem {
 		this.status = status;
 	}
 
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
 	public List<YumaItemModel> getYumaItemModels() {
 		return yumaItemModels;
 	}
@@ -100,6 +111,10 @@ public class YumaItem {
 
 	public String getStatusStr() {
 		return YumaItemStatus.getYumaItemStatus(status).toString();
+	}
+	
+	public String getTypeStr() {
+		return YumaItemType.getYumaItemType(type).toString();
 	}
 
 }

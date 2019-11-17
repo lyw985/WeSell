@@ -4,8 +4,6 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import com.hodanet.common.spring.SpringContextUtil;
-import com.hodanet.yuma.service.YumaOrderService;
-import com.hodanet.yuma.service.impl.YumaOrderServiceImpl;
 
 public class HodanetServletContextListener implements ServletContextListener {
 

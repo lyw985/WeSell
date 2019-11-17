@@ -7,7 +7,6 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.hodanet.common.constant.CommonConstants;
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.yuma.constant.SyncStatus;
 import com.hodanet.yuma.entity.po.YumaUser;

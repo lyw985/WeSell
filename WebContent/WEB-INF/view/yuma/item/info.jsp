@@ -29,6 +29,24 @@
 						maxlength="64" cssClass="validate[required]" />
 				</td>
 			</tr>
+			<tr>
+				<th width="15%" align="right"><font color="red">*</font>商品状态：</th>
+				<td width="85%" align="left">
+					<form:select path="status">
+						<form:option value="0">禁用</form:option>
+						<form:option value="1">可用</form:option>
+					</form:select>
+				</td>
+			</tr>
+			<tr>
+				<th width="15%" align="right"><font color="red">*</font>计量单位：</th>
+				<td width="85%" align="left">
+					<form:select path="type">
+						<form:option value="0">斤</form:option>
+						<form:option value="1">条</form:option>
+					</form:select>
+				</td>
+			</tr>
 		</table>
 	</form:form>
 </body>
