@@ -1,13 +1,105 @@
+SELECT * FROM yuma_weidian_data a where a.receiver_city = '上海'
+
+SELECT * FROM yuma_weidian_data a order by a.id desc
+
+SELECT * FROM yuma_weidian_data where receiver_name = '倪娜' order by order_create_time desc
+
+SELECT count(*) FROM yuma_order a where a.pay_date >= '2018-11-01' and a.pay_date < '2018-12-01'
+
+SELECT count(*) FROM yuma_weidian_data a where sync_status = 0 and a.order_pay_time is not null；
+
+select * from province ;
+
+select * from yuma_order_item where order_id = 58
+
+SELECT pay_time,WEEKDAY(pay_time)  FROM yuma_order_item 
+
+SELECT date(pay_time)
+	, CASE 
+		WHEN date(pay_time) = '2018-12-1' THEN 1
+		ELSE 0
+	END AS num
+FROM yuma_order_item
+WHERE date(pay_time) = '2018-12-1'
+	OR date(pay_time) = '2018-12-2';
+  
+  SELECT t4.name, t3.num,t3.pay_price,t3.pay_price/t3.num
+FROM (
+	SELECT t1.user_id, SUM(1) AS num, sum(t1.pay_price) as pay_price
+	FROM yuma_order t1
+		LEFT JOIN yuma_user t2 ON t1.user_id = t2.id
+    where t1.pay_date >= '2019-10-01' and t1.pay_date < '2019-11-01'
+	GROUP BY t1.user_id
+) t3
+	LEFT JOIN yuma_user t4 ON t3.user_id = t4.id
+ORDER BY t3.pay_price desc
+limit 0,10
+
+select t1.pay_date,year(t1.pay_date) AS YEARS,MONTH(t1.pay_date) as MONTHS from yuma_order t1
+
+  SELECT t4.name, t3.num,t3.pay_price,t3.pay_price/t3.num
+FROM (
+	SELECT t1.user_id, SUM(1) AS num, sum(t1.pay_price) as pay_price
+	FROM yuma_order t1
+		LEFT JOIN yuma_user t2 ON t1.user_id = t2.id
+    where t1.pay_date >= '2019-10-01' and t1.pay_date < '2019-11-01'
+	GROUP BY t1.user_id
+) t3
+	LEFT JOIN yuma_user t4 ON t3.user_id = t4.id
+ORDER BY t3.pay_price desc
+limit 0,10
+
+
+  select * from yuma_order t1 where t1.user_id != t1.receiver_id
+  
+#delete from yuma_weidian_item_model_mapping;
+
 /*
-delete from province;
-delete from city;
-delete from area;
-delete from yuma_weidian_item;
-delete from yuma_weidian_item_model;
+#delete from province;
+#delete from city;
+#delete from area;
+#delete from yuma_weidian_item;
+#delete from yuma_weidian_item_model;
+#delete from yuma_weidian_item_model_mapping;
 delete from yuma_order;
 delete from yuma_order_item;
 delete from yuma_receiver;
 delete from yuma_user;
 delete from yuma_weidian_data;
 
+update yuma_weidian_item set body_id = 0
 update yuma_weidian_data set sync_status = 0
+update yuma_order set pay_price = 0 , original_price = 0
+SELECT
+            n1.i + n10.i * 10 + n100.i * 100 + n1000.i * 1000+ n10000.i * 10000 AS id
+        FROM
+            num n1
+        CROSS JOIN num AS n10
+        CROSS JOIN num AS n100
+        CROSS JOIN num AS n1000
+        CROSS JOIN num AS n10000
+CREATE TABLE num (i int);-- 创建一个表用来储存0-9的数字
+INSERT INTO num (i) VALUES (0), (1), (2), (3), (4), (5), (6), (7), (8), (9);-- 生成0-9的数字，方便以后计算时间
+
+CREATE TABLE  if not exists calendar(datelist date); -- 生成一个存储日期的表，datalist是字段名
+
+-- 这里是生成并插入日期数据
+INSERT INTO calendar(datelist) SELECT
+    adddate(
+        (   -- 这里的起始日期，你可以换成当前日期
+            DATE_FORMAT("2016-1-1", '%Y-%m-%d') 
+        ),
+        numlist.id
+    ) AS `date`
+FROM
+    (
+        SELECT
+            n1.i + n10.i * 10 + n100.i * 100 + n1000.i * 1000+ n10000.i * 10000 AS id
+        FROM
+            num n1
+        CROSS JOIN num AS n10
+        CROSS JOIN num AS n100
+        CROSS JOIN num AS n1000
+        CROSS JOIN num AS n10000
+    ) AS numlist;
+

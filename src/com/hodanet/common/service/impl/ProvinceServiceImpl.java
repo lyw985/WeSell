@@ -82,7 +82,6 @@ public class ProvinceServiceImpl extends AbstractDaoService implements ProvinceS
 			Province orginal = getProvinceById(province.getId());
 			orginal.setName(province.getName());
 		}
-
 		return province;
 	}
 

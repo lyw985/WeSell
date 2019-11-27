@@ -1,15 +1,21 @@
 package com.hodanet.yuma.controller;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hodanet.yuma.service.YumaOrderService;
-import com.hodanet.yuma.service.YumaWeidianDataService;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.hodanet.yuma.entity.vo.jquery.JQueryChart;
+import com.hodanet.yuma.entity.vo.jquery.JQueryLineChart;
+import com.hodanet.yuma.service.YumaChartService;
 
 /**
  * @anthor lyw
@@ -24,10 +30,7 @@ public class YumaChartController {
 	private static final String LIST_PAGE = "yuma/chart/list";
 
 	@Autowired
-	private YumaOrderService yumaOrderService;
-
-	@Autowired
-	private YumaWeidianDataService yumaWeidianDataService;
+	private YumaChartService yumaChartService;
 
 	/**
 	 * 
@@ -38,6 +41,9 @@ public class YumaChartController {
 	 */
 	@RequestMapping(value = "/list")
 	public String list(Model model, HttpServletRequest request) {
+		JQueryChart chart = new JQueryLineChart();
+		chart.testData();
+		model.addAttribute("chartConfig", StringEscapeUtils.escapeHtml(JSONObject.toJSONString(chart)));
 		return LIST_PAGE;
 	}
 
@@ -50,7 +56,10 @@ public class YumaChartController {
 	 * @return
 	 */
 	@RequestMapping(value = "/query")
-	public String query(Model model,  HttpServletRequest request) {
+	public String query(Model model, HttpServletRequest request) {
+		JQueryChart chart = yumaChartService.getChart();
+//		System.out.println(JSONObject.toJSONString(chart));
+		model.addAttribute("chartConfig", StringEscapeUtils.escapeHtml(JSONObject.toJSONString(chart)));
 		return LIST_PAGE;
 	}
 

@@ -10,8 +10,10 @@ import com.hodanet.common.dao.AbstractDaoService;
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.yuma.entity.po.YumaWeidianItem;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
+import com.hodanet.yuma.entity.po.YumaWeidianItemModelMapping;
 import com.hodanet.yuma.service.YumaOrderItemService;
 import com.hodanet.yuma.service.YumaOrderService;
+import com.hodanet.yuma.service.YumaWeidianItemModelMappingService;
 import com.hodanet.yuma.service.YumaWeidianItemModelService;
 import com.hodanet.yuma.service.YumaWeidianItemService;
 
@@ -23,13 +25,13 @@ import com.hodanet.yuma.service.YumaWeidianItemService;
 public class YumaWeidianItemServiceImpl extends AbstractDaoService implements YumaWeidianItemService {
 
 	@Autowired
+	private YumaOrderItemService yumaOrderItemService;
+
+	@Autowired
 	private YumaWeidianItemModelService yumaWeidianItemModelService;
 
 	@Autowired
-	private YumaOrderService yumaOrderService;
-
-	@Autowired
-	private YumaOrderItemService yumaWeidianItemService;
+	private YumaWeidianItemModelMappingService yumaWeidianItemModelMappingService;
 
 	@Override
 	public YumaWeidianItem getYumaWeidianItemById(Integer id) {
@@ -81,6 +83,9 @@ public class YumaWeidianItemServiceImpl extends AbstractDaoService implements Yu
 		if (yumaYumaWeidianItem == null) {
 			yumaYumaWeidianItem = new YumaWeidianItem();
 			yumaYumaWeidianItem.setName(name);
+			YumaWeidianItem body = new YumaWeidianItem();
+			body.setId(0);
+			yumaYumaWeidianItem.setBody(body);
 			yumaYumaWeidianItem = saveYumaWeidianItem(yumaYumaWeidianItem);
 		} else {
 			if (yumaYumaWeidianItem.getBody() != null && yumaYumaWeidianItem.getBody().getId() != null
@@ -99,15 +104,26 @@ public class YumaWeidianItemServiceImpl extends AbstractDaoService implements Yu
 		String hql = "update YumaWeidianItem o set o.body.id = ? where o.id = ?";
 		this.getDao().executeUpdate(hql, bodyId, id);
 		if (bodyId != 0) {
-			YumaWeidianItem yumaWeidianItem = getYumaWeidianItemById(id);
-			YumaWeidianItem body = yumaWeidianItem.getBody();
-			List<YumaWeidianItemModel> yumaWeidianItemModels = yumaWeidianItem.getYumaWeidianItemModels();
-			if (yumaWeidianItemModels != null) {
-				for (YumaWeidianItemModel model : yumaWeidianItemModels) {
-					YumaWeidianItemModel yumaWeidianItemModel = yumaWeidianItemModelService
-							.getOrCreateWeidianItemModelByName(model.getName(), body);
-					yumaWeidianItemService.updateBatchYumaOrderWeidianItemModel(model.getId(),
-							yumaWeidianItemModel.getId());
+			YumaWeidianItem shadowYumaWeidianItem = getYumaWeidianItemById(id);
+			YumaWeidianItem bodyYumaWeidianItem = shadowYumaWeidianItem.getBody();
+			if (shadowYumaWeidianItem.getYumaWeidianItemModels() != null) {
+				for (YumaWeidianItemModel shadowYumaWeidianItemModel : shadowYumaWeidianItem
+						.getYumaWeidianItemModels()) {
+					YumaWeidianItemModel bodyYumaWeidianItemModel = yumaWeidianItemModelService
+							.getOrCreateWeidianItemModelByName(shadowYumaWeidianItemModel.getName(),
+									bodyYumaWeidianItem);
+					yumaOrderItemService.updateBatchYumaOrderWeidianItemModel(shadowYumaWeidianItemModel.getId(),
+							bodyYumaWeidianItemModel.getId());
+					if (shadowYumaWeidianItemModel.getYumaWeidianItemModelMappings() != null) {
+						for (YumaWeidianItemModelMapping shadowYumaWeidianItemModelMapping : shadowYumaWeidianItemModel
+								.getYumaWeidianItemModelMappings()) {
+							YumaWeidianItemModelMapping newMapping = new YumaWeidianItemModelMapping();
+							newMapping.setYumaItemModel(shadowYumaWeidianItemModelMapping.getYumaItemModel());
+							newMapping.setCount(shadowYumaWeidianItemModelMapping.getCount());
+							newMapping.setYumaWeidianItemModel(bodyYumaWeidianItemModel);
+							yumaWeidianItemModelMappingService.saveYumaWeidianItemModelMapping(newMapping);
+						}
+					}
 				}
 			}
 		}

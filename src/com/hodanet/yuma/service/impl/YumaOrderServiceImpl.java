@@ -79,6 +79,9 @@ public class YumaOrderServiceImpl extends AbstractDaoService implements YumaOrde
 			sb.append(" and o.status = ? ");
 			params.add(yumaOrder.getStatus());
 		}
+		// sb.append(" and o.id in ( select i.yumaOrder.id from YumaOrderItem i where
+		// i.yumaWeidianItemModel.name like ?) ");
+		// params.add("%红美人%");
 		sb.append(" order by o.payDate desc");
 		return this.getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
 	}

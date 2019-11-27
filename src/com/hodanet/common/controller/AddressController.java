@@ -40,7 +40,7 @@ public class AddressController {
 	private ProvinceService provinceService;
 
 	@Autowired
-	private CityService citySerivce;
+	private CityService cityService;
 
 	@Autowired
 	private AreaService areaService;
@@ -137,7 +137,7 @@ public class AddressController {
 		city.setDisplayStatus(DisplayStatus.DISPLAY.getValue());
 		PageData<City> pageData = new PageData<City>();
 		pageData.setPageSize(Integer.MAX_VALUE);
-		pageData = citySerivce.getCityByPage(pageData, city);
+		pageData = cityService.getCityByPage(pageData, city);
 		if (pageData != null && pageData.getData().size() > 0) {
 			JSONArray array = new JSONArray();
 			for (int i = 0; i < pageData.getData().size(); i++) {
@@ -197,13 +197,13 @@ public class AddressController {
 
 	@RequestMapping(value = "/hideCity", method = RequestMethod.POST)
 	public void hideCity(HttpServletResponse response, @RequestParam("id") Integer id) {
-		citySerivce.updateCityDisplayStatus(id, DisplayStatus.HIDDEN.getValue());
+		cityService.updateCityDisplayStatus(id, DisplayStatus.HIDDEN.getValue());
 		WebUtil.responseText(response, JSONObject.toJSONString(new JsonMessage(true, "更新成功")));
 	}
 
 	@RequestMapping(value = "/showCity", method = RequestMethod.POST)
 	public void showCity(HttpServletResponse response, @RequestParam("id") Integer id) {
-		citySerivce.updateCityDisplayStatus(id, DisplayStatus.DISPLAY.getValue());
+		cityService.updateCityDisplayStatus(id, DisplayStatus.DISPLAY.getValue());
 		WebUtil.responseText(response, JSONObject.toJSONString(new JsonMessage(true, "更新成功")));
 	}
 

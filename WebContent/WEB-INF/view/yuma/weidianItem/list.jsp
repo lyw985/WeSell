@@ -29,6 +29,7 @@
 <script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine-en.js"></script>
 <script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine.js"></script>
 <script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="${commonMapper.rootPath}/js/util/yuma.js"></script>
 <script type="text/javascript">
 	$(function() {
 		var pager = $("#pager");
@@ -194,6 +195,82 @@
 			});
 		});
 		
+		//增加关系按钮
+		$(".addMapping").click(function(){
+			$("#divDialog").load('${commonMapper.rootPath}/yuma/weidianItem/addMapping/'+$(this).attr('rel')+'.do',null,function(){
+				$("#yumaWeidianItemModelMappingForm").validationEngine({ promptPosition : "topRight" });
+				$("#divDialog").dialog({title:'增加商品映射关系',resizable: false,height:400,width:400,
+					'buttons':{
+						'保存':function(){
+							if($(this).find('#yumaWeidianItemModelMappingForm').validationEngine("validate")){
+								$(this).find('#yumaWeidianItemModelMappingForm').ajaxSubmit({ 
+							        dataType:  'json',
+							        type: 'POST',
+							        success:   showAddResponse 
+							    }); 
+							}
+						},
+						'取消':function(){
+							$("#queryForm").submit();
+						}
+					},
+					modal:true,
+					beforeClose:function(event, ui) {
+						$(this).find('#yumaWeidianItemModelMappingForm').validationEngine("hideAll");
+					},
+					close:function(event, ui) {
+						$("#queryForm").submit();
+					}
+				});
+			});
+		});
+		
+		//修改关系按钮
+		$(".modifyMapping").click(function(){
+			var tmp = "&id="+$(this).attr('rel');
+			$("#divDialog").load('${commonMapper.rootPath}/yuma/weidianItem/modifyMapping/'+$(this).attr('rel')+'.do',null,function(){
+				$("#yumaWeidianItemModelMappingForm").validationEngine({ promptPosition : "topRight" });
+				$("#divDialog").dialog({title:'修改商品映射关系',resizable: false,height:400,width:400,
+					'buttons':{
+						'删除':function(){
+							jConfirm('确认将这个关系删除吗？', '确认操作', function(result){
+								if(result == true){
+									$.post('${commonMapper.rootPath}/yuma/weidianItem/deleteMapping.do',tmp.substring(1),function(data){
+										if(data.flag){
+											jAlert(data.msg,'成功',function(){
+												$("#queryForm").submit();
+											});
+										}else{
+											jAlert(data.msg,'失败');
+										}
+									},'json');
+								}
+							});
+						},
+						'保存':function(){
+							if($(this).find('#yumaWeidianItemModelMappingForm').validationEngine("validate")){
+								$(this).find('#yumaWeidianItemModelMappingForm').ajaxSubmit({ 
+							        dataType:  'json',
+							        type: 'POST',
+							        success:   showAddResponse 
+							    }); 
+							}
+						},
+						'取消':function(){
+							$("#queryForm").submit();
+						}
+					},
+					modal:true,
+					beforeClose:function(event, ui) {
+						$(this).find('#yumaWeidianItemModelMappingForm').validationEngine("hideAll");
+					},
+					close:function(event, ui) {
+						$("#queryForm").submit();
+					}
+				});
+			});
+		});
+		
 		$(".receiverList").click(function(){
 			window.location.href="${commonMapper.rootPath}/yuma/receiver/list.do?weidianItem_id="+$(this).attr('rel');
 		});
@@ -265,7 +342,14 @@
 									<c:if test="${vs2.index !=0 }">
 										<br />
 									</c:if>
-									${yumaWeidianItemModel.name } +
+									${yumaWeidianItemModel.name } 
+									(<c:forEach
+									items="${yumaWeidianItemModel.yumaWeidianItemModelMappings }"
+									var="yumaWeidianItemModelMapping" varStatus="vs3">
+									<a
+										href="javascript:void(0)" rel="${yumaWeidianItemModelMapping.id}"
+										class="modifyMapping">【${yumaWeidianItemModelMapping.yumaItemModel.name} ${yumaWeidianItemModelMapping.count}${yumaWeidianItemModelMapping.yumaItemModel.yumaItem.typeStr}】</a>
+								</c:forEach><a href="javascript:void(0)" class="addMapping" rel="${yumaWeidianItemModel.id}">新增</a>)
 								</c:forEach></td>
 							<td><c:if test="${ empty yumaWeidianItem.body }">
 									<c:if test="${ fn:length(yumaWeidianItem.shadows) == 0 }">

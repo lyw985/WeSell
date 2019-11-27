@@ -98,6 +98,7 @@ public class YumaOrderItemServiceImpl extends AbstractDaoService implements Yuma
 			yumaOrderItem = saveYumaOrderItem(yumaOrderItem);
 			yumaOrder.setPayPrice(yumaOrder.getPayPrice() + itemCountInt * payPriceFloat);
 			yumaOrder.setOriginalPrice(yumaOrder.getOriginalPrice() + itemCountInt * originalPriceFloat);
+			yumaOrder.setItemNumber(yumaOrder.getItemNumber() + itemCountInt);
 		}
 		return yumaOrderItem;
 	}

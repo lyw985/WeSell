@@ -10,7 +10,7 @@ import com.hodanet.common.entity.vo.PageData;
 
 /**
  * <pre>
- *    DAOӿ.
+ *    DAO
  * </pre>
  */
 public interface BaseDao {
@@ -18,7 +18,7 @@ public interface BaseDao {
     /**
      * .
      * 
-     * @param entity ҪĶ
+     * @param entity 
      * @return ID
      */
     Serializable save(Object entity);
@@ -26,7 +26,7 @@ public interface BaseDao {
     /**
      * .
      * 
-     * @param entitys ҪĶ
+     * @param entitys 
      * @return ID
      */
     Serializable[] save(Object[] entitys);
@@ -34,121 +34,119 @@ public interface BaseDao {
     /**
      * .
      * 
-     * @param entity ҪĶ
+     * @param entity 
      */
     void saveOrUpdate(Object entity);
 
     /**
      * .
      * 
-     * @param entitys ҪĶ
+     * @param entitys 
      */
     void saveOrUpdate(Object[] entitys);
 
     /**
-     * ¶.
      * 
-     * @param entity ҪµĶ
+     * 
+     * @param entity 
      */
     void update(Object entity);
 
     /**
-     * ¶.
      * 
-     * @param entitys ҪµĶ
+     * 
+     * @param entitys 
      */
     void update(Object[] entitys);
 
     /**
      * ɾ.
      * 
-     * @param entity ҪɾĶ.
+     * @param entity 
      */
     void delete(Object entity);
 
     /**
      * ɾ.
      * 
-     * @param entitys ҪɾĶ
+     * @param entitys 
      */
     void delete(Object[] entitys);
 
     /**
      * ɾ.
      * 
-     * @param <T> Ŀ
-     * @param entityClass Ŀ
-     * @param id ҪɾĶ ID.
+     * @param <T> 
+     * @param entityClass 
+     * @param id  ID.
      */
     <T> void delete(Class<T> entityClass, Serializable id);
 
     /**
      * ɾ.
      * 
-     * @param <T> Ŀ
-     * @param entityClass Ŀ
-     * @param ids ҪɾĶID
+     * @param <T> 
+     * @param entityClass 
+     * @param ids ID
      */
     <T> void delete(Class<T> entityClass, Serializable[] ids);
 
     /**
-     * ִUPDATEDELETEINSERT INTO䣬Ӱļ¼.
+     * ִUPDATEDELETEINSERT INTO
      * 
-     * @param hql HQL䣬α﷨ṹ:( UPDATE | DELETE ) FROM? EntityName (WHERE where_conditions)?
-     * @return Ӱļ¼
+     * @param hql HQL( UPDATE | DELETE ) FROM? EntityName (WHERE where_conditions)?
+     * @return 
      */
     int executeUpdate(String hql, Object... objects);
 
     /**
      * ʵͺIDȡ.
      * 
-     * @param <T> Ŀ
-     * @param entityClass Ŀ
-     * @param id ĿID
-     * @return ҪȡĶ
+     * @param <T> 
+     * @param entityClass 
+     * @param id ID
+     * @return 
      */
     <T> T get(Class<T> entityClass, Serializable id);
 
     /**
-     * ݶͻȡж.
+     * ݶ
      * 
-     * @param <T> Ŀ
-     * @param entityClass Ŀ
-     * @return 󼯺
+     * @param <T> 
+     * @param entityClass 
+     * @return 
      */
     <T> List<T> get(Class<T> entityClass);
 
     /**
-     * ݶͻȡҳ.
+     * ݶ
      * 
-     * @param <T> Ŀ
-     * @param entityClass Ŀ
-     * @param pager ҳϢ
-     * @return ҳѯ
+     * @param <T> 
+     * @param entityClass 
+     * @param pager Ϣ
+     * @return ѯ
      */
     <T> PageData<T> get(Class<T> entityClass, PageData<T> pager);
 
     /**
-     * ݶͻȡҳ.
+     * ݶ
      * 
-     * @param <T> Ŀ
-     * @param entityClass Ŀ
-     * @param firstResult ׼¼
-     * @param maxResults Ҫȡļ¼
-     * @return ѯ󼯺
+     * @param <T> 
+     * @param entityClass 
+     * @param firstResult 
+     * @param maxResults 
+     * @return 
      */
     <T> List<T> get(Class<T> entityClass, int firstResult, int maxResults);
 
     /**
-     * ִSQL(INSERT\UPDATE\DELETE).
      * 
      * @param sql SQL
-     * @return Ӱ
+     * @return 
      */
     int executeSql(String sql);
 
     /**
-     * ѯָSQL,н.
      * 
      * @param sql SQL
      * @return Object[]
@@ -156,119 +154,107 @@ public interface BaseDao {
     List querySql(String sql);
 
     /**
-     * ѯָSQL,н.
      * 
-     * @param <T> Ŀ
-     * @param class1 Ŀ
+     * @param <T> 
+     * @param class1 
      * @param sql SQL
      * @return Object[]
      */
     <T> List<T> querySql(String sql, Class<T> class1);
 
     /**
-     * ҳѯָSQL,طҳ.
      * 
      * @param sql SQL
-     * @param pageData ҳ
-     * @return ҳ
+     * @param pageData 
+     * @return 
      */
     PageData<Object> querySql(String sql, PageData<Object> pageData);
 
     /**
-     * ҳѯָSQL,طҳ.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param sql SQL
-     * @param class1 Ŀ
-     * @param pageData ҳ
-     * @return ҳ
+     * @param class1 
+     * @param pageData 
+     * @return 
      */
     <T> PageData<T> querySql(String sql, Class<T> class1, PageData<T> pageData);
 
     /**
-     * ҳѯָSQL,طҳ.
      * 
      * @param sql SQL
-     * @param totalSql ڲѯҳSQL
-     * @param pageData ҳ
-     * @return ҳ
+     * @param totalSql 
+     * @param pageData 
+     * @return 
      */
     PageData<Object> querySql(String sql, String totalSql, PageData<Object> pageData);
 
     /**
-     * ҳѯָSQL,طҳ.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param sql SQL
-     * @param totalSql ڲѯҳSQL
-     * @param class1 Ŀ
-     * @param pageData ҳ
-     * @return ҳ
+     * @param totalSql 
+     * @param class1 
+     * @param pageData 
+     * @return 
      */
     <T> PageData<T> querySql(String sql, String totalSql, Class<T> class1, PageData<T> pageData);
 
     /**
-     * ݴĹвѯ.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param criteria 
-     * @return Ŀ󼯺
+     * @return 
      */
     <T> List<T> get(DetachedCriteria criteria);
 
     /**
-     * ݴĹзҳѯ.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param criteria 
      * @param firstResult ׼¼
      * @param maxResults Ҫȡļ¼
-     * @return Ŀ󼯺
+     * @return 
      */
     <T> List<T> get(DetachedCriteria criteria, int firstResult, int maxResults);
 
     /**
-     * ѯָHQL,н.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param hql HQL
-     * @return Ŀ󼯺
+     * @return 
      */
     <T> List<T> queryHql(String hql);
 
     /**
-     * ѯָHQL,н.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param hql HQL
      * @param param 
-     * @return Ŀ󼯺
+     * @return 
      */
     <T> List<T> queryHql(String hql, Object param);
 
     /**
-     * ѯָHQL,н.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param hql HQL
      * @param params 
-     * @return Ŀ󼯺
+     * @return 
      */
     <T> List<T> queryHql(String hql, Object... params);
 
     /**
-     * ѯָHQL,ص.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param hql HQL
      * @return 
      */
     <T> T queryHqlUniqueResult(String hql);
 
     /**
-     * ѯָHQL,ص.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param hql HQL
      * @param param 
      * @return 
@@ -276,9 +262,8 @@ public interface BaseDao {
     <T> T queryHqlUniqueResult(String hql, Object param);
 
     /**
-     * ѯָHQL,ص.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param hql HQL
      * @param params 
      * @return 
@@ -286,30 +271,27 @@ public interface BaseDao {
     <T> T queryHqlUniqueResult(String hql, Object... params);
 
     /**
-     * ҳѯָHQL,طҳ.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param hql HQL
-     * @param pageData ҳ
+     * @param pageData 
      * @param params 
-     * @return ҳ
+     * @return 
      */
     <T> PageData<T> queryHqlPageData(String hql, PageData<T> pageData, Object... params);
 
     /**
-     * ҳѯָHQL,طҳ.
      * 
-     * @param <T> Ŀ
+     * @param <T> 
      * @param hql HQL
-     * @param totalHql ڲѯҳHQL
-     * @param pageData ҳ
+     * @param totalHql
+     * @param pageData 
      * @param params
-     * @return ҳ
+     * @return 
      */
     <T> PageData<T> queryHqlPageData(String hql, String totalHql, PageData<T> pageData, Object... params);
 
     /**
-     * ݲѯҳ
      * 
      * @param hql
      * @param startIndex
@@ -321,7 +303,6 @@ public interface BaseDao {
     <T> List<T> queryHqlLimit(String hql, int startIndex, int size, Object... params);
 
     /**
-     * ȡJdbcTemplate
      * 
      * @return
      */

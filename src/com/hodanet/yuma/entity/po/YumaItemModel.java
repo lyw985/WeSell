@@ -2,6 +2,7 @@ package com.hodanet.yuma.entity.po;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -48,7 +49,7 @@ public class YumaItemModel {
 	@OneToMany(targetEntity = YumaWeidianItemModelMapping.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@Fetch(FetchMode.JOIN)
 	@JoinColumn(name = "item_model_id", updatable = false)
-	private List<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings;
+	private Set<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings;
 
 	/** ʱ. */
 	@Column(name = "create_time")
@@ -110,11 +111,11 @@ public class YumaItemModel {
 		return YumaItemModelStatus.getYumaItemModelStatus(status).toString();
 	}
 
-	public List<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappings() {
+	public Set<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappings() {
 		return yumaWeidianItemModelMappings;
 	}
 
-	public void setYumaWeidianItemModelMappings(List<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings) {
+	public void setYumaWeidianItemModelMappings(Set<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings) {
 		this.yumaWeidianItemModelMappings = yumaWeidianItemModelMappings;
 	}
 

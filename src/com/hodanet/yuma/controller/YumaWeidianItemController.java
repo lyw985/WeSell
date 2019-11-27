@@ -18,6 +18,10 @@ import com.hodanet.common.entity.vo.JsonMessage;
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.common.util.WebUtil;
 import com.hodanet.yuma.entity.po.YumaWeidianItem;
+import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
+import com.hodanet.yuma.entity.po.YumaWeidianItemModelMapping;
+import com.hodanet.yuma.service.YumaWeidianItemModelMappingService;
+import com.hodanet.yuma.service.YumaWeidianItemModelService;
 import com.hodanet.yuma.service.YumaWeidianItemService;
 
 /**
@@ -30,9 +34,16 @@ public class YumaWeidianItemController {
 
 	private static final String LIST_PAGE = "yuma/weidianItem/list";
 	private static final String INFO_PAGE = "yuma/weidianItem/info";
+	private static final String MAPPING_PAGE = "yuma/weidianItem/mapping";
 
 	@Autowired
 	private YumaWeidianItemService yumaWeidianItemService;
+	
+	@Autowired
+	private YumaWeidianItemModelService yumaWeidianItemModelService;
+
+	@Autowired
+	private YumaWeidianItemModelMappingService yumaWeidianItemModelMappingService;
 
 	/**
 	 * 
@@ -78,6 +89,7 @@ public class YumaWeidianItemController {
 	 * @param model
 	 * @return
 	 */
+	@Deprecated
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String gotoNew(Model model) {
 		YumaWeidianItem yumaWeidianItem = new YumaWeidianItem();
@@ -91,6 +103,7 @@ public class YumaWeidianItemController {
 	 * @param resHospital
 	 * @return
 	 */
+	@Deprecated
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public void save(Model model, HttpServletRequest request, HttpServletResponse response,
 			YumaWeidianItem yumaWeidianItem) {
@@ -106,14 +119,47 @@ public class YumaWeidianItemController {
 	 * @param id
 	 * @return
 	 */
+	@Deprecated
 	@RequestMapping(value = "/modify/{id}", method = RequestMethod.GET)
 	public String modify(Model model, @PathVariable("id") Integer id) {
 		model.addAttribute("yumaWeidianItem", yumaWeidianItemService.getYumaWeidianItemById(id));
 		return INFO_PAGE;
 	}
 
+	@RequestMapping(value = "/modifyMapping/{id}", method = RequestMethod.GET)
+	public String modifyMapping(Model model, @PathVariable("id") Integer id) {
+		YumaWeidianItemModelMapping yumaWeidianItemModelMapping=yumaWeidianItemModelMappingService.getYumaWeidianItemModelMappingById(id);
+		model.addAttribute("yumaWeidianItemModelMapping",yumaWeidianItemModelMapping);
+		model.addAttribute("item_id",
+				yumaWeidianItemModelMapping.getYumaItemModel().getYumaItem().getId());
+		model.addAttribute("item_model_id",
+				yumaWeidianItemModelMapping.getYumaItemModel().getId());
+		return MAPPING_PAGE;
+	}
+
+	@RequestMapping(value = "/addMapping/{id}", method = RequestMethod.GET)
+	public String addMapping(Model model, @PathVariable("id") Integer id) {
+		YumaWeidianItemModelMapping yumaWeidianItemModelMapping = new YumaWeidianItemModelMapping();
+		YumaWeidianItemModel yumaWeidianItemModel =yumaWeidianItemModelService.getWeidianItemModelById(id);
+		yumaWeidianItemModelMapping.setYumaWeidianItemModel(yumaWeidianItemModel);
+		model.addAttribute("yumaWeidianItemModelMapping", yumaWeidianItemModelMapping);
+		return MAPPING_PAGE;
+	}
+
+	@RequestMapping(value = "/saveMapping", method = RequestMethod.POST)
+	public void saveMapping(Model model, HttpServletRequest request, HttpServletResponse response,
+			YumaWeidianItemModelMapping yumaWeidianItemModelMapping) {
+		yumaWeidianItemModelMappingService.saveYumaWeidianItemModelMapping(yumaWeidianItemModelMapping);
+		WebUtil.responseText(response, JSONObject.toJSONString(new JsonMessage(true, "成功")));
+	}
+	
+	@RequestMapping(value = "/deleteMapping", method = RequestMethod.POST)
+	public void deleteMapping(HttpServletResponse response, @RequestParam("id") Integer[] ids) {
+		yumaWeidianItemModelMappingService.deleteYumaWeidianItemModelMapping(ids);
+		WebUtil.responseText(response, JSONObject.toJSONString(new JsonMessage(true, "成功")));
+	}
+
 	/**
-	 * ɾ
 	 * 
 	 * @param ids
 	 * @return

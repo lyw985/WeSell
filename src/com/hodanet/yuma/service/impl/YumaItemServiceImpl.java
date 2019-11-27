@@ -50,8 +50,6 @@ public class YumaItemServiceImpl extends AbstractDaoService implements
 			return null;
 		}
 		if (yumaItem.getId() == null) {
-			yumaItem.setStatus(YumaItemStatus.INAVAILABLE.getValue());
-			yumaItem.setType(YumaItemType.WEIGHT_JIN.getValue());
 			this.getDao().save(yumaItem);
 		} else {
 			YumaItem orginal = getYumaItemById(yumaItem.getId());

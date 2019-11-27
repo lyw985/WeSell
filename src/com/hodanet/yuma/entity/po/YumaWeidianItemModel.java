@@ -1,6 +1,6 @@
 package com.hodanet.yuma.entity.po;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -41,7 +41,7 @@ public class YumaWeidianItemModel {
 	@OneToMany(targetEntity = YumaWeidianItemModelMapping.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@Fetch(FetchMode.JOIN)
 	@JoinColumn(name = "weidian_item_model_id", updatable = false)
-	private List<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings;
+	private Set<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings;
 
 	public Integer getId() {
 		return id;
@@ -75,12 +75,13 @@ public class YumaWeidianItemModel {
 		this.yumaWeidianItem = yumaWeidianItem;
 	}
 
-	public List<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappings() {
+	public Set<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappings() {
 		return yumaWeidianItemModelMappings;
 	}
 
-	public void setYumaWeidianItemModelMappings(List<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings) {
+	public void setYumaWeidianItemModelMappings(Set<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings) {
 		this.yumaWeidianItemModelMappings = yumaWeidianItemModelMappings;
 	}
+
 
 }

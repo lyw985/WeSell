@@ -29,7 +29,7 @@
 <script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine-en.js"></script>
 <script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine.js"></script>
 <script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.ui.datepicker-zh-CN.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/util/address.js"></script>
+<script type="text/javascript" src="${commonMapper.rootPath}/js/util/yuma.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$(".dateTime").datepicker({dateFormat: 'yy-mm-dd',changeMonth: true, changeYear: true});
@@ -271,6 +271,10 @@
 					<td>
 						<input type="text" id="receiverName" name="receiverName" value="${receiverName}" style="width:100px;" />
 					</td>
+					<!-- <td>订单包含：</td>
+					<td>
+						<input type="text" id="itemName" name="itemName" value="${itemName}" style="width:100px;" />
+					</td> -->
 					<td>地区：</td>
 					<td>
 						<select id="province_id" name="province_id" onchange="initCitySel('city_id','area_id',this.value)"></select>

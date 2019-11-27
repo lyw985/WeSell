@@ -236,6 +236,7 @@
 			<input type="hidden" id="user_id" name="user_id" value="${user_id }"/>
 			<table border="0" cellpadding="0" cellspacing="0">
 				<tr>
+					<!-- 
 					<td>信息内容：</td>
 					<td>
 						<input type="text" id="searchName" name="searchName" value="${searchName}" style="width:150px;" />
@@ -248,7 +249,7 @@
 							<option value="1">通过审核</option>
 							<option value="2">未通过审核</option>
 						</select>
-					</td>
+					</td> -->
 					<td>
 						<input type="submit" id="btnSearch" name="btnSearch" class="buttonStyle" value="查询" />
 					</td>

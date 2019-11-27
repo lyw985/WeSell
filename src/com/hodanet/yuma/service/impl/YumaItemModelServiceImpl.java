@@ -43,7 +43,7 @@ public class YumaItemModelServiceImpl extends AbstractDaoService implements
 			sb.append(" and o.status = ? ");
 			params.add(yumaItemModel.getStatus());
 		}
-		sb.append(" order by o.createTime desc");
+		sb.append(" order by convert(o.name,'gbk')");
 		return this.getDao().queryHqlPageData(sb.toString(), pageData,
 				params.toArray(new Object[params.size()]));
 	}

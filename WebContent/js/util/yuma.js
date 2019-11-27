@@ -13,7 +13,6 @@ function loadSelByJson(selId,json){
 	}
 }
 function initProvinceSel(provinceSelId,citySelId,areaSelId,province_id,city_id,area_id){
-	//alert(provinceSelId+":"+citySelId+":"+areaId+":"+province_id+":"+city_id+":"+area_id)
 	$("#"+provinceSelId).find("option").remove();
 	resetCitySel(citySelId);
 	resetAreaSel(areaSelId);
@@ -99,6 +98,71 @@ function resetCitySel(citySelId){
 function resetAreaSel(areaSelId){
 	$("#"+areaSelId).hide();
 	$("#"+areaSelId).val("");
+}
+function initItemSel(itemSelId,itemModelSelId,item_id,item_model_id){
+	//alert(itemSelId+":"+itemModelSelId+":"+item_id+":"+item_model_id)
+	$("#"+itemSelId).find("option").remove();
+	resetItemModelSel(itemModelSelId);
+	var prop={};
+	$.ajax({
+		url : "/yuma/item/getItems.do",
+		type: 'POST',
+		dataType: "json",
+		data : prop,
+		cache : false,
+		success : function(json) {
+			if(!!!json.length){ 
+				$("#"+itemSelId).append("<option value=''>--没有数据--</option>");
+			}else if(json.length==1){
+				$("#"+itemSelId).append("<option value="+json[0].id+">"+json[0].name+"【按"+json[0].type+"计算】</option>");
+				$("#"+itemSelId).val(json[0].id);
+				$("#"+itemSelId).change();
+			}else{
+				$("#"+itemSelId).append("<option value=''>--请选择--</option>");
+				for(var i=0;i<json.length;i++){
+					$("#"+itemSelId).append("<option value="+json[i].id+">"+json[i].name+"【按"+json[i].type+"计算】</option>");
+				}
+			}
+			if(!!item_id){
+				$("#"+itemSelId).val(item_id);
+				initItemModelSel(itemModelSelId,item_id,item_model_id);
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert("加载出错，请稍候重试")
+		}
+	});
+}
+function initItemModelSel(itemModelSelId,item_id,item_model_id){
+	if(!!!item_id){
+		resetItemModelSel(itemModelSelId);
+		return;
+	}
+	$("#"+itemModelSelId).find("option").remove();
+	var prop={};
+	prop.item_id=item_id;
+	$.ajax({
+		url : "/yuma/item/getItemModels.do",
+		type: 'POST',
+		dataType: "json",
+		data : prop,
+		cache : false,
+		success : function(json) {
+			loadSelByJson(itemModelSelId,json);
+			$("#"+itemModelSelId).show();
+			if(!!item_model_id){
+				$("#"+itemModelSelId).val(item_model_id);
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert("加载出错，请稍候重试")
+		}
+	});
+}
+
+function resetItemModelSel(itemModelSelId){
+	$("#"+itemModelSelId).hide();
+	$("#"+itemModelSelId).val("");
 }
 function initItemSel(itemSelId,itemModelSelId,item_id,item_model_id){
 	//alert(itemSelId+":"+itemModelSelId+":"+item_id+":"+item_model_id)

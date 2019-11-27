@@ -27,6 +27,7 @@ import com.hodanet.common.util.StringUtil;
 import com.hodanet.common.util.WebUtil;
 import com.hodanet.system.util.XlSUtil;
 import com.hodanet.yuma.entity.po.YumaOrder;
+import com.hodanet.yuma.entity.po.YumaOrderItem;
 import com.hodanet.yuma.entity.po.YumaReceiver;
 import com.hodanet.yuma.entity.po.YumaUser;
 import com.hodanet.yuma.entity.po.YumaWeidianData;
@@ -63,7 +64,6 @@ public class YumaOrderController {
 	 */
 	@RequestMapping(value = "/list")
 	public String list(Model model, PageData<YumaOrder> pageData, HttpServletRequest request) {
-		yumaOrderService.updateYumaOrderStatus(169, 2, 60.0f, 60.0f);
 		YumaOrder yumaOrder = new YumaOrder();
 		String userIdString = request.getParameter("user_id");
 		if (userIdString != null) {
@@ -96,6 +96,7 @@ public class YumaOrderController {
 	@RequestMapping(value = "/query")
 	public String query(Model model, PageData<YumaOrder> pageData, HttpServletRequest request) {
 		String receiverName = request.getParameter("receiverName");
+//		String itemName = request.getParameter("itemName");
 		String status = request.getParameter("status");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
@@ -138,8 +139,10 @@ public class YumaOrderController {
 			}
 		}
 		yumaOrder.setYumaReceiver(yumaReceiver);
+
 		pageData = yumaOrderService.getYumaOrderByPage(pageData, yumaOrder);
 		model.addAttribute("receiverName", receiverName);
+//		model.addAttribute("itemName", itemName);
 		model.addAttribute("status", status);
 		model.addAttribute("startDate", startDate);
 		model.addAttribute("endDate", endDate);

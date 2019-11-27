@@ -63,6 +63,9 @@ public class YumaOrder {
 	
 	@Column(name = "original_price")
 	private Float originalPrice;
+	
+	@Column(name = "item_number")
+	private Integer itemNumber;
 
 	private Integer status;
 
@@ -134,6 +137,14 @@ public class YumaOrder {
 
 	public void setOriginalPrice(Float originalPrice) {
 		this.originalPrice = originalPrice;
+	}
+
+	public Integer getItemNumber() {
+		return itemNumber;
+	}
+
+	public void setItemNumber(Integer itemNumber) {
+		this.itemNumber = itemNumber;
 	}
 
 	public Integer getStatus() {

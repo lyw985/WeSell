@@ -31,7 +31,7 @@ public class SyncYumaWeidianDataTask extends QuartzJobBean {
 			return;
 		}
 		try {
-			logger.info("微店导入的源数据同步开始.");
+			logger.debug("微店导入的源数据同步开始.");
 			CommonConstants.SYSC_WEIDIAN_DATA_LOCK = 1;
 			WebApplicationContext webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
 			yumaWeidianDataService = (YumaWeidianDataService) webApplicationContext
@@ -58,7 +58,7 @@ public class SyncYumaWeidianDataTask extends QuartzJobBean {
 					}
 				}
 			}
-			logger.info("微店导入的源数据同步结束.");
+			logger.debug("微店导入的源数据同步结束.");
 		} catch (Exception e) {
 		}finally {
 			CommonConstants.SYSC_WEIDIAN_DATA_LOCK = 0;
