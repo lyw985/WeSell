@@ -52,14 +52,15 @@ public class SyncYumaWeidianDataTask extends QuartzJobBean {
 						yumaWeidianDataService.updateYumaWeidianDataSyncStatus(yumaWeidianData.getId(),
 								SyncStatus.SYNC_SUCCESS.getValue());
 					} catch (Exception e) {
+						logger.error(e.getMessage());
 						yumaWeidianDataService.updateYumaWeidianDataSyncStatus(yumaWeidianData.getId(),
 								SyncStatus.SYNC_FAILED.getValue());
-						logger.error(e.getMessage());
 					}
 				}
 			}
 			logger.debug("微店导入的源数据同步结束.");
 		} catch (Exception e) {
+			e.printStackTrace();
 		}finally {
 			CommonConstants.SYSC_WEIDIAN_DATA_LOCK = 0;
 		}

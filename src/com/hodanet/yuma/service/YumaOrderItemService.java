@@ -5,6 +5,7 @@ import java.util.Date;
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.yuma.entity.po.YumaOrder;
 import com.hodanet.yuma.entity.po.YumaOrderItem;
+import com.hodanet.yuma.entity.po.YumaReceiver;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
 
 /**
@@ -47,8 +48,9 @@ public interface YumaOrderItemService {
 
 	public void updateYumaOrderItemStatus(Integer id, Integer status);
 
-	public YumaOrderItem changeOrderItem(YumaOrder yumaOrder, YumaWeidianItemModel yumaWeidianItemModel,
-			String orderStatus, Date orderPayDateTime, String itemCount, String itemModelPrice, String originalPrice);
+	public YumaOrderItem changeOrderItem(YumaOrder yumaOrder, YumaReceiver yumaReceiver,
+			YumaWeidianItemModel yumaWeidianItemModel, String orderStatus, Date orderPayDateTime, String itemCount,
+			String itemModelPrice, String originalPrice);
 
 	public void updateBatchYumaOrderWeidianItemModel(Integer fromWeidianItemModelId, Integer toWeidianItemModelId);
 }

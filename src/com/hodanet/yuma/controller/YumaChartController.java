@@ -58,7 +58,7 @@ public class YumaChartController {
 	@RequestMapping(value = "/query")
 	public String query(Model model, HttpServletRequest request) {
 		JQueryChart chart = yumaChartService.getChart();
-//		System.out.println(JSONObject.toJSONString(chart));
+		System.out.println(JSONObject.toJSONString(chart));
 		model.addAttribute("chartConfig", StringEscapeUtils.escapeHtml(JSONObject.toJSONString(chart)));
 		return LIST_PAGE;
 	}

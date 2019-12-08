@@ -267,9 +267,13 @@
 			<input type="hidden" id="pageNumber" name="pageNumber" value="${pageData.pageNumber }"/>
 			<table border="0" cellpadding="0" cellspacing="0">
 				<tr>
-					<td>收件人姓名：</td>
+					<td>姓名：</td>
 					<td>
 						<input type="text" id="receiverName" name="receiverName" value="${receiverName}" style="width:100px;" />
+					</td>
+					<td>号码：</td>
+					<td>
+						<input type="text" id="receiverPhone" name="receiverPhone" value="${receiverPhone}" style="width:100px;" />
 					</td>
 					<!-- <td>订单包含：</td>
 					<td>

@@ -141,12 +141,12 @@ public class YumaWeidianDataServiceImpl extends AbstractDaoService implements Yu
 
 		// 5.如果没有当天的订单，增加订单
 		YumaOrder yumaOrder = yumaOrderService.getOrCreateOrder(yumaUser, yumaReceiver,
-				yumaWeidianData.getOrderPayTime());
+				yumaWeidianData.getOrderPayTime(), yumaWeidianData.getOrderStatus());
 		// 6.如果有订单，增删改订单详情
-		YumaOrderItem yumaOrderItem = yumaOrderItemService.changeOrderItem(yumaOrder, yumaWeidianItemModel,
+		YumaOrderItem yumaOrderItem = yumaOrderItemService.changeOrderItem(yumaOrder, yumaReceiver,yumaWeidianItemModel,
 				yumaWeidianData.getOrderStatus(), yumaWeidianData.getOrderPayTime(), yumaWeidianData.getItemCount(),
 				yumaWeidianData.getItemModelPrice(), yumaWeidianData.getOriginalPrice());
-		
+
 		yumaUserSerivce.updateYumaUserSyncStatus(yumaUser.getId(), SyncStatus.INIT.getValue());
 	}
 

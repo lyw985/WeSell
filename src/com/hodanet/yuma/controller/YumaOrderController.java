@@ -96,6 +96,7 @@ public class YumaOrderController {
 	@RequestMapping(value = "/query")
 	public String query(Model model, PageData<YumaOrder> pageData, HttpServletRequest request) {
 		String receiverName = request.getParameter("receiverName");
+		String receiverPhone = request.getParameter("receiverPhone");
 //		String itemName = request.getParameter("itemName");
 		String status = request.getParameter("status");
 		String startDate = request.getParameter("startDate");
@@ -120,6 +121,7 @@ public class YumaOrderController {
 
 		YumaReceiver yumaReceiver = new YumaReceiver();
 		yumaReceiver.setName(receiverName);
+		yumaReceiver.setPhone(receiverPhone);
 
 		if (StringUtil.isNotBlank(areaIdString)) {
 			Area area = new Area();
@@ -142,6 +144,7 @@ public class YumaOrderController {
 
 		pageData = yumaOrderService.getYumaOrderByPage(pageData, yumaOrder);
 		model.addAttribute("receiverName", receiverName);
+		model.addAttribute("receiverPhone", receiverPhone);
 //		model.addAttribute("itemName", itemName);
 		model.addAttribute("status", status);
 		model.addAttribute("startDate", startDate);

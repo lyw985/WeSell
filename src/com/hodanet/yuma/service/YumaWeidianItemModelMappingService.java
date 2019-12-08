@@ -21,19 +21,24 @@ public interface YumaWeidianItemModelMappingService {
 	 * @param pageData
 	 * @return
 	 */
-	public PageData<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappingByPage(PageData<YumaWeidianItemModelMapping> pageData, YumaWeidianItemModelMapping yumaWeidianItemModelMappingService);
+	public PageData<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappingByPage(
+			PageData<YumaWeidianItemModelMapping> pageData,
+			YumaWeidianItemModelMapping yumaWeidianItemModelMappingService);
 
 	/**
 	 * 
 	 * @param ResDept
 	 * @return
 	 */
-	public YumaWeidianItemModelMapping saveYumaWeidianItemModelMapping(YumaWeidianItemModelMapping yumaWeidianItemModelMapping);
+	public YumaWeidianItemModelMapping saveYumaWeidianItemModelMapping(
+			YumaWeidianItemModelMapping yumaWeidianItemModelMapping);
 
 	/**
 	 * 
 	 * @param ids
 	 */
-	public void deleteYumaWeidianItemModelMapping(Integer[] ids);
+	public void deleteYumaWeidianItemModelMapping(Integer id);
+
+	public void updateYumaWeidianItemModelMappingPercent(Integer yumaWeidianItemModelId, Integer... exceptIds);
 
 }

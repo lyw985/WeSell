@@ -1,5 +1,6 @@
 package com.hodanet.yuma.entity.po;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -36,6 +37,9 @@ public class YumaWeidianItemModelMapping {
 
 	private Float count;
 
+	@Column(name = "price_percent")
+	private Float pricePercent;
+
 	public Integer getId() {
 		return id;
 	}
@@ -66,6 +70,14 @@ public class YumaWeidianItemModelMapping {
 
 	public void setCount(Float count) {
 		this.count = count;
+	}
+
+	public Float getPricePercent() {
+		return pricePercent;
+	}
+
+	public void setPricePercent(Float pricePercent) {
+		this.pricePercent = pricePercent;
 	}
 
 }

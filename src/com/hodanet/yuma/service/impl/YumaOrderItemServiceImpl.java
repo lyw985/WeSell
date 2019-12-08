@@ -13,6 +13,7 @@ import com.hodanet.common.util.StringUtil;
 import com.hodanet.yuma.constant.YumaWeidianDataOrderStatus;
 import com.hodanet.yuma.entity.po.YumaOrder;
 import com.hodanet.yuma.entity.po.YumaOrderItem;
+import com.hodanet.yuma.entity.po.YumaReceiver;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
 import com.hodanet.yuma.service.YumaOrderItemService;
 import com.hodanet.yuma.service.YumaOrderService;
@@ -73,11 +74,13 @@ public class YumaOrderItemServiceImpl extends AbstractDaoService implements Yuma
 	}
 
 	@Override
-	public YumaOrderItem changeOrderItem(YumaOrder yumaOrder, YumaWeidianItemModel yumaWeidianItemModel,
-			String orderStatus, Date orderPayDateTime, String itemCount, String payPrice, String originalPrice) {
-		if (yumaOrder == null || yumaOrder.getId() == null || yumaWeidianItemModel == null
-				|| yumaWeidianItemModel.getId() == null || orderStatus == null || !StringUtil.isNotBlank(itemCount)
-				|| !StringUtil.isNotBlank(payPrice) || !StringUtil.isNotBlank(originalPrice)) {
+	public YumaOrderItem changeOrderItem(YumaOrder yumaOrder, YumaReceiver yumaReceiver,
+			YumaWeidianItemModel yumaWeidianItemModel, String orderStatus, Date orderPayDateTime, String itemCount,
+			String payPrice, String originalPrice) {
+		if (yumaOrder == null || yumaOrder.getId() == null || yumaReceiver == null || yumaReceiver.getId() == null
+				|| yumaWeidianItemModel == null || yumaWeidianItemModel.getId() == null || orderStatus == null
+				|| !StringUtil.isNotBlank(itemCount) || !StringUtil.isNotBlank(payPrice)
+				|| !StringUtil.isNotBlank(originalPrice)) {
 			return null;
 		}
 		int itemCountInt = Integer.parseInt(itemCount);
@@ -90,6 +93,7 @@ public class YumaOrderItemServiceImpl extends AbstractDaoService implements Yuma
 		if (yumaOrderItem == null && !YumaWeidianDataOrderStatus.CLOSED.toString().equals(orderStatus)) {
 			yumaOrderItem = new YumaOrderItem();
 			yumaOrderItem.setYumaOrder(yumaOrder);
+			yumaOrderItem.setYumaReceiver(yumaReceiver);
 			yumaOrderItem.setWeidianItemModel(yumaWeidianItemModel);
 			yumaOrderItem.setPayTime(orderPayDateTime);
 			yumaOrderItem.setCount(itemCountInt);

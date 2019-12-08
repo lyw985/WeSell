@@ -44,17 +44,17 @@ public class YumaReceiver {
 	private YumaUser yumaUser;
 
 	@OneToOne
-	@JoinColumn(name = "province")
+	@JoinColumn(name = "province_id")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Province province;
 
 	@OneToOne
-	@JoinColumn(name = "city")
+	@JoinColumn(name = "city_id")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private City city;
 
 	@OneToOne
-	@JoinColumn(name = "area")
+	@JoinColumn(name = "area_id")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Area area;
 

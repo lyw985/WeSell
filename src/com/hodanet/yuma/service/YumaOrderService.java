@@ -46,7 +46,7 @@ public interface YumaOrderService {
 
 	public void updateYumaOrderStatus(Integer id, Integer status);
 	
-	public YumaOrder getOrCreateOrder(YumaUser yumaUser, YumaReceiver yumaReceiver, Date orderPayTime);
+	public YumaOrder getOrCreateOrder(YumaUser yumaUser, YumaReceiver yumaReceiver, Date orderPayTime, String orderStatus);
 
 	public void updateYumaOrderStatus(Integer id, int itemCountInt, float payPriceFloat, float originalPriceFloat);
 

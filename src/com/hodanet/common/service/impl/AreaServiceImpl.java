@@ -68,8 +68,11 @@ public class AreaServiceImpl extends AbstractDaoService implements AreaService {
 
 	@Override
 	public Area getOrCreateAreaByName(String areaName, City city) {
-		if (!StringUtil.isNotBlank(areaName) || city == null || city.getId() == null) {
+		if (city == null || city.getId() == null) {
 			return null;
+		}
+		if (!StringUtil.isNotBlank(areaName)) {
+			areaName = "未知";
 		}
 		String hql = "from Area o where o.name = ? and o.city.id = ?";
 		Area area = this.getDao().queryHqlUniqueResult(hql, areaName, city.getId());

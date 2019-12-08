@@ -11,6 +11,7 @@ import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.common.util.DateConverterUtil;
 import com.hodanet.common.util.StringUtil;
 import com.hodanet.yuma.constant.YumaOrderStatus;
+import com.hodanet.yuma.constant.YumaWeidianDataOrderStatus;
 import com.hodanet.yuma.entity.po.YumaOrder;
 import com.hodanet.yuma.entity.po.YumaReceiver;
 import com.hodanet.yuma.entity.po.YumaUser;
@@ -53,6 +54,10 @@ public class YumaOrderServiceImpl extends AbstractDaoService implements YumaOrde
 			if (StringUtil.isNotBlank(yumaReceiver.getName())) {
 				sb.append(" and o.yumaReceiver.name like ? ");
 				params.add("%" + yumaReceiver.getName() + "%");
+			}
+			if (StringUtil.isNotBlank(yumaReceiver.getPhone())) {
+				sb.append(" and o.yumaReceiver.phone like ? ");
+				params.add("%" + yumaReceiver.getPhone() + "%");
 			}
 			if (yumaReceiver.getProvince() != null && yumaReceiver.getProvince().getId() != null) {
 				sb.append(" and o.yumaReceiver.province.id = ? ");
@@ -114,7 +119,7 @@ public class YumaOrderServiceImpl extends AbstractDaoService implements YumaOrde
 	}
 
 	@Override
-	public YumaOrder getOrCreateOrder(YumaUser yumaUser, YumaReceiver yumaReceiver, Date orderPayTime) {
+	public YumaOrder getOrCreateOrder(YumaUser yumaUser, YumaReceiver yumaReceiver, Date orderPayTime, String orderStatus) {
 		if (yumaUser == null || yumaUser.getId() == null || yumaReceiver == null || yumaReceiver.getId() == null
 				|| orderPayTime == null) {
 			return null;
@@ -122,13 +127,14 @@ public class YumaOrderServiceImpl extends AbstractDaoService implements YumaOrde
 		String hql = "from YumaOrder o where o.yumaUser.id = ? and o.yumaReceiver.id = ? and o.payDate = ?";
 		YumaOrder yumaOrder = this.getDao().queryHqlUniqueResult(hql, yumaUser.getId(), yumaReceiver.getId(),
 				DateConverterUtil.floorDate(orderPayTime));
-		if (yumaOrder == null) {
+		if (yumaOrder == null && !YumaWeidianDataOrderStatus.CLOSED.toString().equals(orderStatus)) {
 			yumaOrder = new YumaOrder();
 			yumaOrder.setYumaUser(yumaUser);
 			yumaOrder.setYumaReceiver(yumaReceiver);
 			yumaOrder.setPayDate(orderPayTime);
 			yumaOrder.setPayPrice(0f);
 			yumaOrder.setOriginalPrice(0f);
+			yumaOrder.setItemNumber(0);
 			yumaOrder.setStatus(0);
 			yumaOrder = saveYumaOrder(yumaOrder);
 		} else {

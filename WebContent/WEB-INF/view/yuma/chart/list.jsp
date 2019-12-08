@@ -113,6 +113,7 @@
 							<option value="3">销货数量</option>
 						</select> 
 					</td>
+					<td>展示数据：</td>
 					<td>
 						<select id="query1" >
 							<option value="0">---请选择---</option>

@@ -38,7 +38,7 @@ public class YumaWeidianItemController {
 
 	@Autowired
 	private YumaWeidianItemService yumaWeidianItemService;
-	
+
 	@Autowired
 	private YumaWeidianItemModelService yumaWeidianItemModelService;
 
@@ -128,19 +128,18 @@ public class YumaWeidianItemController {
 
 	@RequestMapping(value = "/modifyMapping/{id}", method = RequestMethod.GET)
 	public String modifyMapping(Model model, @PathVariable("id") Integer id) {
-		YumaWeidianItemModelMapping yumaWeidianItemModelMapping=yumaWeidianItemModelMappingService.getYumaWeidianItemModelMappingById(id);
-		model.addAttribute("yumaWeidianItemModelMapping",yumaWeidianItemModelMapping);
-		model.addAttribute("item_id",
-				yumaWeidianItemModelMapping.getYumaItemModel().getYumaItem().getId());
-		model.addAttribute("item_model_id",
-				yumaWeidianItemModelMapping.getYumaItemModel().getId());
+		YumaWeidianItemModelMapping yumaWeidianItemModelMapping = yumaWeidianItemModelMappingService
+				.getYumaWeidianItemModelMappingById(id);
+		model.addAttribute("yumaWeidianItemModelMapping", yumaWeidianItemModelMapping);
+		model.addAttribute("item_id", yumaWeidianItemModelMapping.getYumaItemModel().getYumaItem().getId());
+		model.addAttribute("item_model_id", yumaWeidianItemModelMapping.getYumaItemModel().getId());
 		return MAPPING_PAGE;
 	}
 
 	@RequestMapping(value = "/addMapping/{id}", method = RequestMethod.GET)
 	public String addMapping(Model model, @PathVariable("id") Integer id) {
 		YumaWeidianItemModelMapping yumaWeidianItemModelMapping = new YumaWeidianItemModelMapping();
-		YumaWeidianItemModel yumaWeidianItemModel =yumaWeidianItemModelService.getWeidianItemModelById(id);
+		YumaWeidianItemModel yumaWeidianItemModel = yumaWeidianItemModelService.getWeidianItemModelById(id);
 		yumaWeidianItemModelMapping.setYumaWeidianItemModel(yumaWeidianItemModel);
 		model.addAttribute("yumaWeidianItemModelMapping", yumaWeidianItemModelMapping);
 		return MAPPING_PAGE;
@@ -149,13 +148,20 @@ public class YumaWeidianItemController {
 	@RequestMapping(value = "/saveMapping", method = RequestMethod.POST)
 	public void saveMapping(Model model, HttpServletRequest request, HttpServletResponse response,
 			YumaWeidianItemModelMapping yumaWeidianItemModelMapping) {
-		yumaWeidianItemModelMappingService.saveYumaWeidianItemModelMapping(yumaWeidianItemModelMapping);
+		yumaWeidianItemModelMapping = yumaWeidianItemModelMappingService
+				.saveYumaWeidianItemModelMapping(yumaWeidianItemModelMapping);
+		yumaWeidianItemModelMappingService.updateYumaWeidianItemModelMappingPercent(
+				yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId());
 		WebUtil.responseText(response, JSONObject.toJSONString(new JsonMessage(true, "成功")));
 	}
-	
+
 	@RequestMapping(value = "/deleteMapping", method = RequestMethod.POST)
-	public void deleteMapping(HttpServletResponse response, @RequestParam("id") Integer[] ids) {
-		yumaWeidianItemModelMappingService.deleteYumaWeidianItemModelMapping(ids);
+	public void deleteMapping(HttpServletResponse response, @RequestParam("id") Integer id) {
+		YumaWeidianItemModelMapping yumaWeidianItemModelMapping = yumaWeidianItemModelMappingService
+				.getYumaWeidianItemModelMappingById(id);
+		yumaWeidianItemModelMappingService.deleteYumaWeidianItemModelMapping(id);
+		yumaWeidianItemModelMappingService.updateYumaWeidianItemModelMappingPercent(
+				yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId(), id);
 		WebUtil.responseText(response, JSONObject.toJSONString(new JsonMessage(true, "成功")));
 	}
 

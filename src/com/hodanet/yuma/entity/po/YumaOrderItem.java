@@ -36,6 +36,11 @@ public class YumaOrderItem {
 	private YumaOrder yumaOrder;
 
 	@ManyToOne
+	@JoinColumn(name = "receiver_id")
+	@NotFound(action = NotFoundAction.IGNORE)
+	private YumaReceiver yumaReceiver;
+
+	@ManyToOne
 	@JoinColumn(name = "weidian_item_model_id")
 	@NotFound(action = NotFoundAction.IGNORE)
 	private YumaWeidianItemModel yumaWeidianItemModel;
@@ -73,6 +78,22 @@ public class YumaOrderItem {
 
 	public void setYumaOrder(YumaOrder yumaOrder) {
 		this.yumaOrder = yumaOrder;
+	}
+
+	public YumaReceiver getYumaReceiver() {
+		return yumaReceiver;
+	}
+
+	public void setYumaReceiver(YumaReceiver yumaReceiver) {
+		this.yumaReceiver = yumaReceiver;
+	}
+
+	public YumaWeidianItemModel getYumaWeidianItemModel() {
+		return yumaWeidianItemModel;
+	}
+
+	public void setYumaWeidianItemModel(YumaWeidianItemModel yumaWeidianItemModel) {
+		this.yumaWeidianItemModel = yumaWeidianItemModel;
 	}
 
 	public YumaWeidianItemModel getWeidianItemModel() {
