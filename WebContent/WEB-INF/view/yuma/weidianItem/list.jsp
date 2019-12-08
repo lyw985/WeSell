@@ -312,6 +312,18 @@
 						<input type="text" id="weidianItemName" name="weidianItemName" value="${weidianItemName}" style="width:150px;" />
 					</td>
 					<td>
+						展示类型:
+					</td>
+					<td>
+						<select id="bodyType" name="bodyType" value="${bodyType}">
+							<option value="">--选择类型--</option>
+							<option value="0">分身</option>
+							<option value="1">本体</option>
+							<option value="11">有分身的本体</option>
+							<option value="12">无分身的本体</option>
+						</select>
+					</td>
+					<td>
 						<input type="submit" id="btnSearch" name="btnSearch" class="buttonStyle" value="查询" />
 					</td>
 				</tr>

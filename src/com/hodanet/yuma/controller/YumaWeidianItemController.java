@@ -72,6 +72,11 @@ public class YumaWeidianItemController {
 	 */
 	@RequestMapping(value = "/query")
 	public String query(Model model, PageData<YumaWeidianItem> pageData, HttpServletRequest request) {
+		String SHADOW = "0";
+		String BODY = "1";
+		String BODY_WITH_SHADOW = "11";
+		String BODY_WITHOUT_SHADOW = "12";
+		String bodyType = request.getParameter("bodyType");
 		String weidianItemName = request.getParameter("weidianItemName");
 		YumaWeidianItem yumaWeidianItem = new YumaWeidianItem();
 		yumaWeidianItem.setName(weidianItemName);

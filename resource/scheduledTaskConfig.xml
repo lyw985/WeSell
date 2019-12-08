@@ -24,6 +24,7 @@
 				<ref bean="noticeSoonExpireUserBean" />
 				 -->
 				 <ref bean="syncYumaWeidianDataBean" />
+				 <!-- <ref bean="verifyInformationBean" /> -->
 			</list>
 		</property>
 	</bean>
@@ -33,10 +34,21 @@
 		<property name="jobDetail" ref="syncYumaWeidianDataTask"></property>
 		<property name="cronExpression" value="4 * * * * ?" />
 	</bean>
-
+	
 	<bean id="syncYumaWeidianDataTask" class="org.springframework.scheduling.quartz.JobDetailBean">
 		<property name="jobClass"
 			value="com.hodanet.yuma.task.SyncYumaWeidianDataTask"></property>
+	</bean>
+	
+	<!-- 定时检查信息是否正确 -->
+	<bean id="verifyInformationBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="verifyInformationTask"></property>
+		<property name="cronExpression" value="4 * * * * ?" />
+	</bean>
+
+	<bean id="verifyInformationTask" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass"
+			value="com.hodanet.yuma.task.VerifyInformationTask"></property>
 	</bean>
 
 	<!-- 每1小时重新获取一次accessToken值 -->
