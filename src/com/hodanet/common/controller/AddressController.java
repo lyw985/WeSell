@@ -61,9 +61,13 @@ public class AddressController {
 		String BODY = "1";
 		String BODY_WITH_SHADOW = "11";
 		String BODY_WITHOUT_SHADOW = "12";
+		String NO_MAPPING = "0";
+		String PART_MAPPING = "1";
+		String ALL_MAPPING = "2";
 		String name = request.getParameter("name");
 		String bodyType = request.getParameter("bodyType");
-		List<Province> bodys = provinceService.getBodyProvinces();
+		String mappingType = request.getParameter("mappingType");
+
 		Province province = new Province();
 		province.setName(name);
 		if (SHADOW.equals(bodyType)) {
@@ -71,7 +75,7 @@ public class AddressController {
 		}
 		if (BODY.equals(bodyType) || BODY_WITH_SHADOW.equals(bodyType) || BODY_WITHOUT_SHADOW.equals(bodyType)) {
 			province.setIsBody(true);
-			if(BODY_WITH_SHADOW.equals(bodyType) || BODY_WITHOUT_SHADOW.equals(bodyType)) {
+			if (BODY_WITH_SHADOW.equals(bodyType) || BODY_WITHOUT_SHADOW.equals(bodyType)) {
 				pageData.setPageSize(Integer.MAX_VALUE);
 			}
 		}
@@ -87,15 +91,17 @@ public class AddressController {
 					provinces.remove(i);
 				}
 			}
-			if(BODY_WITH_SHADOW.equals(bodyType) || BODY_WITHOUT_SHADOW.equals(bodyType)) {
+			if (BODY_WITH_SHADOW.equals(bodyType) || BODY_WITHOUT_SHADOW.equals(bodyType)) {
 				pageData.setTotal(provinces.size());
 			}
 		}
 
+		List<Province> bodys = provinceService.getBodyProvinces();
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("bodys", bodys);
 		model.addAttribute("name", name);
 		model.addAttribute("bodyType", bodyType);
+		model.addAttribute("mappingType", mappingType);
 		return LIST_PAGE;
 	}
 

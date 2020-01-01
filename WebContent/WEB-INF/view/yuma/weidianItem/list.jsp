@@ -62,7 +62,7 @@
 		$("#addButton").click(function(){
 			$("#divDialog").load('${commonMapper.rootPath}/yuma/weidianItem/new.do',null,function(){
 				$("#yumaWeidianItemForm").validationEngine({ promptPosition : "topRight" });
-				$("#divDialog").dialog({ 'width': 400,'height': 400,'title': '信息新增',
+				$("#divDialog").dialog({ 'width': 500,'height': 300,'title': '信息新增',
 					'buttons':{
 						'保存':function(){
 							if($(this).find('#yumaWeidianItemForm').validationEngine("validate")){
@@ -92,7 +92,7 @@
 		$(".btnModify").click(function(){
 			$("#divDialog").load('${commonMapper.rootPath}/yuma/weidianItem/modify/'+$(this).attr('rel')+'.do',null,function(){
 				$("#yumaWeidianItemForm").validationEngine({ promptPosition : "topRight" });
-				$("#divDialog").dialog({title:'信息修改',resizable: false,height:400,width:400,
+				$("#divDialog").dialog({title:'信息修改',resizable: false,height:300,width:500,
 					'buttons':{
 						'保存':function(){
 							if($(this).find('#yumaWeidianItemForm').validationEngine("validate")){
@@ -199,7 +199,7 @@
 		$(".addMapping").click(function(){
 			$("#divDialog").load('${commonMapper.rootPath}/yuma/weidianItem/addMapping/'+$(this).attr('rel')+'.do',null,function(){
 				$("#yumaWeidianItemModelMappingForm").validationEngine({ promptPosition : "topRight" });
-				$("#divDialog").dialog({title:'增加商品映射关系',resizable: false,height:400,width:400,
+				$("#divDialog").dialog({title:'增加商品映射关系',resizable: false,height:300,width:500,
 					'buttons':{
 						'保存':function(){
 							if($(this).find('#yumaWeidianItemModelMappingForm').validationEngine("validate")){
@@ -230,7 +230,7 @@
 			var tmp = "&id="+$(this).attr('rel');
 			$("#divDialog").load('${commonMapper.rootPath}/yuma/weidianItem/modifyMapping/'+$(this).attr('rel')+'.do',null,function(){
 				$("#yumaWeidianItemModelMappingForm").validationEngine({ promptPosition : "topRight" });
-				$("#divDialog").dialog({title:'修改商品映射关系',resizable: false,height:400,width:400,
+				$("#divDialog").dialog({title:'修改商品映射关系',resizable: false,height:300,width:500,
 					'buttons':{
 						'删除':function(){
 							jConfirm('确认将这个关系删除吗？', '确认操作', function(result){
@@ -279,6 +279,9 @@
 			window.location.href="${commonMapper.rootPath}/yuma/order/list.do?weidianItem_id="+$(this).attr('rel');
 		});
 		
+		$("#bodyType").val("${bodyType}")
+		$("#mappingType").val("${mappingType}")
+		$("#mappingShowType").val("${mappingShowType}")
 		$("#weidianItemName").val("${weidianItemName}")
 	});
 	
@@ -324,6 +327,27 @@
 						</select>
 					</td>
 					<td>
+						显示映射:
+					</td>
+					<td>
+						<select id="mappingShowType" name="mappingShowType" value="${mappingShowType}">
+							<option value="">--选择显示映射--</option>
+							<option value="1">绿色(单一映射)</option>
+							<option value="2">橙色(多映射)</option>
+							<option value="3">红色(未处理)</option>
+						</select>
+					</td>
+					<td>
+						映射关系:
+					</td>
+					<td>
+						<select id="mappingType" name="mappingType" value="${mappingType}">
+							<option value="">--是否完成映射关系--</option>
+							<option value="0">未完成</option>
+							<option value="1">已完成</option>
+						</select>
+					</td>
+					<td>
 						<input type="submit" id="btnSearch" name="btnSearch" class="buttonStyle" value="查询" />
 					</td>
 				</tr>
@@ -354,7 +378,15 @@
 									<c:if test="${vs2.index !=0 }">
 										<br />
 									</c:if>
-									${yumaWeidianItemModel.name } 
+									<c:if test="${fn:length(yumaWeidianItemModel.yumaWeidianItemModelMappings)==0 }">
+										<font color="red">${yumaWeidianItemModel.name } </font>
+									</c:if>
+									<c:if test="${fn:length(yumaWeidianItemModel.yumaWeidianItemModelMappings)==1 }">
+										<font color="green">${yumaWeidianItemModel.name } </font>
+									</c:if>
+									<c:if test="${fn:length(yumaWeidianItemModel.yumaWeidianItemModelMappings)>1 }">
+										<font color="orange">${yumaWeidianItemModel.name } </font>
+									</c:if>
 									(<c:forEach
 									items="${yumaWeidianItemModel.yumaWeidianItemModelMappings }"
 									var="yumaWeidianItemModelMapping" varStatus="vs3">

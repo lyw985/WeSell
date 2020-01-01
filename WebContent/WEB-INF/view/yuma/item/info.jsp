@@ -33,8 +33,8 @@
 				<th width="15%" align="right"><font color="red">*</font>商品状态：</th>
 				<td width="85%" align="left">
 					<form:select path="status">
-						<form:option value="0">禁用</form:option>
 						<form:option value="1">可用</form:option>
+						<form:option value="0">禁用</form:option>
 					</form:select>
 				</td>
 			</tr>
@@ -44,6 +44,9 @@
 					<form:select path="type">
 						<form:option value="0">斤</form:option>
 						<form:option value="1">条</form:option>
+						<form:option value="2">只</form:option>
+						<form:option value="3">瓶</form:option>
+						<form:option value="4">个</form:option>
 					</form:select>
 				</td>
 			</tr>

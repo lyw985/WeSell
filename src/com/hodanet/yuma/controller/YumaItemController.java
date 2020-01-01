@@ -21,6 +21,8 @@ import com.hodanet.yuma.constant.YumaItemStatus;
 import com.hodanet.yuma.constant.YumaItemType;
 import com.hodanet.yuma.entity.po.YumaItem;
 import com.hodanet.yuma.entity.po.YumaItemModel;
+import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
+import com.hodanet.yuma.entity.po.YumaWeidianItemModelMapping;
 import com.hodanet.yuma.service.YumaItemModelService;
 import com.hodanet.yuma.service.YumaItemService;
 
@@ -47,8 +49,9 @@ public class YumaItemController {
 		yumaItem.setStatus(YumaItemStatus.AVAILABLE.getValue());
 		PageData<YumaItem> pageData = new PageData<YumaItem>();
 		pageData.setPageSize(Integer.MAX_VALUE);
+		long l = System.currentTimeMillis();
 		pageData = yumaItemService.getYumaItemByPage(pageData, yumaItem);
-
+		System.out.println(System.currentTimeMillis() - l);
 		if (pageData != null && pageData.getData().size() > 0) {
 			JSONArray array = new JSONArray();
 			for (int i = 0; i < pageData.getData().size(); i++) {
@@ -59,6 +62,7 @@ public class YumaItemController {
 				object.put("type", YumaItemType.getYumaItemType(yumaItem.getType()).toString());
 				array.add(object);
 			}
+			System.out.println(System.currentTimeMillis() - l);
 			WebUtil.responseText(response, array.toJSONString());
 		} else {
 			WebUtil.responseText(response, "{}");

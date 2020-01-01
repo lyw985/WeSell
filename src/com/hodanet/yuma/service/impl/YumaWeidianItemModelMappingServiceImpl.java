@@ -79,17 +79,17 @@ public class YumaWeidianItemModelMappingServiceImpl extends AbstractDaoService
 				.getWeidianItemModelById(yumaWeidianItemModelId);
 		Set<YumaWeidianItemModelMapping> set = yumaWeidianItemModel.getYumaWeidianItemModelMappings();
 		if (set != null && set.size() > 0) {
-			if(exceptIds!=null && exceptIds.length>0) {
+			if (exceptIds != null && exceptIds.length > 0) {
 				for (Integer id : exceptIds) {
 					for (YumaWeidianItemModelMapping mapping : set) {
-						if(mapping.getId()==id) {
+						if (mapping.getId() == id) {
 							set.remove(mapping);
 							break;
 						}
 					}
 				}
 			}
-			
+
 			Map<Integer, Double> map = new HashMap<Integer, Double>();
 			Double total = 0d;
 			for (YumaWeidianItemModelMapping mapping : set) {
@@ -98,6 +98,9 @@ public class YumaWeidianItemModelMappingServiceImpl extends AbstractDaoService
 				Double avgPrice = 0d;
 				if (map != null) {
 					avgPrice = (Double) avgMap.get("avgPrice");
+				}
+				if (avgPrice == null) {
+					avgPrice = 1d;
 				}
 				map.put(mapping.getId(), avgPrice * mapping.getCount());
 				total += avgPrice * mapping.getCount();

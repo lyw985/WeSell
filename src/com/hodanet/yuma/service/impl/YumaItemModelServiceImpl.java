@@ -67,7 +67,8 @@ public class YumaItemModelServiceImpl extends AbstractDaoService implements
 
 	@Override
 	public void deleteYumaItemModel(Integer[] ids) {
-		this.getDao().delete(YumaItemModel.class, ids);
+		String sql = "delete from yuma_item_model where id = ?";
+		this.getDao().getJdbcTemplate().update(sql, ids[0]);
 	}
 
 	@Override

@@ -29,6 +29,7 @@
 <script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine-en.js"></script>
 <script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine.js"></script>
 <script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="${commonMapper.rootPath}/js/util/yuma.js"></script>
 <script type="text/javascript">
 	$(function() {
 		var pager = $("#pager");
@@ -195,6 +196,52 @@
 			});
 		});
 		
+		//修改关系按钮
+		$(".modifyMapping").click(function(){
+			var tmp = "&id="+$(this).attr('rel');
+			$("#divDialog").load('${commonMapper.rootPath}/yuma/weidianItem/modifyMapping/'+$(this).attr('rel')+'.do',null,function(){
+				$("#yumaWeidianItemModelMappingForm").validationEngine({ promptPosition : "topRight" });
+				$("#divDialog").dialog({title:'修改商品映射关系',resizable: false,height:400,width:400,
+					'buttons':{
+						'删除':function(){
+							jConfirm('确认将这个关系删除吗？', '确认操作', function(result){
+								if(result == true){
+									$.post('${commonMapper.rootPath}/yuma/weidianItem/deleteMapping.do',tmp.substring(1),function(data){
+										if(data.flag){
+											jAlert(data.msg,'成功',function(){
+												$("#queryForm").submit();
+											});
+										}else{
+											jAlert(data.msg,'失败');
+										}
+									},'json');
+								}
+							});
+						},
+						'保存':function(){
+							if($(this).find('#yumaWeidianItemModelMappingForm').validationEngine("validate")){
+								$(this).find('#yumaWeidianItemModelMappingForm').ajaxSubmit({ 
+							        dataType:  'json',
+							        type: 'POST',
+							        success:   showAddResponse 
+							    }); 
+							}
+						},
+						'取消':function(){
+							$("#queryForm").submit();
+						}
+					},
+					modal:true,
+					beforeClose:function(event, ui) {
+						$(this).find('#yumaWeidianItemModelMappingForm').validationEngine("hideAll");
+					},
+					close:function(event, ui) {
+						$("#queryForm").submit();
+					}
+				});
+			});
+		});
+		
 		$("#backButton").click(function() {
 			window.location.href="${commonMapper.rootPath}/yuma/item/list.do"
 		});
@@ -222,7 +269,7 @@
 		<span>鱼妈海鲜-->型号管理</span>
 		<a href="#" class="add" id="backButton">返回上级</a>
 		<a href="#" class="add" id="addButton">新增</a>
-		<a href="#" class="remove" id="deleteButton">删除</a>
+		<!-- <a href="#" class="remove" id="deleteButton">删除</a> -->
 	</div>
 	<!-- --------------------查询表单-------------------- -->
 	<div class="ui-widget">
@@ -256,9 +303,10 @@
 		<table class="tabCls" cellpadding="0" cellspacing="0" width="99%">
 			<tr>
 				<th width="5%"><input type="checkbox" class="selAll"></th>
-				<th width="10%">型号名称</th>
-				<th width="15%">状态</th>
-				<th width="15%">操作</th>
+				<th width="15%">型号名称</th>
+				<th width="10%">状态</th>
+				<th width="60%">微店型号</th>
+				<th width="10%">操作</th>
 			</tr>
 			<c:choose>
 				<c:when test="${pageData.data != null && fn:length(pageData.data) > 0}">
@@ -271,6 +319,18 @@
 								<c:if test="${yumaItemModel.status==1}"><font color="green">${yumaItemModel.statusStr}</font></c:if>
 							</td>
 							<td>
+								<c:forEach
+									items="${yumaItemModel.yumaWeidianItemModelMappings }"
+									var="yumaWeidianItemModelMapping" varStatus="vs3">
+									<c:if test="${vs3.index !=0 }">
+										<br />
+									</c:if>
+									<a
+										href="javascript:void(0)" rel="${yumaWeidianItemModelMapping.id}"
+										class="modifyMapping">【${yumaWeidianItemModelMapping.yumaWeidianItemModel.name} ${yumaWeidianItemModelMapping.count}${yumaWeidianItemModelMapping.yumaItemModel.yumaItem.typeStr}】</a>
+								</c:forEach>
+							</td>
+							<td>
 								<c:if test="${yumaItemModel.status!=0}">
 									<a href="javascript:void(0)" rel="${yumaItemModel.id}" class="inavailableItemModel">设为禁用</a>
 								</c:if>
@@ -278,7 +338,9 @@
 									<a href="javascript:void(0)" rel="${yumaItemModel.id}" class="availableItemModel">设为可用</a>
 								</c:if>
 								<a href="javascript:void(0)" rel="${yumaItemModel.id}" class="btnModify">修改</a>
-								<!-- <a href="javascript:void(0)" rel="${yumaItemModel.id}" class="singleDelete">删除</a> -->
+								<c:if test="${fn:length(yumaItemModel.yumaWeidianItemModelMappings)==0 }">
+									<a href="javascript:void(0)" rel="${yumaItemModel.id}" class="singleDelete">删除</a>
+								</c:if>
 							</td>
 						</tr>
 					</c:forEach>

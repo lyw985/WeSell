@@ -50,6 +50,11 @@
 		
 		initItemSel("item_id", "item_model_id", "${item_id}","${item_model_id}");
 		initProvinceSel("province_id","city_id","area_id","${province_id}","${city_id}","${area_id}");
+		$("#chartParamertType").val("${chartParamertType}");
+		$("#chartGroupByType1").val("${chartGroupByType1}");
+		$("#chartGroupByType2").val("${chartGroupByType2}");
+		$("#startDate").val("${startDate}");
+		$("#endDate").val("${endDate}");
 		
 		var chartConfig=eval("("+$("#chartConfig").val()+")");
 		
@@ -88,15 +93,34 @@
 				<tr>
 					<td>商品：</td>
 					<td>
-						<select id="item_id" onchange="initItemModelSel('item_model_id',this.value)"></select> 
-						<select id="item_model_id"></select>
+						<select id="item_id" name="item_id" onchange="initItemModelSel('item_model_id',this.value)"></select> 
 					</td>
-					<td>地区：</td>
+				</tr>
+				<tr>
+					<td>型号：</td>
+					<td>
+						<select id="item_model_id" name="item_model_id" ></select>
+					</td>
+				</tr>
+				<tr>
+					<td>省份：</td>
 					<td>
 						<select id="province_id" name="province_id" onchange="initCitySel('city_id','area_id',this.value)"></select>
+					</td>
+				</tr>
+				<tr>
+					<td>城市：</td>
+					<td>
 						<select id="city_id" name="city_id" onchange="initAreaSel('area_id',this.value)"></select>
+					</td>
+				</tr>
+				<tr>
+					<td>地区：</td>
+					<td>
 						<select id="area_id" name="area_id" ></select>
 					</td>
+				</tr>
+				<tr>
 					<td>日期：</td>
 					<td>
 						<input id="startDate" name="startDate"  class="dateTime" style="width:75px;"/>-<input id="endDate" name="endDate"  class="dateTime" style="width:75px;"/>
@@ -107,29 +131,51 @@
 				<tr>
 					<td>查询类型：</td>
 					<td>
-						<select id="queryType" >
-							<option value="1" selected="selected">订单数量</option>
-							<option value="2">订单金额</option>
-							<option value="3">销货数量</option>
+						<select id="chartParamertType"  name="chartParamertType">
+							<option value="11" selected="selected">订单总量</option>
+							<option value="12">订单售价</option>
+							<option value="13">订单均价</option>
+							<option value="14">订单商品数量</option>
+							<!-- <option value="15">订单原价</option> -->
+							<!-- <option value="16">订单优惠比例</option> -->
+							<option value="21">商品总量</option>
+							<option value="22">商品总价</option>
+							<option value="23">商品均价</option>
 						</select> 
 					</td>
-					<td>展示数据：</td>
+				</tr>
+				<tr>
+					<td>区分条件：</td>
 					<td>
-						<select id="query1" >
-							<option value="0">---请选择---</option>
-							<option value="1">按日</option>
-							<option value="1">按周</option>
-							<option value="1">按周一到周日</option>
-							<option value="1">按月</option>
-							<option value="1">按年</option>
+						<select id="chartGroupByType1" name="chartGroupByType1" >
+							<option value="">---选择区分条件---</option>
+							<option value="11">年</option>
+							<option value="12">月</option>
+							<option value="13">天</option>
+							<option value="14">周</option>
+							<option value="15">周一至周日</option>
+							<option value="16">0-23时</option>
+							<option value="21">省份</option>
+							<option value="22">城市</option>
+							<option value="23">地区</option>
+							<option value="31">商品</option>
+							<option value="32">商品型号</option>
 						</select> 
 					</td>
 					<td>
-						<select id="query2" >
-							<option value="0">---请选择---</option>
-							<option value="1">按日期(每日)</option>
-							<option value="1">按日期(每周)</option>
-							<option value="1">按日期(每月)</option>
+						<select id="chartGroupByType2" name="chartGroupByType2" >
+							<option value="">---选择区分条件---</option>
+							<option value="11">年</option>
+							<option value="12">月</option>
+							<option value="13">天</option>
+							<option value="14">周</option>
+							<option value="15">周一至周日</option>
+							<option value="16">0-23时</option>
+							<option value="21">省份</option>
+							<option value="22">城市</option>
+							<option value="23">地区</option>
+							<option value="31">商品</option>
+							<option value="32">商品型号</option>
 						</select> 
 					</td>
 					<td>

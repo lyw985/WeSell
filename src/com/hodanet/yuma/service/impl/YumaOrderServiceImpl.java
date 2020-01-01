@@ -84,6 +84,17 @@ public class YumaOrderServiceImpl extends AbstractDaoService implements YumaOrde
 			sb.append(" and o.status = ? ");
 			params.add(yumaOrder.getStatus());
 		}
+		if (yumaOrder.getIncludeItemModelId() != null) {
+			sb.append(
+					" and o.id in ( select i.yumaOrder.id from YumaOrderItem i where i.yumaWeidianItemModel.id in (select m.yumaWeidianItemModel.id from YumaWeidianItemModelMapping m where m.yumaItemModel.id = ?) ) ");
+			params.add(yumaOrder.getIncludeItemModelId());
+		} else {
+			if (yumaOrder.getIncludeItemId() != null) {
+				sb.append(
+						" and o.id in ( select i.yumaOrder.id from YumaOrderItem i where i.yumaWeidianItemModel.id in (select m.yumaWeidianItemModel.id from YumaWeidianItemModelMapping m where m.yumaItemModel.yumaItem.id = ?) ) ");
+				params.add(yumaOrder.getIncludeItemId());
+			}
+		}
 		// sb.append(" and o.id in ( select i.yumaOrder.id from YumaOrderItem i where
 		// i.yumaWeidianItemModel.name like ?) ");
 		// params.add("%红美人%");
@@ -101,7 +112,7 @@ public class YumaOrderServiceImpl extends AbstractDaoService implements YumaOrde
 		} else {
 			YumaOrder orginal = getYumaOrderById(yumaOrder.getId());
 			orginal.setPayDate(yumaOrder.getPayDate());
-			orginal.setStatus(YumaOrderStatus.WAITFORSEND.getValue());
+			orginal.setStatus(YumaOrderStatus.ORDER_NORMAL.getValue());
 			// TODO
 		}
 		return yumaOrder;
@@ -119,7 +130,8 @@ public class YumaOrderServiceImpl extends AbstractDaoService implements YumaOrde
 	}
 
 	@Override
-	public YumaOrder getOrCreateOrder(YumaUser yumaUser, YumaReceiver yumaReceiver, Date orderPayTime, String orderStatus) {
+	public YumaOrder getOrCreateOrder(YumaUser yumaUser, YumaReceiver yumaReceiver, Date orderPayTime,
+			String orderStatus) {
 		if (yumaUser == null || yumaUser.getId() == null || yumaReceiver == null || yumaReceiver.getId() == null
 				|| orderPayTime == null) {
 			return null;

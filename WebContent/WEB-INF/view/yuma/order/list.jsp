@@ -236,8 +236,9 @@
 			window.location.href="${commonMapper.rootPath}/yuma/user/list.do";
 		});
 		
-		$("#startDate").val("${startDate}")
-		$("#endDate").val("${endDate}")
+		$("#startDate").val("${startDate}");
+		$("#endDate").val("${endDate}");
+		initItemSel("item_id", "item_model_id", "${item_id}","${item_model_id}");
 		initProvinceSel("province_id","city_id","area_id","${province_id}","${city_id}","${area_id}");
 	});
 	
@@ -275,10 +276,11 @@
 					<td>
 						<input type="text" id="receiverPhone" name="receiverPhone" value="${receiverPhone}" style="width:100px;" />
 					</td>
-					<!-- <td>订单包含：</td>
+					<td>包含商品：</td>
 					<td>
-						<input type="text" id="itemName" name="itemName" value="${itemName}" style="width:100px;" />
-					</td> -->
+						<select id="item_id" name="item_id" onchange="initItemModelSel('item_model_id',this.value)"></select> 
+						<select id="item_model_id" name="item_model_id" ></select>
+					</td>
 					<td>地区：</td>
 					<td>
 						<select id="province_id" name="province_id" onchange="initCitySel('city_id','area_id',this.value)"></select>

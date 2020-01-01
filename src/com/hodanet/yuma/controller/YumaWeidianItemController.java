@@ -1,6 +1,7 @@
 package com.hodanet.yuma.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,9 +55,12 @@ public class YumaWeidianItemController {
 	 */
 	@RequestMapping(value = "/list")
 	public String list(Model model, PageData<YumaWeidianItem> pageData) {
+		long l = System.currentTimeMillis();
 		YumaWeidianItem yumaWeidianItem = new YumaWeidianItem();
 		pageData = yumaWeidianItemService.getYumaWeidianItemByPage(pageData, yumaWeidianItem);
+		System.out.println(System.currentTimeMillis() - l);
 		List<YumaWeidianItem> bodys = yumaWeidianItemService.getBodyYumaWeidianItems(yumaWeidianItem);
+		System.out.println(System.currentTimeMillis() - l);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("bodys", bodys);
 		return LIST_PAGE;
@@ -78,13 +82,94 @@ public class YumaWeidianItemController {
 		String BODY_WITHOUT_SHADOW = "12";
 		String bodyType = request.getParameter("bodyType");
 		String weidianItemName = request.getParameter("weidianItemName");
+		String MAPPING_NOT_DONE = "0";
+		String MAPPING_DONE = "1";
+		String mappingType = request.getParameter("mappingType");
+
+		String MAPPING_SHOW_ONE_MATCH = "1";
+		String MAPPING_SHOW_MANY_MATCH = "2";
+		String MAPPING_SHOW_NO_MATCH = "3";
+		String mappingShowType = request.getParameter("mappingShowType");
+
 		YumaWeidianItem yumaWeidianItem = new YumaWeidianItem();
 		yumaWeidianItem.setName(weidianItemName);
+		if (SHADOW.equals(bodyType)) {
+			yumaWeidianItem.setIsBody(false);
+		}
+		if (BODY.equals(bodyType) || BODY_WITH_SHADOW.equals(bodyType) || BODY_WITHOUT_SHADOW.equals(bodyType)) {
+			yumaWeidianItem.setIsBody(true);
+		}
+		if (BODY_WITH_SHADOW.equals(bodyType) || BODY_WITHOUT_SHADOW.equals(bodyType)
+				|| MAPPING_NOT_DONE.equals(mappingType) || MAPPING_DONE.equals(mappingType)) {
+			pageData.setPageSize(Integer.MAX_VALUE);
+		}
 		pageData = yumaWeidianItemService.getYumaWeidianItemByPage(pageData, yumaWeidianItem);
+		if (pageData.getData().size() > 0) {
+			List<YumaWeidianItem> yumaWeidianItems = pageData.getData();
+			for (int i = yumaWeidianItems.size() - 1; i >= 0; i--) {
+				YumaWeidianItem p = yumaWeidianItems.get(i);
+				if (BODY_WITH_SHADOW.equals(bodyType) && p.getShadows().size() == 0) {
+					yumaWeidianItems.remove(i);
+					continue;
+				}
+				if (BODY_WITHOUT_SHADOW.equals(bodyType) && p.getShadows().size() > 0) {
+					yumaWeidianItems.remove(i);
+					continue;
+				}
+				if (MAPPING_NOT_DONE.equals(mappingType) || MAPPING_DONE.equals(mappingType)) {
+					List<YumaWeidianItemModel> list = p.getYumaWeidianItemModels();
+					boolean isDone = true;
+					if (list != null) {
+						for (YumaWeidianItemModel yumaWeidianItemModel : list) {
+							if (yumaWeidianItemModel.getYumaWeidianItemModelMappings() == null
+									|| yumaWeidianItemModel.getYumaWeidianItemModelMappings().size() == 0) {
+								isDone = false;
+								break;
+							}
+						}
+					}
+					if (MAPPING_NOT_DONE.equals(mappingType) && isDone) {
+						yumaWeidianItems.remove(i);
+					}
+					if (MAPPING_DONE.equals(mappingType) && !isDone) {
+						yumaWeidianItems.remove(i);
+					}
+				}
+			}
+			if (MAPPING_SHOW_ONE_MATCH.equals(mappingShowType) || MAPPING_SHOW_MANY_MATCH.equals(mappingShowType)
+					|| MAPPING_SHOW_NO_MATCH.equals(mappingShowType)) {
+				for (int i = yumaWeidianItems.size() - 1; i >= 0; i--) {
+					YumaWeidianItem p = yumaWeidianItems.get(i);
+					List<YumaWeidianItemModel> list = p.getYumaWeidianItemModels();
+					if (list != null) {
+						for (int j = list.size() - 1; j >= 0; j--) {
+							YumaWeidianItemModel model2 = list.get(j);
+							Set<YumaWeidianItemModelMapping> set = model2.getYumaWeidianItemModelMappings();
+							if (MAPPING_SHOW_ONE_MATCH.equals(mappingShowType) && set.size() != 1) {
+								list.remove(j);
+							}
+							if (MAPPING_SHOW_MANY_MATCH.equals(mappingShowType) && set.size() <= 1) {
+								list.remove(j);
+							}
+							if (MAPPING_SHOW_NO_MATCH.equals(mappingShowType) && set.size() > 0) {
+								list.remove(j);
+							}
+						}
+					}
+				}
+			}
+			if (BODY_WITH_SHADOW.equals(bodyType) || BODY_WITHOUT_SHADOW.equals(bodyType)
+					|| MAPPING_NOT_DONE.equals(mappingType) || MAPPING_DONE.equals(mappingType)) {
+				pageData.setTotal(yumaWeidianItems.size());
+			}
+		}
 		List<YumaWeidianItem> bodys = yumaWeidianItemService.getBodyYumaWeidianItems(yumaWeidianItem);
 		model.addAttribute("weidianItemName", weidianItemName);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("bodys", bodys);
+		model.addAttribute("bodyType", bodyType);
+		model.addAttribute("mappingType", mappingType);
+		model.addAttribute("mappingShowType", mappingShowType);
 		return LIST_PAGE;
 	}
 

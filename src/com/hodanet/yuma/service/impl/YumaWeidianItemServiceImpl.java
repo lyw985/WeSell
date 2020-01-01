@@ -44,9 +44,25 @@ public class YumaWeidianItemServiceImpl extends AbstractDaoService implements Yu
 		List<Object> params = new ArrayList<Object>();
 		StringBuilder sb = new StringBuilder();
 		sb.append("from YumaWeidianItem o where 1=1");
-		if (yumaWeidianItem.getName() != null) {
-			sb.append(" and o.name like ? ");
-			params.add("%" + yumaWeidianItem.getName() + "%");
+		if (yumaWeidianItem != null) {
+			if (yumaWeidianItem.getName() != null) {
+				sb.append(" and o.name like ? ");
+				params.add("%" + yumaWeidianItem.getName() + "%");
+			}
+			if (yumaWeidianItem.getBody() != null && yumaWeidianItem.getBody().getId() != null) {
+				sb.append(" and o.body.id = ? ");
+				params.add(yumaWeidianItem.getBody().getId());
+			}
+			if (yumaWeidianItem.getIsBody() != null) {
+				if (yumaWeidianItem.getIsBody() == true) {
+					sb.append(" and o.body.id = ? ");
+					params.add(0);
+				}
+				if (yumaWeidianItem.getIsBody() == false) {
+					sb.append(" and o.body.id != ? ");
+					params.add(0);
+				}
+			}
 		}
 		return this.getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
 	}

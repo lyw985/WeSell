@@ -27,7 +27,6 @@ import com.hodanet.common.util.StringUtil;
 import com.hodanet.common.util.WebUtil;
 import com.hodanet.system.util.XlSUtil;
 import com.hodanet.yuma.entity.po.YumaOrder;
-import com.hodanet.yuma.entity.po.YumaOrderItem;
 import com.hodanet.yuma.entity.po.YumaReceiver;
 import com.hodanet.yuma.entity.po.YumaUser;
 import com.hodanet.yuma.entity.po.YumaWeidianData;
@@ -97,13 +96,14 @@ public class YumaOrderController {
 	public String query(Model model, PageData<YumaOrder> pageData, HttpServletRequest request) {
 		String receiverName = request.getParameter("receiverName");
 		String receiverPhone = request.getParameter("receiverPhone");
-//		String itemName = request.getParameter("itemName");
 		String status = request.getParameter("status");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 		String provinceIdString = request.getParameter("province_id");
 		String cityIdString = request.getParameter("city_id");
 		String areaIdString = request.getParameter("area_id");
+		String itemIdStr = request.getParameter("item_id");
+		String itemModelIdStr = request.getParameter("item_model_id");
 		YumaOrder yumaOrder = new YumaOrder();
 		if (StringUtil.isNotBlank(status)) {
 			yumaOrder.setStatus(Integer.parseInt(status));
@@ -117,6 +117,14 @@ public class YumaOrderController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+
+		if (StringUtil.isNotBlank(itemIdStr)) {
+			yumaOrder.setIncludeItemId(Integer.parseInt(itemIdStr));
+		}
+
+		if (StringUtil.isNotBlank(itemModelIdStr)) {
+			yumaOrder.setIncludeItemModelId(Integer.parseInt(itemModelIdStr));
 		}
 
 		YumaReceiver yumaReceiver = new YumaReceiver();
@@ -141,11 +149,13 @@ public class YumaOrderController {
 			}
 		}
 		yumaOrder.setYumaReceiver(yumaReceiver);
-
+		long l = System.currentTimeMillis();
 		pageData = yumaOrderService.getYumaOrderByPage(pageData, yumaOrder);
+		System.out.println(System.currentTimeMillis() - l);
 		model.addAttribute("receiverName", receiverName);
 		model.addAttribute("receiverPhone", receiverPhone);
-//		model.addAttribute("itemName", itemName);
+		model.addAttribute("item_id", itemIdStr);
+		model.addAttribute("item_model_id", itemModelIdStr);
 		model.addAttribute("status", status);
 		model.addAttribute("startDate", startDate);
 		model.addAttribute("endDate", endDate);

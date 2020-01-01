@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.hodanet.common.dao.AbstractDaoService;
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.common.util.StringUtil;
+import com.hodanet.yuma.constant.YumaOrderItemStatus;
 import com.hodanet.yuma.constant.YumaWeidianDataOrderStatus;
 import com.hodanet.yuma.entity.po.YumaOrder;
 import com.hodanet.yuma.entity.po.YumaOrderItem;
@@ -99,6 +100,7 @@ public class YumaOrderItemServiceImpl extends AbstractDaoService implements Yuma
 			yumaOrderItem.setCount(itemCountInt);
 			yumaOrderItem.setPayPrice(payPriceFloat);
 			yumaOrderItem.setOriginalPrice(originalPriceFloat);
+			yumaOrderItem.setStatus(YumaOrderItemStatus.NORMAL.getValue());
 			yumaOrderItem = saveYumaOrderItem(yumaOrderItem);
 			yumaOrder.setPayPrice(yumaOrder.getPayPrice() + itemCountInt * payPriceFloat);
 			yumaOrder.setOriginalPrice(yumaOrder.getOriginalPrice() + itemCountInt * originalPriceFloat);

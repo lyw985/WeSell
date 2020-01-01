@@ -57,13 +57,13 @@ public class YumaOrder {
 	/**  **/
 	@Column(name = "pay_date")
 	private Date payDate;
-	
+
 	@Column(name = "pay_price")
 	private Float payPrice;
-	
+
 	@Column(name = "original_price")
 	private Float originalPrice;
-	
+
 	@Column(name = "item_number")
 	private Integer itemNumber;
 
@@ -82,6 +82,12 @@ public class YumaOrder {
 
 	@Transient
 	private Date endDate;
+
+	@Transient
+	private Integer includeItemId;
+
+	@Transient
+	private Integer includeItemModelId;
 
 	public Integer getId() {
 		return id;
@@ -209,6 +215,22 @@ public class YumaOrder {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public Integer getIncludeItemId() {
+		return includeItemId;
+	}
+
+	public void setIncludeItemId(Integer includeItemId) {
+		this.includeItemId = includeItemId;
+	}
+
+	public Integer getIncludeItemModelId() {
+		return includeItemModelId;
+	}
+
+	public void setIncludeItemModelId(Integer includeItemModelId) {
+		this.includeItemModelId = includeItemModelId;
 	}
 
 }

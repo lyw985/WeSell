@@ -14,7 +14,7 @@
 	$(function() {
 		//日期
 		$(".dateTime").datepicker();
-		initItemSel("item_id", "item_model_id", "${item_id}",
+		initItemSel("mapping_item_id", "mapping_item_model_id", "${item_id}",
 				"${item_model_id}");
 	});
 </script>
@@ -32,9 +32,9 @@
 			</tr>
 			<tr>
 				<th>商品：</th>
-				<td><select id="item_id"
-					onchange="initItemModelSel('item_model_id',this.value)"></select> <form:select
-						id="item_model_id" path="yumaItemModel.id"></form:select></td>
+				<td><select id="mapping_item_id"
+					onchange="initItemModelSel('mapping_item_model_id',this.value)"></select> <form:select
+						id="mapping_item_model_id" path="yumaItemModel.id"></form:select></td>
 			</tr>
 			<tr>
 				<th>数量：</th>
