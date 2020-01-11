@@ -69,7 +69,7 @@ public class YumaWeidianItemModelMappingServiceImpl extends AbstractDaoService
 	public void updateYumaWeidianItemModelMappingPercent(Integer yumaWeidianItemModelId, Integer... exceptIds) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(
-				" select round(sum(yumaItemModel.pay_price*yumaItemModel.count)/sum(yumaItemModel.count*yumaWeidianItemModelMapping.count),1) as avgPrice");
+				" select round(sum(yumaItemModel.pay_price*yumaItemModel.count)/sum(yumaItemModel.count*yumaWeidianItemModelMapping.count),2) as avgPrice");
 		sb.append(" from yuma_order_item yumaItemModel");
 		sb.append(" left join yuma_receiver yumaReceiver on yumaReceiver.id = yumaItemModel.receiver_id");
 		sb.append(

@@ -9,10 +9,10 @@ public enum ChartParameterEnum {
 
 	PARAMETER_SUM_ITEM_COUNT(21, "商品总量", "SUM(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.COUNT) "),
 	PARAMETER_SUM_ITEM_PRICE(22, "商品总价",
-			"ROUND(SUM(yumaOrderItem.COUNT * yumaOrderItem.pay_price * yumaWeidianItemModelMapping.price_percent),1) "),
+			"ROUND(SUM(yumaOrderItem.COUNT * yumaOrderItem.pay_price * yumaWeidianItemModelMapping.price_percent),2) "),
 	PARAMETER_AVG_ITEM_PRICE(23, "商品均价",
-			"ROUND(SUM(yumaOrderItem.COUNT * yumaOrderItem.pay_price * yumaWeidianItemModelMapping.price_percent)/SUM(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.COUNT),1) ");
-
+			"ROUND(SUM(yumaOrderItem.COUNT * yumaOrderItem.pay_price * yumaWeidianItemModelMapping.price_percent)/SUM(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.COUNT),2) ");
+	
 	private int type;
 	private String tip;
 	private String sql;

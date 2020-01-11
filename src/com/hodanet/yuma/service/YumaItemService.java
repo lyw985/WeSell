@@ -24,6 +24,8 @@ public interface YumaItemService {
      * @return
      */
     public PageData<YumaItem> getYumaItemByPage(PageData<YumaItem> pageData, YumaItem yumaItem);
+    
+    public PageData<YumaItem> getYumaItemsForSelect();
 
     /**
      * 

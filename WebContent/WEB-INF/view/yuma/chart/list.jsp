@@ -53,6 +53,8 @@
 		$("#chartParamertType").val("${chartParamertType}");
 		$("#chartGroupByType1").val("${chartGroupByType1}");
 		$("#chartGroupByType2").val("${chartGroupByType2}");
+		$("#chartOrderByType").val("${chartOrderByType}");
+		$("#chartLimitNumber").val("${chartLimitNumber}");
 		$("#startDate").val("${startDate}");
 		$("#endDate").val("${endDate}");
 		
@@ -145,10 +147,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td>区分条件：</td>
+					<td>分组条件：</td>
 					<td>
 						<select id="chartGroupByType1" name="chartGroupByType1" >
-							<option value="">---选择区分条件---</option>
+							<option value="">---选择分组条件---</option>
 							<option value="11">年</option>
 							<option value="12">月</option>
 							<option value="13">天</option>
@@ -164,7 +166,7 @@
 					</td>
 					<td>
 						<select id="chartGroupByType2" name="chartGroupByType2" >
-							<option value="">---选择区分条件---</option>
+							<option value="">---选择分组条件---</option>
 							<option value="11">年</option>
 							<option value="12">月</option>
 							<option value="13">天</option>
@@ -176,6 +178,26 @@
 							<option value="23">地区</option>
 							<option value="31">商品</option>
 							<option value="32">商品型号</option>
+						</select> 
+					</td>
+				</tr>
+				<tr>
+					<td>展示调整：</td>
+					<td>
+						<select id="chartOrderByType" name="chartOrderByType" >
+							<option value="">---选择排序条件---</option>
+							<option value="11">从大到小</option>
+							<option value="12">从小到大</option>
+						</select> 
+					</td>
+					<td>
+						<select id="chartLimitNumber" name="chartLimitNumber" >
+							<option value="">---选择数量限制---</option>
+							<option value="5">5条</option>
+							<option value="10">10条</option>
+							<option value="20">20条</option>
+							<option value="30">30条</option>
+							<option value="50">50条</option>
 						</select> 
 					</td>
 					<td>

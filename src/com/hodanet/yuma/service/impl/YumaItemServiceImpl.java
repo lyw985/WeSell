@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.hodanet.common.dao.AbstractDaoService;
 import com.hodanet.common.entity.vo.PageData;
+import com.hodanet.yuma.constant.YumaCached;
+import com.hodanet.yuma.constant.YumaItemStatus;
 import com.hodanet.yuma.entity.po.YumaItem;
 import com.hodanet.yuma.service.YumaItemService;
 
@@ -15,8 +17,7 @@ import com.hodanet.yuma.service.YumaItemService;
  * @yumaItem 2016-11-11 10:34:32
  */
 @Service
-public class YumaItemServiceImpl extends AbstractDaoService implements
-		YumaItemService {
+public class YumaItemServiceImpl extends AbstractDaoService implements YumaItemService {
 
 	@Override
 	public YumaItem getYumaItemById(Integer id) {
@@ -24,8 +25,7 @@ public class YumaItemServiceImpl extends AbstractDaoService implements
 	}
 
 	@Override
-	public PageData<YumaItem> getYumaItemByPage(PageData<YumaItem> pageData,
-			YumaItem yumaItem) {
+	public PageData<YumaItem> getYumaItemByPage(PageData<YumaItem> pageData, YumaItem yumaItem) {
 		List<Object> params = new ArrayList<Object>();
 		StringBuilder sb = new StringBuilder();
 		sb.append("from YumaItem o where 1=1");
@@ -38,8 +38,7 @@ public class YumaItemServiceImpl extends AbstractDaoService implements
 			params.add(yumaItem.getStatus());
 		}
 		sb.append(" order by convert(o.name,'gbk')");
-		return this.getDao().queryHqlPageData(sb.toString(), pageData,
-				params.toArray(new Object[params.size()]));
+		return this.getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
 	}
 
 	@Override
@@ -56,18 +55,38 @@ public class YumaItemServiceImpl extends AbstractDaoService implements
 			orginal.setType(yumaItem.getType());
 			// TODO
 		}
+		reloadYumaItemsForSelect();
 		return yumaItem;
 	}
 
 	@Override
 	public void deleteYumaItem(Integer[] ids) {
 		this.getDao().delete(YumaItem.class, ids);
+		reloadYumaItemsForSelect();
 	}
 
 	@Override
 	public void updateYumaItemStatus(Integer id, Integer status) {
 		String hql = "update YumaItem o set o.status = ? where o.id = ?";
 		this.getDao().executeUpdate(hql, status, id);
+		reloadYumaItemsForSelect();
+	}
+
+	@Override
+	public PageData<YumaItem> getYumaItemsForSelect() {
+		if (YumaCached.YUMA_ITEMS != null) {
+			return YumaCached.YUMA_ITEMS;
+		}
+		reloadYumaItemsForSelect();
+		return YumaCached.YUMA_ITEMS;
+	}
+	
+	private void reloadYumaItemsForSelect() {
+		YumaItem yumaItem = new YumaItem();
+		yumaItem.setStatus(YumaItemStatus.AVAILABLE.getValue());
+		PageData<YumaItem> pageData = new PageData<YumaItem>();
+		pageData.setPageSize(Integer.MAX_VALUE);
+		YumaCached.YUMA_ITEMS = getYumaItemByPage(pageData, yumaItem);
 	}
 
 }

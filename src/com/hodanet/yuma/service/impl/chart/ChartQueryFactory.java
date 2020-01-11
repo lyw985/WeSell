@@ -18,6 +18,8 @@ public class ChartQueryFactory {
 	private Set<ChartTableEnum> chartTables = new HashSet<ChartTableEnum>();
 	private List<ChartGroupByEnum> chartGroupBys = new ArrayList<ChartGroupByEnum>();
 	private List<Object> conditionValues = new ArrayList<Object>();
+	private ChartOrderByEnum chartOrderBy;
+	private Integer limitNumber;
 
 	public List<Object> getConditionValues() {
 		return conditionValues;
@@ -53,9 +55,28 @@ public class ChartQueryFactory {
 		String groupBy = loadGroupBySql();
 		basic = basic.replaceAll("\\$\\{groupBy\\}", groupBy);
 
-		basic = basic.replaceAll("\\$\\{orderBy\\}", "");
-		basic = basic.replaceAll("\\$\\{limit\\}", "");
+		String orderBy = loadOrderBySql();
+		basic = basic.replaceAll("\\$\\{orderBy\\}", orderBy);
+
+		String limit = loadLimitBySql();
+		basic = basic.replaceAll("\\$\\{limit\\}", limit);
 		return basic;
+	}
+
+	private String loadLimitBySql() {
+		StringBuilder sb = new StringBuilder();
+		if (limitNumber != null) {
+			sb.append(" limit 0,").append(limitNumber);
+		}
+		return sb.toString();
+	}
+
+	private String loadOrderBySql() {
+		StringBuilder sb = new StringBuilder();
+		if (chartOrderBy != null) {
+			sb.append(" order by ").append(chartParameter).append(chartOrderBy);
+		}
+		return sb.toString();
 	}
 
 	private String loadGroupBySql() {
@@ -145,6 +166,15 @@ public class ChartQueryFactory {
 		this.chartGroupBys.add(chartGroupByEnum);
 		ChartTableEnum[] chartTableEnums = ChartGroupByEnum.getChartTableEnum(chartGroupByEnum);
 		addChartTableEnums(chartTableEnums);
+	}
+
+	public void setOrderBy(int chartOrderByType) {
+		ChartOrderByEnum chartOrderByEnum = ChartOrderByEnum.getChartOrderByEnum(chartOrderByType);
+		this.chartOrderBy = chartOrderByEnum;
+	}
+
+	public void setLimitNumber(int limitNumber) {
+		this.limitNumber = limitNumber;
 	}
 
 	private void addChartTableEnums(ChartTableEnum[] chartTableEnums) {

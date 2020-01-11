@@ -45,24 +45,17 @@ public class YumaItemController {
 
 	@RequestMapping(value = "/getItems")
 	public void getItems(Model model, HttpServletResponse response, HttpServletRequest request) {
-		YumaItem yumaItem = new YumaItem();
-		yumaItem.setStatus(YumaItemStatus.AVAILABLE.getValue());
-		PageData<YumaItem> pageData = new PageData<YumaItem>();
-		pageData.setPageSize(Integer.MAX_VALUE);
-		long l = System.currentTimeMillis();
-		pageData = yumaItemService.getYumaItemByPage(pageData, yumaItem);
-		System.out.println(System.currentTimeMillis() - l);
+		PageData<YumaItem> pageData = yumaItemService.getYumaItemsForSelect();
 		if (pageData != null && pageData.getData().size() > 0) {
 			JSONArray array = new JSONArray();
 			for (int i = 0; i < pageData.getData().size(); i++) {
-				yumaItem = pageData.getData().get(i);
+				YumaItem yumaItem = pageData.getData().get(i);
 				JSONObject object = new JSONObject();
 				object.put("id", yumaItem.getId());
 				object.put("name", yumaItem.getName());
 				object.put("type", YumaItemType.getYumaItemType(yumaItem.getType()).toString());
 				array.add(object);
 			}
-			System.out.println(System.currentTimeMillis() - l);
 			WebUtil.responseText(response, array.toJSONString());
 		} else {
 			WebUtil.responseText(response, "{}");
