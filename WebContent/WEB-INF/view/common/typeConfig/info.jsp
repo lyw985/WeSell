@@ -17,7 +17,7 @@
 	</script>
 </head>
 	<body>
-		<form:form id="typeConfigForm" action="${commonMapper.rootPath}/common/typeConfig/save.do" method="post" commandName="typeConfig">
+		<form:form id="typeConfigForm" action="${pageContext.request.contextPath}/common/typeConfig/save.do" method="post" commandName="typeConfig">
 		   <table>
 			  <tr>
 			     <th><font color="red">*</font>名称：</th>

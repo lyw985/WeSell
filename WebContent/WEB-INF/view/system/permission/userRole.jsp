@@ -8,14 +8,14 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>人员角色关系管理</title>
-<link href="${commonMapper.rootPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
-<link href="${commonMapper.rootPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
-<link href="${commonMapper.rootPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jstree/jquery.jstree.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.alerts.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/hodanet.js"></script>
+<link href="${pageContext.request.contextPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jstree/jquery.jstree.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/hodanet.js"></script>
 <script type="text/javascript">
 function funGetData(key){
 	return $(".handle").data(key);
@@ -108,7 +108,7 @@ $(function(){
 		,"ui":{"select_limit" : 1}//,"initially_select":["597e6ef4dd8f4ac5a06e038b7ee838d8"]}
 		,"json_data":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/user/getChooseData.do",
+				"url":"${pageContext.request.contextPath}/user/getChooseData.do",
 				"data":function(node){//该函数用来获取提交参数
 					if(node!='-1'){
 						return {'pid':node.attr('id')};
@@ -143,7 +143,7 @@ $(function(){
 		}
 		,"search":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/user/search.do",
+				"url":"${pageContext.request.contextPath}/user/search.do",
 				"data":function(str){
 					return {"name":str};
 				}
@@ -160,7 +160,7 @@ $(function(){
 		}
 		//查询用户角色
 		$('.load').show();
-		$.post("${commonMapper.rootPath}/permission/getUserRole.do",{"userId":o.attr("id")},function(json){
+		$.post("${pageContext.request.contextPath}/permission/getUserRole.do",{"userId":o.attr("id")},function(json){
 			$('.load').hide();
 			funSetData('userRole',json);
 			funSetData('addRole',[]);
@@ -173,7 +173,7 @@ $(function(){
 		"ui":{"select_limit" : 1},
 		"json_data":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/role/getRoleTree.do",
+				"url":"${pageContext.request.contextPath}/role/getRoleTree.do",
 				"data":function(node){//该函数用来获取提交参数
 					if(node!='-1'){
 						return {'moduleId':node.attr('id')};
@@ -198,7 +198,7 @@ $(function(){
 		}
 		,"search":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/role/search.do",
+				"url":"${pageContext.request.contextPath}/role/search.do",
 				"data":function(str){
 					return {"name":str};
 				}
@@ -245,9 +245,9 @@ $(function(){
 				params += "&add="+o;
 			});
 		
-			$.post("${commonMapper.rootPath}/permission/saveUserRole.do", params, function(json){
+			$.post("${pageContext.request.contextPath}/permission/saveUserRole.do", params, function(json){
 				jAlert(json.msg, "提示");
-				$.post("${commonMapper.rootPath}/permission/getUserRole.do",{"userId":userNode.attr("id")},function(json){
+				$.post("${pageContext.request.contextPath}/permission/getUserRole.do",{"userId":userNode.attr("id")},function(json){
 					$('.load').hide();
 					funSetData('userRole',json);
 					funSetData('addRole',[]);
@@ -307,7 +307,7 @@ $(function(){
 			<td style="vertical-align: top;background-color: #fff;padding-top: 10px;">
 				<div>
 					名称:<input id="searchRoleValue" style="width: 100px;"><input type="button" id="btnSearchRole" value="查找">
-					<span class="load" style="display: none;color: red;"><img src="${commonMapper.rootPath}/js/jstree/themes/default/throbber.gif">正在读取人员角色...</span>
+					<span class="load" style="display: none;color: red;"><img src="${pageContext.request.contextPath}/js/jstree/themes/default/throbber.gif">正在读取人员角色...</span>
 				</div>
 				<div style="border-bottom: 1px solid #92b2d3; margin-bottom: 10px;">角色结构树</div>
 				<div class="roleTree">

@@ -21,7 +21,7 @@
 </head>
 <body>
 	<form:form id="yumaWeidianItemModelMappingForm"
-		action="${commonMapper.rootPath}/yuma/weidianItem/saveMapping.do"
+		action="${pageContext.request.contextPath}/yuma/weidianItem/saveMapping.do"
 		method="post" commandName="yumaWeidianItemModelMapping">
 		<form:hidden path="yumaWeidianItemModel.id" />
 		<form:hidden path="id" />

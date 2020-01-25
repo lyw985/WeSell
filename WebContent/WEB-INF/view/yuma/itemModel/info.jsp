@@ -21,7 +21,7 @@
 </head>
 <body>
 	<form:form id="yumaItemModelForm"
-		action="${commonMapper.rootPath}/yuma/itemModel/save.do" method="post"
+		action="${pageContext.request.contextPath}/yuma/itemModel/save.do" method="post"
 		commandName="yumaItemModel">
 		<form:hidden path="id" />
 		<form:hidden path="yumaItem.id" />

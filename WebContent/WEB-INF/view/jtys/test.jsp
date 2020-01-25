@@ -16,14 +16,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>家庭医生</title>
 <link rel="stylesheet" type="text/css"
-	href="${commonMapper.rootPath}/css/jtys.css" media="screen" />
+	href="${pageContext.request.contextPath}/css/jtys.css" media="screen" />
 </head>
 <body style="background:#fff;">
 	<div id="wrape">
 		<div id="main">
 			<div class="main-top">我的资料</div>
 			<div class="main-updateuser">
-                <img src="/images/success2.png" width="70" height="70" />
+                <img src="${pageContext.request.contextPath}/images/success2.png" width="70" height="70" />
                 <h1>更新成功！</h1>
                 
                 <div class="updateuser-detail">

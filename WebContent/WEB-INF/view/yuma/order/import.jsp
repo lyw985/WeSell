@@ -21,14 +21,14 @@
 </head>
 <body>
 	<form:form id="yumaImportForm" enctype="multipart/form-data"
-		action="${commonMapper.rootPath}/yuma/order/importFile.do"
+		action="${pageContext.request.contextPath}/yuma/order/importFile.do"
 		method="post">
 		<table width="100%">
 			<tr>
 				<th width="30%" align="right"><font color="red">*</font>微店格式数据：</th>
 				<td width="40%" align="left"><input id="weidianFile"
 					name="weidianFile" type="file" /></td>
-				<td width="30%" align="left"><a href="${commonMapper.rootPath}/attached/file/weidian_data_template.xls">样本下载</a></td>
+				<td width="30%" align="left"><a href="${pageContext.request.contextPath}/attached/file/weidian_data_template.xls">样本下载</a></td>
 			</tr>
 		</table>
 	</form:form>

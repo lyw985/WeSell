@@ -11,29 +11,29 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>${commonMapper.title}</title>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/hodanet.css"  />
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/linkbutton.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/icon.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/pagination.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/alert/jquery.alerts.css"/>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/cupertino/jquery-ui-1.8.15.custom.css"/>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/validationEngine.jquery.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/hodanet.css"  />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/linkbutton.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/icon.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/alert/jquery.alerts.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/cupertino/jquery-ui-1.8.15.custom.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/validationEngine.jquery.css"/>
 
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.linkbutton.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.pagination.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.alerts.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.form.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/hodanet.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine-en.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.linkbutton.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/hodanet.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validationEngine-en.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.ui.datepicker-zh-CN.js"></script>
 <script type="text/javascript">
 	$(function() {
 		
 		$(".sendCustomMsg").click(function(){
-			$("#divDialog").load('${commonMapper.rootPath}/weixin/msg/gotoSendCustomMsg.do?serverCode=${serverCode}',null,function(){
+			$("#divDialog").load('/weixin/msg/gotoSendCustomMsg.do?serverCode=${serverCode}',null,function(){
 				$("#sendCustomMsgForm").validationEngine({ promptPosition : "topRight" });
 				$("#divDialog").dialog({ 'width': 400,'height': 200,'title': '发送客服消息',
 					'buttons':{
@@ -87,7 +87,7 @@
 			<tr class="odd">
 				<td width="20%">获取accessToken</td>
 				<td width="20%"><a
-					href="${commonMapper.rootPath}/weixin/msg/getAccessToken.do?serverCode=${serverCode}">调用接口</a>
+					href="${pageContext.request.contextPath}/weixin/msg/getAccessToken.do?serverCode=${serverCode}">调用接口</a>
 				</td>
 				<td width="60%">当前accessToken值:<font color="green">${accessToken}</font><br />
 					(access_token是公众号的全局唯一票据，正常情况下access_token有效期为7200秒，重复获取将导致上次获取的access_token失效。)</td>

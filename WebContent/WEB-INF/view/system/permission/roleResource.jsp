@@ -8,14 +8,14 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>角色管理</title>
-<link href="${commonMapper.rootPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
-<link href="${commonMapper.rootPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
-<link href="${commonMapper.rootPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jstree/jquery.jstree.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.alerts.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/hodanet.js"></script>
+<link href="${pageContext.request.contextPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jstree/jquery.jstree.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/hodanet.js"></script>
 <script type="text/javascript">
 function funGetData(key){
 	return $(".handle").data(key);
@@ -109,7 +109,7 @@ $(function(){
 		"ui":{"select_limit" : 1},
 		"json_data":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/role/getRoleTree.do",
+				"url":"${pageContext.request.contextPath}/role/getRoleTree.do",
 				"data":function(node){//该函数用来获取提交参数
 					if(node!='-1'){
 						return {'moduleId':node.attr('id')};
@@ -142,7 +142,7 @@ $(function(){
 		}
 		,"search":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/role/search.do",
+				"url":"${pageContext.request.contextPath}/role/search.do",
 				"data":function(str){
 					return {"name":str};
 				}
@@ -162,7 +162,7 @@ $(function(){
 		}
 		//查询用户权限
 		$('.load').show();
-		$.post("${commonMapper.rootPath}/permission/getRoleResource.do",{"roleId":n.attr("id")},function(json){
+		$.post("${pageContext.request.contextPath}/permission/getRoleResource.do",{"roleId":n.attr("id")},function(json){
 			$('.load').hide();
 			funSetData('rolePower',json);
 			funSetData('addMenu',[]);
@@ -178,7 +178,7 @@ $(function(){
 		,"ui":{"select_limit" : 1}
 		,"json_data":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/permission/getResourceTree.do",
+				"url":"${pageContext.request.contextPath}/permission/getResourceTree.do",
 				"data":function(node){
 					if(node!='-1'){
 						return {'moduleId':node.attr('moduleId'),'t':node.attr('t'),'id':node.attr('id')};
@@ -197,7 +197,7 @@ $(function(){
 			return a1 > b1 ? 1 : -1;
 		},"search":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/resource/search.do",
+				"url":"${pageContext.request.contextPath}/resource/search.do",
 				"data":function(str){
 					return {"name":str};
 				}
@@ -256,9 +256,9 @@ $(function(){
 				params += "&addMenu="+o;
 			});
 			//alert(params);
-			$.post("${commonMapper.rootPath}/permission/saveRoleResource.do", params, function(json){
+			$.post("${pageContext.request.contextPath}/permission/saveRoleResource.do", params, function(json){
 				jAlert(json.msg, "提示");
-				$.post("${commonMapper.rootPath}/permission/getRoleResource.do",{"roleId":roleNode.attr("id")},function(json){
+				$.post("${pageContext.request.contextPath}/permission/getRoleResource.do",{"roleId":roleNode.attr("id")},function(json){
 					$('.load').hide();
 					funSetData('rolePower',json);
 					funSetData('addMenu',[]);
@@ -298,7 +298,7 @@ $(function(){
 			<td style="vertical-align: top;background-color: #fff;padding-top: 10px;">
 				<div>
 					名称:<input id="searchResourceValue" style="width: 100px;"><input type="button" id="btnSearchResource" value="查找">
-					<span class="load" style="display: none;color: red;"><img src="${commonMapper.rootPath}/js/jstree/themes/default/throbber.gif">正在读取角色权限...</span>
+					<span class="load" style="display: none;color: red;"><img src="${pageContext.request.contextPath}/js/jstree/themes/default/throbber.gif">正在读取角色权限...</span>
 				</div>
 				<div style="border-bottom: 1px solid #92b2d3; margin-bottom: 10px;">资源结构树</div>
 				<div class="resourceTree">

@@ -10,6 +10,6 @@
 	<title>${commonMapper.title}</title>
 	</head>
 	<body>
-		Welcome Join！${user.loginId}&nbsp;&nbsp; <a href="${commonMapper.indexPath}">&#9666;返回首页</a>
+		Welcome Join！${user.loginId}&nbsp;&nbsp; <a href="${pageContext.request.contextPath}/index.jsp">&#9666;返回首页</a>
 	</body>
 </html>

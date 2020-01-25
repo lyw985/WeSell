@@ -19,7 +19,7 @@
 </head>
 <body>
 	<form:form id="yumaUserForm"
-		action="${commonMapper.rootPath}/yuma/user/save.do" method="post"
+		action="${pageContext.request.contextPath}/yuma/user/save.do" method="post"
 		commandName="yumaUser">
 		<form:hidden path="id" />
 		<table>

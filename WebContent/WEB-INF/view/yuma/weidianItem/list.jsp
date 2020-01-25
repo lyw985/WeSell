@@ -11,25 +11,25 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>${commonMapper.title}</title>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/hodanet.css"  />
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/linkbutton.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/icon.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/pagination.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/alert/jquery.alerts.css"/>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/cupertino/jquery-ui-1.8.15.custom.css"/>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/validationEngine.jquery.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/hodanet.css"  />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/linkbutton.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/icon.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/alert/jquery.alerts.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/cupertino/jquery-ui-1.8.15.custom.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/validationEngine.jquery.css"/>
 
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.linkbutton.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.pagination.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.alerts.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.form.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/hodanet.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine-en.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.ui.datepicker-zh-CN.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/util/yuma.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.linkbutton.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/hodanet.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validationEngine-en.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/util/yuma.js"></script>
 <script type="text/javascript">
 	$(function() {
 		var pager = $("#pager");
@@ -60,7 +60,7 @@
 		
 		//新增按钮
 		$("#addButton").click(function(){
-			$("#divDialog").load('${commonMapper.rootPath}/yuma/weidianItem/new.do',null,function(){
+			$("#divDialog").load('/yuma/weidianItem/new.do',null,function(){
 				$("#yumaWeidianItemForm").validationEngine({ promptPosition : "topRight" });
 				$("#divDialog").dialog({ 'width': 500,'height': 300,'title': '信息新增',
 					'buttons':{
@@ -90,7 +90,7 @@
 		
 		//修改按钮
 		$(".btnModify").click(function(){
-			$("#divDialog").load('${commonMapper.rootPath}/yuma/weidianItem/modify/'+$(this).attr('rel')+'.do',null,function(){
+			$("#divDialog").load('/yuma/weidianItem/modify/'+$(this).attr('rel')+'.do',null,function(){
 				$("#yumaWeidianItemForm").validationEngine({ promptPosition : "topRight" });
 				$("#divDialog").dialog({title:'信息修改',resizable: false,height:300,width:500,
 					'buttons':{
@@ -130,7 +130,7 @@
 					$(".selOne:checked").each(function() {
 						ids += "&id=" + $(this).val();
 					});
-					$.post("${commonMapper.rootPath}/yuma/weidianItem/delete.do", ids.substring(1), function(data) {
+					$.post("${pageContext.request.contextPath}/yuma/weidianItem/delete.do", ids.substring(1), function(data) {
 						if (data.flag) {
 							jAlert(data.msg, "成功", function() {
 							$("#queryForm").submit();
@@ -148,7 +148,7 @@
 			var tmp = "&id="+$(this).attr('rel');
 			jConfirm('确认要删除记录吗？', '确认操作', function(result){
 				if(result == true){
-					$.post('${commonMapper.rootPath}/yuma/weidianItem/delete.do',tmp.substring(1),function(data){
+					$.post('/yuma/weidianItem/delete.do',tmp.substring(1),function(data){
 						if(data.flag){
 							jAlert(data.msg,'成功',function(){
 								$("#queryForm").submit();
@@ -165,7 +165,7 @@
 			var tmp = "&id="+$(this).attr('rel')+"&body_id="+$(this).val();
 			jConfirm('确认将选择的商品设置为本商品的本体吗？', '确认操作', function(result){
 				if(result == true){
-					$.post('${commonMapper.rootPath}/yuma/weidianItem/beShadow.do',tmp.substring(1),function(data){
+					$.post('/yuma/weidianItem/beShadow.do',tmp.substring(1),function(data){
 						if(data.flag){
 							jAlert(data.msg,'成功',function(){
 								$("#queryForm").submit();
@@ -182,7 +182,7 @@
 			var tmp = "&id="+$(this).attr('rel');
 			jConfirm('确认设置为本体吗？', '确认操作', function(result){
 				if(result == true){
-					$.post('${commonMapper.rootPath}/yuma/weidianItem/beBody.do',tmp.substring(1),function(data){
+					$.post('/yuma/weidianItem/beBody.do',tmp.substring(1),function(data){
 						if(data.flag){
 							jAlert(data.msg,'成功',function(){
 								$("#queryForm").submit();
@@ -197,7 +197,7 @@
 		
 		//增加关系按钮
 		$(".addMapping").click(function(){
-			$("#divDialog").load('${commonMapper.rootPath}/yuma/weidianItem/addMapping/'+$(this).attr('rel')+'.do',null,function(){
+			$("#divDialog").load('/yuma/weidianItem/addMapping/'+$(this).attr('rel')+'.do',null,function(){
 				$("#yumaWeidianItemModelMappingForm").validationEngine({ promptPosition : "topRight" });
 				$("#divDialog").dialog({title:'增加商品映射关系',resizable: false,height:300,width:500,
 					'buttons':{
@@ -228,14 +228,14 @@
 		//修改关系按钮
 		$(".modifyMapping").click(function(){
 			var tmp = "&id="+$(this).attr('rel');
-			$("#divDialog").load('${commonMapper.rootPath}/yuma/weidianItem/modifyMapping/'+$(this).attr('rel')+'.do',null,function(){
+			$("#divDialog").load('/yuma/weidianItem/modifyMapping/'+$(this).attr('rel')+'.do',null,function(){
 				$("#yumaWeidianItemModelMappingForm").validationEngine({ promptPosition : "topRight" });
 				$("#divDialog").dialog({title:'修改商品映射关系',resizable: false,height:300,width:500,
 					'buttons':{
 						'删除':function(){
 							jConfirm('确认将这个关系删除吗？', '确认操作', function(result){
 								if(result == true){
-									$.post('${commonMapper.rootPath}/yuma/weidianItem/deleteMapping.do',tmp.substring(1),function(data){
+									$.post('/yuma/weidianItem/deleteMapping.do',tmp.substring(1),function(data){
 										if(data.flag){
 											jAlert(data.msg,'成功',function(){
 												$("#queryForm").submit();
@@ -272,11 +272,11 @@
 		});
 		
 		$(".receiverList").click(function(){
-			window.location.href="${commonMapper.rootPath}/yuma/receiver/list.do?weidianItem_id="+$(this).attr('rel');
+			window.location.href="${pageContext.request.contextPath}/yuma/receiver/list.do?weidianItem_id="+$(this).attr('rel');
 		});
 		
 		$(".orderListByUserId").click(function(){
-			window.location.href="${commonMapper.rootPath}/yuma/order/list.do?weidianItem_id="+$(this).attr('rel');
+			window.location.href="${pageContext.request.contextPath}/yuma/order/list.do?weidianItem_id="+$(this).attr('rel');
 		});
 		
 		$("#bodyType").val("${bodyType}")
@@ -305,7 +305,7 @@
 	</div>
 	<!-- --------------------查询表单-------------------- -->
 	<div class="ui-widget">
-		<form:form id="queryForm" action="${commonMapper.rootPath}/yuma/weidianItem/query.do" method="post">
+		<form:form id="queryForm" action="${pageContext.request.contextPath}/yuma/weidianItem/query.do" method="post">
 			<input type="hidden" id="pageSize" name="pageSize" value="${pageData.pageSize }"/> 
 			<input type="hidden" id="pageNumber" name="pageNumber" value="${pageData.pageNumber }"/>
 			<table border="0" cellpadding="0" cellspacing="0">

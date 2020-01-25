@@ -11,7 +11,7 @@
 <title>人员详细</title>
 </head>
 <body>
-<form:form action="${commonMapper.rootPath}/user/save.do" commandName="user">
+<form:form action="${pageContext.request.contextPath}/user/save.do" commandName="user">
 	<table class="detail">
 		<tr>
 			<td><span class="required">*</span>登录id：</td>
@@ -37,7 +37,7 @@
 			<td>
 				<input type="hidden" id="departmentId" name="departmentId" readonly="readonly" value="${department.id }">
 				<input type="text" id="departmentName" name="departmentName" readonly="readonly" value="${department.name }">
-				<img alt="选择" title="选择部门" src="${commonMapper.rootPath}/images/choose.gif" style="margin: 0px;padding: 0px;">
+				<img alt="选择" title="选择部门" src="${pageContext.request.contextPath}/images/choose.gif" style="margin: 0px;padding: 0px;">
 			</td>
 		</tr>
 		<tr>

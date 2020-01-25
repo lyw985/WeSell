@@ -11,27 +11,27 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>${commonMapper.title}</title>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/hodanet.css"  />
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/linkbutton.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/icon.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/pagination.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/alert/jquery.alerts.css"/>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/cupertino/jquery-ui-1.8.15.custom.css"/>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/validationEngine.jquery.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/hodanet.css"  />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/linkbutton.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/icon.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/alert/jquery.alerts.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/cupertino/jquery-ui-1.8.15.custom.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/validationEngine.jquery.css"/>
 
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.linkbutton.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.pagination.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.alerts.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.form.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/hodanet.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine-en.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.ui.datepicker-zh-CN.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/chart/Chart.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/chart/utils.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/util/yuma.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.linkbutton.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/hodanet.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validationEngine-en.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/chart/Chart.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/chart/utils.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/util/yuma.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$(".dateTime").datepicker({dateFormat: 'yy-mm-dd',changeMonth: true, changeYear: true});
@@ -87,7 +87,7 @@
 	</div>
 	<!-- --------------------查询表单-------------------- -->
 	<div class="ui-widget">
-		<form:form id="queryForm" action="${commonMapper.rootPath}/yuma/chart/query.do" method="post">
+		<form:form id="queryForm" action="${pageContext.request.contextPath}/yuma/chart/query.do" method="post">
 			<input type="hidden" id="pageSize" name="pageSize" value="${pageData.pageSize }"/> 
 			<input type="hidden" id="pageNumber" name="pageNumber" value="${pageData.pageNumber }"/>
 			<input type="hidden" id="chartConfig" name="chartConfig" value="${chartConfig }"/>
@@ -143,6 +143,7 @@
 							<option value="21">商品总量</option>
 							<option value="22">商品总价</option>
 							<option value="23">商品均价</option>
+							<option value="31">客户数量</option>
 						</select> 
 					</td>
 				</tr>
@@ -153,6 +154,7 @@
 							<option value="">---选择分组条件---</option>
 							<option value="11">年</option>
 							<option value="12">月</option>
+							<option value="17">1月至12月</option>
 							<option value="13">天</option>
 							<option value="14">周</option>
 							<option value="15">周一至周日</option>
@@ -169,6 +171,7 @@
 							<option value="">---选择分组条件---</option>
 							<option value="11">年</option>
 							<option value="12">月</option>
+							<option value="17">1月至12月</option>
 							<option value="13">天</option>
 							<option value="14">周</option>
 							<option value="15">周一至周日</option>

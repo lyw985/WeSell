@@ -19,7 +19,7 @@
 </head>
 <body>
 	<form:form id="yumaItemForm"
-		action="${commonMapper.rootPath}/yuma/item/save.do" method="post"
+		action="${pageContext.request.contextPath}/yuma/item/save.do" method="post"
 		commandName="yumaItem">
 		<form:hidden path="id" />
 		<table width="100%">

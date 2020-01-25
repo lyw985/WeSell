@@ -14,18 +14,18 @@
 <meta content="black" name="apple-mobile-web-app-status-bar-style"></meta>
 <title>家庭医生抢话费</title>
 <script type="text/javascript"
-	src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
+	src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
 <script type="text/javascript"
 	src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="${commonMapper.rootPath}/css/jtys_hd.css" media="screen" />
+	href="${pageContext.request.contextPath}/css/jtys_hd.css" media="screen" />
 <script type="text/javascript">
 	function hdHelp() {
 		var id = $("#ownerId").val();
 		var prop = {};
 		prop.openId = $("#openId").val();
 		$.ajax({
-			url : "${commonMapper.rootPath}/jtys/api/hd" + id + "/hdHelp.do",
+			url : "/jtys/api/hd" + id + "/hdHelp.do",
 			data : prop,
 			cache : false,
 			success : function(responseJson) {
@@ -50,7 +50,7 @@
 		var prop = {};
 		prop.phone = $("#phone").val();
 		$.ajax({
-			url : "${commonMapper.rootPath}/jtys/api/hd" + id
+			url : "/jtys/api/hd" + id
 					+ "/hdSubmit.do",
 			data : prop,
 			cache : false,
@@ -77,8 +77,8 @@
 		$("#hdSubmitDiv").show();
 	}
 
-	var imgUrl = '${commonMapper.rootPath}/images/weixin_jtys.jpg';
-	var link = '${commonMapper.rootPath}/jtys/api/hd${owner.id }/hdDetail.do';
+	var imgUrl = '/images/weixin_jtys.jpg';
+	var link = '/jtys/api/hd${owner.id }/hdDetail.do';
 	var desc = '家庭医生迎新年话费抢抢抢！';
 	var title = '家庭医生抢话费';
 	var appid = 'wx009ab4828e47d9c1';
@@ -154,7 +154,7 @@
 	
 </script>
 <div id='wx_pic' style='margin:0 auto;display:none;'>
-<img src='${commonMapper.rootPath}/images/weixin_jtys.jpg' />
+<img src='/images/weixin_jtys.jpg' />
 </div>
 </head>
 
@@ -163,7 +163,7 @@
 	<input id="openId" type="hidden" value="${openId }" />
 	<div id="main">
 		<div style="width: 100%; height: 45%;">
-			<img src="${commonMapper.rootPath}/images/photo.jpg"
+			<img src="${pageContext.request.contextPath}/images/photo.jpg"
 				style="width: 100%; height: 100%; display: block" />
 		</div>
 		
@@ -352,7 +352,7 @@
 	</script>
 	<div id="cover"></div>
 	<div id="guide">
-		<img src="${commonMapper.rootPath}/images/share.png" width="240px">
+		<img src="${pageContext.request.contextPath}/images/share.png" width="240px">
 	</div>
 </body>
 </html>

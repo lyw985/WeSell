@@ -8,9 +8,9 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>人员管理</title>
-<link href="${commonMapper.rootPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="${commonMapper.rootPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
-<link href="${commonMapper.rootPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="${pageContext.request.contextPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="${pageContext.request.contextPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
 <style type="text/css">
 input[type='password'],input[type='text']{
 	width: 150px;
@@ -22,12 +22,12 @@ input[type='password'],input[type='text']{
 	color: red;
 }
 </style> 
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jstree/jquery.jstree.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.form.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.alerts.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/hodanet.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jstree/jquery.jstree.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/hodanet.js"></script>
 <script type="text/javascript">
 $.ajaxSetup({cache:false});
 
@@ -41,7 +41,7 @@ function funRefreshParent(){
 
 //交换排序，修改显示顺序
 function funSwapOrdering(one,two){
-	$.post("${commonMapper.rootPath}/user/order.do",{'one':one,'two':two},function(json){
+	$.post("${pageContext.request.contextPath}/user/order.do",{'one':one,'two':two},function(json){
 		funRefreshParent();
 	},'json');
 }
@@ -64,7 +64,7 @@ function funChooseParent(){
 		$('body').append("<iframe class='dialog' src='' frameborder='no' border='0' marginwidth='0' marginheight='0' allowtransparency='yes'></iframe>");
 		d = $(".dialog");
 	}
-	d.attr('src','${commonMapper.rootPath}/department/choose.do?type=1&flag=1');
+	d.attr('src','/department/choose.do?type=1&flag=1');
 	d.dialog({autoOpen:true,position: 'top',title:'部门选择',resizable: false,height:370,width:260,modal:true});
 }
 
@@ -110,7 +110,7 @@ function checkForm(){
 	}
 	var checkUser = true;
 	var id = $("#context").find("#id").val();
-	$.ajax({type:'post',url:'${commonMapper.rootPath}/user/check.do',data:"loginId="+loginId+"&id="+id,dataType:'json',cache:false,async:false,success:function(json){
+	$.ajax({type:'post',url:'/user/check.do',data:"loginId="+loginId+"&id="+id,dataType:'json',cache:false,async:false,success:function(json){
 		checkUser = json.flag;
 	}});
 	
@@ -131,7 +131,7 @@ $(function(){
 		"ui":{"select_limit" : 1},
 		"json_data":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/user/getChooseData.do",
+				"url":"${pageContext.request.contextPath}/user/getChooseData.do",
 				"data":function(node){//该函数用来获取提交参数
 					if(node!='-1'){
 						return {'pid':node.attr('id')};
@@ -166,7 +166,7 @@ $(function(){
 		}
 		,"search":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/user/search.do",
+				"url":"${pageContext.request.contextPath}/user/search.do",
 				"data":function(str){
 					return {"name":str};
 				}
@@ -181,7 +181,7 @@ $(function(){
 			data.inst.deselect_node(n);
 			return;
 		}
-		var url = "${commonMapper.rootPath}/user/modify/" + n.attr('id') + ".do";
+		var url = "/user/modify/" + n.attr('id') + ".do";
 		funOpenDetail(url);
 	});
 
@@ -218,7 +218,7 @@ $(function(){
 	//新建按钮
 	$(".add").click(function(){
 		$('.userTree').jstree('deselect_all');
-		var url = "${commonMapper.rootPath}/user/new.do";
+		var url = "/user/new.do";
 		funOpenDetail(url);
 	});
 	
@@ -238,7 +238,7 @@ $(function(){
 		var name = $("#context").find("#name").val();
 		jConfirm("确认删除人员:["+name+"]?","确认",function(result){
 			if(result){
-				var url = "${commonMapper.rootPath}/user/delete.do";
+				var url = "/user/delete.do";
 				var id = $("#context").find("#id").val();
 				$.post(url,{'id':id},function(json){
 					if(json.flag){
@@ -272,8 +272,8 @@ $(function(){
 				<div class="userTree" style="float: left;">
 				</div>
 				<div style="border: 0px solid #92b2d3;float: right;padding: 0px;margin-top: 60px;">
-					<img src="${commonMapper.rootPath}/images/system-up.gif" title="上移" class="moveTop" alt="上移" style="margin: 5px;cursor: pointer;"><br>
-					<img src="${commonMapper.rootPath}/images/system-down.gif" title="下移" class="moveDown" alt="下移" style="margin: 5px;cursor: pointer;">
+					<img src="${pageContext.request.contextPath}/images/system-up.gif" title="上移" class="moveTop" alt="上移" style="margin: 5px;cursor: pointer;"><br>
+					<img src="${pageContext.request.contextPath}/images/system-down.gif" title="下移" class="moveDown" alt="下移" style="margin: 5px;cursor: pointer;">
 				</div>
 			</td>
 			<td style="vertical-align: top;background-color: #fff;padding-top: 10px;">

@@ -1,0 +1,108 @@
+/* -----------------------------------------分档类别---------------------------------------------- */
+#时间段：(年/月/日/周/0-24时/周一到周日)
+#需要表：yuma_order_item
+#年：DATE_FORMAT(yumaOrderItem.pay_time, '%Y')
+#月：DATE_FORMAT(yumaOrderItem.pay_time, '%Y-%m')
+#1-12月：DATE_FORMAT(yumaOrderItem.pay_time, '%m')
+#日：DATE_FORMAT(yumaOrderItem.pay_time, '%Y-%m-%d')
+#年里的周数：CONCAT(YEAR(yumaOrderItem.pay_time),'-',LPAD(WEEK(yumaOrderItem.pay_time)+1,2,'0'))
+#0-24时：CONCAT(LPAD(HOUR(yumaOrderItem.pay_time),2,'0'),':00-',LPAD(HOUR(yumaOrderItem.pay_time)+1,2,'0'),':00')
+#周一到周日：CONCAT('周',weekday(yumaOrderItem.pay_time)+1) 
+##也可按下面重命名
+/*
+周一到周日的重命名
+CASE 
+	WHEN body.dateFormat = 0 THEN '周一'
+	WHEN body.dateFormat = 1 THEN '周二'
+	WHEN body.dateFormat = 2 THEN '周三'
+	WHEN body.dateFormat = 3 THEN '周四'
+	WHEN body.dateFormat = 4 THEN '周五'
+	WHEN body.dateFormat = 5 THEN '周六'
+	WHEN body.dateFormat = 6 THEN '周日'
+	ELSE '其他'
+END 
+*/
+
+#地区信息：(省份，城市，地区)
+#需要表：yuma_receiver,province,city,area
+#省份：pro.name
+#城市：CONCAT(pro.name,'-',cit.name)
+#地区：CONCAT(pro.name,'-',cit.name,'-',are.name)
+
+#商品信息：(商品，型号)
+#需要表：yuma_receiver,yuma_weidian_item_model_mapping,yuma_item_model,yuma_item
+#商品：yumaItem.name
+#型号：CONCAT(yumaItem.name,'-',yumaItemModel.name)
+
+#收货人信息
+#需要表：yuma_receiver
+#TODO
+
+#用户信息
+#需要表：yuma_receiver,yuma_user
+#TODO
+
+/* -----------------------------------------查询对应数据----------------------------------------------- */
+#订单信息：(订单总数, 订单总价, 订单商品总量，订单平均价格)
+#需要表：yuma_order_item
+#订单总数：COUNT(DISTINCT yumaOrderItem.order_id) AS sumOrderCount
+
+#订单总价：SUM(yumaOrderItem.pay_price * yumaOrderItem.count) AS sumOrderPrice
+#订单商品总量：SUM(yumaOrderItem.count) AS sumOrderItemCount
+#订单平均价格: ROUND(SUM(yumaOrderItem.pay_price * yumaOrderItem.count)/COUNT(DISTINCT yumaOrderItem.order_id),1) AS avgOrderPrice
+###############如果涉及到商品过滤，需要用以下的，但是不推荐#################
+#订单总价：SUM(yumaOrderItem.pay_price * yumaOrderItem.COUNT * yumaWeidianItemModelMapping.price_percent) AS sumOrderPrice
+#订单商品总量：SUM(Round(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.price_percent)) AS sumOrderItemCount
+#订单平均价格: SUM(yumaOrderItem.pay_price * yumaOrderItem.COUNT * yumaWeidianItemModelMapping.price_percent)/COUNT(DISTINCT yumaOrderItem.order_id) AS avgOrderPrice  
+############################################################################
+
+#商品信息：(商品总量，商品总价，商品均价)
+#需要表：yuma_order_item,yuma_weidian_item_model_mapping,yuma_item_model,yuma_item
+#商品总量：SUM(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.COUNT) AS sumItemCount
+#商品总价：SUM(yumaOrderItem.COUNT * yumaOrderItem.pay_price * yumaWeidianItemModelMapping.price_percent) AS sumItemPrice
+#商品均价：SUM(yumaOrderItem.COUNT * yumaOrderItem.pay_price * yumaWeidianItemModelMapping.price_percent)/SUM(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.COUNT) AS avgItemPrice
+
+#sql样例
+#1.查询时间段 订单信息
+SELECT DATE_FORMAT(yumaOrderItem.pay_time, '%Y-%m') AS dateFormat
+	, COUNT(DISTINCT yumaOrderItem.order_id) AS sumOrderCount
+	, SUM(yumaOrderItem.pay_price * yumaOrderItem.COUNT) AS sumOrderPrice
+	, SUM(yumaOrderItem.COUNT) AS sumItemCount
+	, SUM(yumaOrderItem.pay_price * yumaOrderItem.COUNT)/COUNT(DISTINCT yumaOrderItem.order_id) AS avgOrderPrice
+FROM yuma_order_item yumaOrderItem
+WHERE 1 = 1
+	AND DATE(yumaOrderItem.pay_time) >= '2018-11-01'
+	AND DATE(yumaOrderItem.pay_time) <= '2019-11-01'
+GROUP BY DATE_FORMAT(yumaOrderItem.pay_time, '%Y-%m')
+
+#2.查询地区信息 订单信息
+SELECT CONCAT(pro.name,'-',cit.name,'-',are.name) AS pcaInfo
+	, COUNT(DISTINCT yumaOrderItem.order_id) AS sumOrderCount
+	, SUM(yumaOrderItem.pay_price * yumaOrderItem.COUNT) AS sumPrice
+	, SUM(yumaOrderItem.COUNT) AS sumCount
+FROM yuma_order_item yumaOrderItem
+LEFT JOIN yuma_receiver yumaReceiver on yumaReceiver.id = yumaOrderItem.receiver_id 
+LEFT JOIN province pro on pro.id = yumaReceiver.province_id
+LEFT JOIN city cit on cit.id = yumaReceiver.city_id
+LEFT JOIN area are on are.id = yumaReceiver.area_id
+WHERE 1 = 1
+	AND DATE(yumaOrderItem.pay_time) >= '2018-11-01'
+	AND DATE(yumaOrderItem.pay_time) < '2019-11-01'
+GROUP BY CONCAT(pro.name,'-',cit.name,'-',are.name)
+
+
+#3.查询商品型号 销售情况(总量，总售价，平均售价)
+SELECT CONCAT(yumaItem.name,'-',yumaItemModel.name)
+	, SUM(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.COUNT ) AS sumItemCount
+	, SUM(yumaOrderItem.COUNT * yumaOrderItem.pay_price * yumaWeidianItemModelMapping.price_percent) AS sumItemPrice
+	, SUM(yumaOrderItem.COUNT * yumaOrderItem.pay_price * yumaWeidianItemModelMapping.price_percent)/SUM(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.COUNT) AS avgItemPrice
+FROM yuma_order_item yumaOrderItem
+	LEFT JOIN yuma_weidian_item_model_mapping yumaWeidianItemModelMapping ON yumaWeidianItemModelMapping.weidian_item_model_id = yumaOrderItem.weidian_item_model_id
+	LEFT JOIN yuma_item_model yumaItemModel ON yumaItemModel.id = yumaWeidianItemModelMapping.item_model_id
+	LEFT JOIN yuma_item yumaItem ON yumaItem.id = yumaItemModel.item_id
+WHERE 1 = 1
+	AND DATE(yumaOrderItem.pay_time) >= '2018-11-01'
+	AND DATE(yumaOrderItem.pay_time) < '2019-12-01'
+	AND yumaItemModel.item_id = 4
+GROUP BY CONCAT(yumaItem.name,'-',yumaItemModel.name)
+

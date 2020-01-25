@@ -16,7 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>家庭医生</title>
 <link rel="stylesheet" type="text/css"
-	href="${commonMapper.rootPath}/css/jtys.css" media="screen" />
+	href="${pageContext.request.contextPath}/css/jtys.css" media="screen" />
 </head>
 
 <body>
@@ -32,7 +32,7 @@
 						<div class="question-content">
 							<div class="quest-ico">
 								<c:if test="${empty headImgUrl}">
-									<img src="/images/weixin_default.png" height="70px"
+									<img src="${pageContext.request.contextPath}/images/weixin_default.png" height="70px"
 										width="70px" />
 								</c:if>
 								<c:if test="${!empty headImgUrl}">
@@ -78,7 +78,7 @@
 					<c:if test="${jtysCommunicate.type ==2 }">
 						<div class="answer-content">
 							<div class="answer-ico">
-								<img src="/images/weixin_jtys.jpg" height="70px"
+								<img src="${pageContext.request.contextPath}/images/weixin_jtys.jpg" height="70px"
 									width="70px" />
 							</div>
 							<div class="answer-detail">

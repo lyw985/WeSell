@@ -11,7 +11,7 @@
 	<title>${commonMapper.title}</title>
 </head>
 	<body>
-		<form:form id="menuForm" action="${commonMapper.rootPath}/menu/save.do" method="post" commandName="menu">
+		<form:form id="menuForm" action="${pageContext.request.contextPath}/menu/save.do" method="post" commandName="menu">
 		   <table>
 			  <tr>
 			     <td>菜单名称：</td>

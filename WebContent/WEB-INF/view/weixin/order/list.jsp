@@ -162,7 +162,7 @@
 		
 		$(".queryOrder").click(function(){
 			var tmp = "&outTradeNo="+$(this).attr('rel');
-			$("#divDialog").load('${commonMapper.rootPath}/weixin/order/queryOrder.do?serverCode=${serverCode}',tmp.substring(1),function(){
+			$("#divDialog").load('/weixin/order/queryOrder.do?serverCode=${serverCode}',tmp.substring(1),function(){
 				$("#divDialog").dialog({ 'width': 500,'height': 500,'title': '订单详细信息',
 					modal:true,
 					beforeClose:function(event, ui) {

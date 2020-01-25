@@ -16,12 +16,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>家庭医生</title>
 <script type="text/javascript"
-	src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
+	src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="${commonMapper.rootPath}/css/jtys.css" media="screen" />
+	href="${pageContext.request.contextPath}/css/jtys.css" media="screen" />
 <script type="text/javascript">
 	function showDetail(openId, problemId, accessToken) {
-		window.location.href = "${commonMapper.rootPath}/jtys/api/detail.do?openId="
+		window.location.href = "/jtys/api/detail.do?openId="
 				+ openId
 				+ "&problemId="
 				+ problemId
@@ -44,7 +44,7 @@
 						varStatus="vs">
 						<div class="content"
 							onclick="showDetail('${jtytCommunicate.user.openId }','${jtytCommunicate.problemId }','${accessToken }');">
-							<div style="float:right;width:20%;margin-top:15px"><img src="/images/jiantou.png" width="20" height="20"/></div>
+							<div style="float:right;width:20%;margin-top:15px"><img src="${pageContext.request.contextPath}/images/jiantou.png" width="20" height="20"/></div>
 							<c:if test="${!empty jtytCommunicate.doctor }">
 								<h2>${jtytCommunicate.doctor.clinic }
 									${jtytCommunicate.doctor.name }</h2>

@@ -29,7 +29,7 @@
 </head>
 <body>
 	<form:form id="blshContentForm"
-		action="${commonMapper.rootPath}/blsh/content/save.do" method="post"
+		action="${pageContext.request.contextPath}/blsh/content/save.do" method="post"
 		commandName="blshContent">
 		<form:hidden path="id" />
 		<table>

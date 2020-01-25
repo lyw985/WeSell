@@ -15,16 +15,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>家庭医生</title>
 <script type="text/javascript"
-	src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
+	src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="${commonMapper.rootPath}/css/jtys.css" media="screen" />
+	href="${pageContext.request.contextPath}/css/jtys.css" media="screen" />
 <script type="text/javascript">
 	function gotoBind() {
-		window.location.href = "${commonMapper.rootPath}/jtys/api/gotoBind.do?openId="+$("#openId").val()+"&accessToken="+$("#accessToken").val();
+		window.location.href = "/jtys/api/gotoBind.do?openId="+$("#openId").val()+"&accessToken="+$("#accessToken").val();
 	}
 	
 	function gotoPay() {
-		window.location.href = "${commonMapper.rootPath}/weixin/pay/jtys/jsapi.do?showwxpaytitle=1&openId="+$("#openId").val()+"&accessToken="+$("#accessToken").val();
+		window.location.href = "/weixin/pay/jtys/jsapi.do?showwxpaytitle=1&openId="+$("#openId").val()+"&accessToken="+$("#accessToken").val();
 	}
 	
 </script>
@@ -43,7 +43,7 @@
 							<span style="font-size: 13px">电信短信“家庭医生”包月用户</span>
 						</div>
 						<div class="huiyuan-right">
-							<img src="/images/more.png" width="20" height="25" />
+							<img src="${pageContext.request.contextPath}/images/more.png" width="20" height="25" />
 						</div>
 					</li>
 					<li onclick="gotoPay()"><div class="huiyuan-left">
@@ -51,7 +51,7 @@
 							<span style="font-size: 13px">开通会员服务，最低只需20元</span>
 						</div>
 						<div class="huiyuan-right">
-							<img src="/images/more.png" width="20" height="25" />
+							<img src="${pageContext.request.contextPath}/images/more.png" width="20" height="25" />
 						</div>
 					</li>
 				</ul>

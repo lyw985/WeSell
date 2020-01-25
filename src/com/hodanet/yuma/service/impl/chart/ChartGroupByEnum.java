@@ -8,11 +8,14 @@ public enum ChartGroupByEnum {
 	GROUPBY_WEEK_MONDAY_TO_SUNDAY(15, "CONCAT('周',weekday(yumaOrderItem.pay_time)+1) "),
 	GROUPBY_HOUR_0_TO_23(16,
 			"CONCAT(LPAD(HOUR(yumaOrderItem.pay_time),2,'0'),':00-',LPAD(HOUR(yumaOrderItem.pay_time)+1,2,'0'),':00') "),
+	GROUPBY_MONTH_1_TO_12(17,
+			"CONCAT(DATE_FORMAT(yumaOrderItem.pay_time, '%m'),'月') "),
 
 	GROUPBY_PROVINCE(21, "pro.name "), GROUPBY_CITY(22, "CONCAT(pro.name,'-',cit.name) "),
 	GROUPBY_AREA(23, "CONCAT(pro.name,'-',cit.name,'-',are.name) "),
 
 	GROUPBY_ITEM(31, "yumaItem.name "), GROUPBY_ITEM_MODEL(32, "CONCAT(yumaItem.name,'-',yumaItemModel.name) ");
+	
 
 	private int type;
 	private String sql;
@@ -43,6 +46,8 @@ public enum ChartGroupByEnum {
 		case GROUPBY_WEEK_MONDAY_TO_SUNDAY:
 			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM };
 		case GROUPBY_HOUR_0_TO_23:
+			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM };
+		case GROUPBY_MONTH_1_TO_12:
 			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM };
 		case GROUPBY_PROVINCE:
 			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM, ChartTableEnum.TABLE_RECEIVER,
@@ -79,6 +84,8 @@ public enum ChartGroupByEnum {
 			return GROUPBY_WEEK_MONDAY_TO_SUNDAY;
 		case 16:
 			return GROUPBY_HOUR_0_TO_23;
+		case 17:
+			return GROUPBY_MONTH_1_TO_12;
 		case 21:
 			return GROUPBY_PROVINCE;
 		case 22:

@@ -9,9 +9,9 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>资源管理</title>
-<link href="${commonMapper.rootPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
-<link href="${commonMapper.rootPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
-<link href="${commonMapper.rootPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" /> 
+<link href="${pageContext.request.contextPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" /> 
 <style type="text/css">
 select{
 	width: 150px;
@@ -25,12 +25,12 @@ textarea{
 	font-size: 12px;
 }
 </style>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jstree/jquery.jstree.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.form.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.alerts.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/hodanet.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jstree/jquery.jstree.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/hodanet.js"></script>
 <script type="text/javascript">
 $.ajaxSetup({cache:false});
 /** 刷新父节点 */
@@ -43,7 +43,7 @@ function funRefreshParent(){
 }
 /* 交换排序 */
 function funSwapOrdering(type,one,two){
-	$.post("${commonMapper.rootPath}/resource/swap.do",{'type':type,'one':one,'two':two},function(json){
+	$.post("${pageContext.request.contextPath}/resource/swap.do",{'type':type,'one':one,'two':two},function(json){
 		funRefreshParent();
 	},'json');
 }
@@ -72,7 +72,7 @@ function funChooseMenuTree(context){
 		,"ui":{"select_limit" : 1}
 		,"json_data":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/resource/menuResource/"+module+".do"
+				"url":"${pageContext.request.contextPath}/resource/menuResource/"+module+".do"
 			}
 		},"sort":function(a,b){
 			if($(a).attr("ordering") == null || $(b).attr("ordering") == null) return 1;
@@ -105,7 +105,7 @@ function funChooseMenuTree(context){
 function funLoadInfoPage(url,callback){
 	$(".dialog").load(url,null,function(){
 		$(".dialog").find(".type").change(function(){
-			var u = "${commonMapper.rootPath}/resource/"+$(this).val()+"/add.do";
+			var u = "/resource/"+$(this).val()+"/add.do";
 			$(".dialog").dialog('option','title',"新建"+$("option:selected",this).text());
 			funLoadInfoPage(u);
 		});
@@ -137,7 +137,7 @@ function funAjaxSubmit(context,success){
 		}
 		var checkUser = true;
 		var mid = $("#id",context).val();
-		$.ajax({type:'post',url:'${commonMapper.rootPath}/resource/module/check.do',data:"id="+mid+"&code="+value,dataType:'json',cache:false,async:false,success:function(json){
+		$.ajax({type:'post',url:'/resource/module/check.do',data:"id="+mid+"&code="+value,dataType:'json',cache:false,async:false,success:function(json){
 			checkUser = json.flag;
 		}});
 		if(checkUser == false){
@@ -177,7 +177,7 @@ $(function(){
 		"ui":{"select_limit" : 1},
 		"json_data":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/resource/childResource.do",
+				"url":"${pageContext.request.contextPath}/resource/childResource.do",
 				"data":function(node){
 					if(node!='-1'){
 						return {'moduleId':node.attr('moduleId'),'t':node.attr('t'),'id':node.attr('id')};
@@ -188,7 +188,7 @@ $(function(){
 			}
 		},"search":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/resource/search.do",
+				"url":"${pageContext.request.contextPath}/resource/search.do",
 				"data":function(str){
 					return {"name":str};
 				}
@@ -220,7 +220,7 @@ $(function(){
 				}
 			}
 			if(u.length>0){
-				u = "${commonMapper.rootPath}/resource/" + u + "/modify/" + o.attr('id') + ".do";
+				u = "/resource/" + u + "/modify/" + o.attr('id') + ".do";
 				$("#context").load(u, null, function(){
 					$("#context").find(".type").attr('disabled',true);
 					funChangeSelect($("#context").find(".module"));
@@ -236,12 +236,12 @@ $(function(){
 	});
 	//新建按钮事件
 	$(".add").click(function(){
-		var url = "${commonMapper.rootPath}/resource/module/add.do";
+		var url = "/resource/module/add.do";
 		var title = "子系统";
 		var select = $("#context").find(".type");
 		if(select.length>0){
 			//根据当前打开的资源类型选择显示内容
-			url = "${commonMapper.rootPath}/resource/"+select.val()+"/add.do";
+			url = "/resource/"+select.val()+"/add.do";
 			title = $("option:selected",select).text();
 		}
 		//加载页面
@@ -323,7 +323,7 @@ $(function(){
 		};
 		jConfirm(text,"确认",function(result){
 			if(result){
-				url = "${commonMapper.rootPath}/resource/" + url + "/delete.do";
+				url = "/resource/" + url + "/delete.do";
 				var id = $("#context").find("#id").val();
 				$.post(url,{"id":id},function(json){
 					if(json.flag){
@@ -388,8 +388,8 @@ $(function(){
 				</div>
 				<!-- END/定义树 -->
 				<div style="border: 0px solid #92b2d3;float: right;padding: 0px;margin-top: 60px;">
-					<img src="${commonMapper.rootPath}/images/system-up.gif" title="上移" class="moveTop" alt="上移" style="margin: 5px;cursor: pointer;"><br>
-					<img src="${commonMapper.rootPath}/images/system-down.gif" title="下移" class="moveDown" alt="下移" style="margin: 5px;cursor: pointer;">
+					<img src="${pageContext.request.contextPath}/images/system-up.gif" title="上移" class="moveTop" alt="上移" style="margin: 5px;cursor: pointer;"><br>
+					<img src="${pageContext.request.contextPath}/images/system-down.gif" title="下移" class="moveDown" alt="下移" style="margin: 5px;cursor: pointer;">
 				</div>
 			</td>
 			<td style="vertical-align: top;background-color: #fff;padding-top: 10px;">

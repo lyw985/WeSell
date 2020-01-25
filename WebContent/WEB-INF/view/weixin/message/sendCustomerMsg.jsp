@@ -18,7 +18,7 @@
 </head>
 <body>
 	<form:form id="sendCustomMsgForm"
-		action="${commonMapper.rootPath}/weixin/msg/sendCustomMsg.do" method="post">
+		action="${pageContext.request.contextPath}/weixin/msg/sendCustomMsg.do" method="post">
 		<table>
 			<tr>
 				<th><font color="red">*</font>普通用户openid</th>

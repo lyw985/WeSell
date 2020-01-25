@@ -26,7 +26,7 @@
 
 	function searchReceiver(searchValue) {
 		$("#searchedReceiverUl").html("");
-		$.post("${commonMapper.rootPath}/yuma/receiver/searchReceiver.do",
+		$.post("${pageContext.request.contextPath}/yuma/receiver/searchReceiver.do",
 				"&searchValue=" + searchValue, function(data) {
 					if (data.error == '0') {
 						if(data.data.length==0){
@@ -68,7 +68,7 @@
 </head>
 <body>
 	<form:form id="yumaOrderForm"
-		action="${commonMapper.rootPath}/yuma/order/save.do" method="post"
+		action="${pageContext.request.contextPath}/yuma/order/save.do" method="post"
 		commandName="yumaOrder">
 		<form:hidden path="id" />
 		<form:hidden path="yumaReceiver.id" value=""/>

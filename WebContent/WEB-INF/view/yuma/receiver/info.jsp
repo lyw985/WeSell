@@ -38,7 +38,7 @@
 		var prop={};
 		prop.parent_id=parentId;
 		$.ajax({
-			url : "${commonMapper.rootPath}/common/address/getFollowAddresses.do",
+			url : "/common/address/getFollowAddresses.do",
 			type: 'POST',
 			dataType: "json",
 			data : prop,
@@ -73,7 +73,7 @@
 </head>
 <body>
 	<form:form id="yumaReceiverForm"
-		action="${commonMapper.rootPath}/yuma/receiver/save.do" method="post"
+		action="${pageContext.request.contextPath}/yuma/receiver/save.do" method="post"
 		commandName="yumaReceiver">
 		<form:hidden path="id" />
 		<form:hidden path="yumaUser.id" />

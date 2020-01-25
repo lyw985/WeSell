@@ -11,7 +11,7 @@
 	<title>${commonMapper.title}</title>
 </head>
 	<body>
-		<form:form id="moduleForm" action="${commonMapper.rootPath}/module/save.do" method="post" commandName="module">
+		<form:form id="moduleForm" action="${pageContext.request.contextPath}/module/save.do" method="post" commandName="module">
 		   <table>
 			  <tr>
 			     <td>子系统名称：</td>

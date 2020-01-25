@@ -8,9 +8,9 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>角色管理</title>
-<link href="${commonMapper.rootPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="${commonMapper.rootPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
-<link href="${commonMapper.rootPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="${pageContext.request.contextPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="${pageContext.request.contextPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
 <style type="text/css">
 select{
 	width: 155px;
@@ -19,12 +19,12 @@ input[type='text']{
 	width: 150px;
 }
 </style>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jstree/jquery.jstree.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.form.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.alerts.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/hodanet.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jstree/jquery.jstree.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/hodanet.js"></script>
 <script type="text/javascript">
 $.ajaxSetup({cache:false});
 $(function(){
@@ -32,7 +32,7 @@ $(function(){
 		"ui":{"select_limit" : 1},
 		"json_data":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/role/getRoleTree.do",
+				"url":"${pageContext.request.contextPath}/role/getRoleTree.do",
 				"data":function(node){//该函数用来获取提交参数
 					if(node!='-1'){
 						return {'moduleId':node.attr('id')};
@@ -62,7 +62,7 @@ $(function(){
 		}
 		,"search":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/role/search.do",
+				"url":"${pageContext.request.contextPath}/role/search.do",
 				"data":function(str){
 					return {"name":str};
 				}
@@ -77,13 +77,13 @@ $(function(){
 			data.inst.deselect_node(n);
 			return;
 		}
-		$("#context").load("${commonMapper.rootPath}/role/show.do?id=" + n.attr('id'));
+		$("#context").load("${pageContext.request.contextPath}/role/show.do?id=" + n.attr('id'));
 	});
 	
 	//新建
 	$(".add").click(function(){
 		$('.roleTree').jstree('deselect_all');
-		$("#context").load("${commonMapper.rootPath}/role/show.do");
+		$("#context").load("${pageContext.request.contextPath}/role/show.do");
 	});
 	//保存
 	$(".save").click(function(){
@@ -116,7 +116,7 @@ $(function(){
 		var nodeText = $(".roleTree").jstree('get_text',selNode.eq(0));
 		jConfirm('确认删除['+nodeText+']角色','删除确认',function(s){
 			if(s){
-				$.post('${commonMapper.rootPath}/role/delete.do',{roleId:selNode.eq(0).attr('id')},function(json){
+				$.post('/role/delete.do',{roleId:selNode.eq(0).attr('id')},function(json){
 					if(json.flag == true){
 						jAlert(json.msg,'消息',function(){
 							$(".roleTree").jstree('refresh');

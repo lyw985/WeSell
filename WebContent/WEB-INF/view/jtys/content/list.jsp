@@ -11,24 +11,24 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>${commonMapper.title}</title>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/hodanet.css"  />
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/linkbutton.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/icon.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/pagination/pagination.css">
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/alert/jquery.alerts.css"/>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/cupertino/jquery-ui-1.8.15.custom.css"/>
-<link rel="stylesheet" type="text/css" href="${commonMapper.rootPath}/css/validationEngine.jquery.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/hodanet.css"  />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/linkbutton.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/icon.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pagination/pagination.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/alert/jquery.alerts.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/cupertino/jquery-ui-1.8.15.custom.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/validationEngine.jquery.css"/>
 
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.linkbutton.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.pagination.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.alerts.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.form.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/hodanet.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine-en.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.linkbutton.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.pagination.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/hodanet.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validationEngine-en.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.ui.datepicker-zh-CN.js"></script>
 <script type="text/javascript">
 	$(function() {
 		var pager = $("#pager");
@@ -59,7 +59,7 @@
 		
 		//新增按钮
 		$("#addButton").click(function(){
-			$("#divDialog").load('${commonMapper.rootPath}/jtys/content/new.do',null,function(){
+			$("#divDialog").load('/jtys/content/new.do',null,function(){
 				$("#jtysContentForm").validationEngine({ promptPosition : "topRight" });
 				$("#divDialog").dialog({ 'width': 400,'height': 400,'title': '信息新增',
 					'buttons':{
@@ -89,7 +89,7 @@
 		
 		//修改按钮
 		$(".btnModify").click(function(){
-			$("#divDialog").load('${commonMapper.rootPath}/jtys/content/modify/'+$(this).attr('rel')+'.do',null,function(){
+			$("#divDialog").load('/jtys/content/modify/'+$(this).attr('rel')+'.do',null,function(){
 				$("#jtysContentForm").validationEngine({ promptPosition : "topRight" });
 				$("#divDialog").dialog({title:'信息修改',resizable: false,height:400,width:400,
 					'buttons':{
@@ -129,7 +129,7 @@
 					$(".selOne:checked").each(function() {
 						ids += "&id=" + $(this).val();
 					});
-					$.post("${commonMapper.rootPath}/jtys/content/delete.do", ids.substring(1), function(data) {
+					$.post("${pageContext.request.contextPath}/jtys/content/delete.do", ids.substring(1), function(data) {
 						if (data.flag) {
 							jAlert(data.msg, "成功", function() {
 							$("#queryForm").submit();
@@ -147,7 +147,7 @@
 			var tmp = "&id="+$(this).attr('rel');
 			jConfirm('确认要删除记录吗？', '确认操作', function(result){
 				if(result == true){
-					$.post('${commonMapper.rootPath}/jtys/content/delete.do',tmp.substring(1),function(data){
+					$.post('/jtys/content/delete.do',tmp.substring(1),function(data){
 						if(data.flag){
 							jAlert(data.msg,'成功',function(){
 								$("#queryForm").submit();
@@ -164,7 +164,7 @@
 			var tmp = "&id="+$(this).attr('rel');
 			jConfirm('确认执行生效操作吗？', '确认操作', function(result){
 				if(result == true){
-					$.post('${commonMapper.rootPath}/jtys/content/pass.do',tmp.substring(1),function(data){
+					$.post('/jtys/content/pass.do',tmp.substring(1),function(data){
 						if(data.flag){
 							jAlert(data.msg,'成功',function(){
 								$("#queryForm").submit();
@@ -181,7 +181,7 @@
 			var tmp = "&id="+$(this).attr('rel');
 			jConfirm('确认执行失效操作吗？', '确认操作', function(result){
 				if(result == true){
-					$.post('${commonMapper.rootPath}/jtys/content/refuse.do',tmp.substring(1),function(data){
+					$.post('/jtys/content/refuse.do',tmp.substring(1),function(data){
 						if(data.flag){
 							jAlert(data.msg,'成功',function(){
 								$("#queryForm").submit();
@@ -220,7 +220,7 @@
 	</div>
 	<!-- --------------------查询表单-------------------- -->
 	<div class="ui-widget">
-		<form:form id="queryForm" action="${commonMapper.rootPath}/jtys/content/query.do" method="post">
+		<form:form id="queryForm" action="${pageContext.request.contextPath}/jtys/content/query.do" method="post">
 			<input type="hidden" id="pageSize" name="pageSize" value="${pageData.pageSize }"/> 
 			<input type="hidden" id="pageNumber" name="pageNumber" value="${pageData.pageNumber }"/>
 			<table border="0" cellpadding="0" cellspacing="0">

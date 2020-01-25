@@ -11,8 +11,10 @@ public enum ChartParameterEnum {
 	PARAMETER_SUM_ITEM_PRICE(22, "商品总价",
 			"ROUND(SUM(yumaOrderItem.COUNT * yumaOrderItem.pay_price * yumaWeidianItemModelMapping.price_percent),2) "),
 	PARAMETER_AVG_ITEM_PRICE(23, "商品均价",
-			"ROUND(SUM(yumaOrderItem.COUNT * yumaOrderItem.pay_price * yumaWeidianItemModelMapping.price_percent)/SUM(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.COUNT),2) ");
-	
+			"ROUND(SUM(yumaOrderItem.COUNT * yumaOrderItem.pay_price * yumaWeidianItemModelMapping.price_percent)/SUM(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.COUNT),2) "),
+
+	PARAMETER_SUM_CUSTOMER_COUNT(31, "客户数量", "COUNT(DISTINCT yumaReceiver.phone) ");
+
 	private int type;
 	private String tip;
 	private String sql;
@@ -57,6 +59,8 @@ public enum ChartParameterEnum {
 			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM,
 					ChartTableEnum.TABLE_WEIDIAN_IMTE_MODEL_MAPPING, ChartTableEnum.TABLE_ITEM_MODEL,
 					ChartTableEnum.TABLE_ITEM };
+		case PARAMETER_SUM_CUSTOMER_COUNT:
+			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM, ChartTableEnum.TABLE_RECEIVER };
 		}
 		return null;
 	}
@@ -77,6 +81,8 @@ public enum ChartParameterEnum {
 			return PARAMETER_SUM_ITEM_PRICE;
 		case 23:
 			return PARAMETER_AVG_ITEM_PRICE;
+		case 31:
+			return PARAMETER_SUM_CUSTOMER_COUNT;
 		}
 		return null;
 	}

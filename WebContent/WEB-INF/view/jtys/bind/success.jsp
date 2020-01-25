@@ -16,7 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>家庭医生</title>
 <link rel="stylesheet" type="text/css"
-	href="${commonMapper.rootPath}/css/jtys.css" media="screen" />
+	href="${pageContext.request.contextPath}/css/jtys.css" media="screen" />
 </head>
 <body>
 	<div id="wrape">
@@ -25,7 +25,7 @@
 			<div class="main-content">
 				<div class="main-success">
 					<p>
-						<img src="/images/success2.png" height="88" width="87" />
+						<img src="${pageContext.request.contextPath}/images/success2.png" height="88" width="87" />
 					</p>
 				</div>
 				<div class="line"></div>

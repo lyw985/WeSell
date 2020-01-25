@@ -1,3 +1,5 @@
+var localObj = window.location;
+var contextPath = "/"+localObj.pathname.split("/")[1];
 function loadSelByJson(selId,json){
 	if(!!!json.length){ 
 		$("#"+selId).append("<option value=''>--没有数据--</option>");
@@ -18,7 +20,7 @@ function initProvinceSel(provinceSelId,citySelId,areaSelId,province_id,city_id,a
 	resetAreaSel(areaSelId);
 	var prop={};
 	$.ajax({
-		url : "/common/address/getProvinces.do",
+		url : contextPath+"/common/address/getProvinces.do",
 		type: 'POST',
 		dataType: "json",
 		data : prop,
@@ -46,7 +48,7 @@ function initCitySel(citySelId,areaSelId,province_id,city_id,area_id){
 	var prop={};
 	prop.province_id=province_id;
 	$.ajax({
-		url : "/common/address/getCitys.do",
+		url : contextPath+"/common/address/getCitys.do",
 		type: 'POST',
 		dataType: "json",
 		data : prop,
@@ -73,7 +75,7 @@ function initAreaSel(areaSelId,city_id,area_id){
 	var prop={};
 	prop.city_id=city_id;
 	$.ajax({
-		url : "/common/address/getAreas.do",
+		url : contextPath+"/common/address/getAreas.do",
 		type: 'POST',
 		dataType: "json",
 		data : prop,
@@ -105,7 +107,7 @@ function initItemSel(itemSelId,itemModelSelId,item_id,item_model_id){
 	resetItemModelSel(itemModelSelId);
 	var prop={};
 	$.ajax({
-		url : "/yuma/item/getItems.do",
+		url : contextPath+"/yuma/item/getItems.do",
 		type: 'POST',
 		dataType: "json",
 		data : prop,
@@ -142,7 +144,7 @@ function initItemModelSel(itemModelSelId,item_id,item_model_id){
 	var prop={};
 	prop.item_id=item_id;
 	$.ajax({
-		url : "/yuma/item/getItemModels.do",
+		url : contextPath+"/yuma/item/getItemModels.do",
 		type: 'POST',
 		dataType: "json",
 		data : prop,
@@ -170,7 +172,7 @@ function initItemSel(itemSelId,itemModelSelId,item_id,item_model_id){
 	resetItemModelSel(itemModelSelId);
 	var prop={};
 	$.ajax({
-		url : "/yuma/item/getItems.do",
+		url : contextPath+"/yuma/item/getItems.do",
 		type: 'POST',
 		dataType: "json",
 		data : prop,
@@ -207,7 +209,7 @@ function initItemModelSel(itemModelSelId,item_id,item_model_id){
 	var prop={};
 	prop.item_id=item_id;
 	$.ajax({
-		url : "/yuma/item/getItemModels.do",
+		url : contextPath+"/yuma/item/getItemModels.do",
 		type: 'POST',
 		dataType: "json",
 		data : prop,

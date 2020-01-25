@@ -14,9 +14,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>家庭医生</title>
 <script type="text/javascript"
-	src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
+	src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="${commonMapper.rootPath}/css/jtys.css" media="screen" />
+	href="${pageContext.request.contextPath}/css/jtys.css" media="screen" />
 <script type="text/javascript">
 	var sendCodeFlag=true;
 	function sendCode() {
@@ -26,7 +26,7 @@
 			prop.phone = $("#phone").val();
 			$("#notice").html("提示：正在提交请求，请稍候……");
 			$.ajax({
-				url : "${commonMapper.rootPath}/jtys/api/sendCode.do",
+				url : "/jtys/api/sendCode.do",
 				data : prop,
 				cache : false,
 				success : function(responseJson) {
@@ -52,13 +52,13 @@
 		prop.code = $("#code").val();
 		$("#notice").html("提示：正在提交请求，请稍候……");
 		$.ajax({
-			url : "${commonMapper.rootPath}/jtys/api/bindPhone.do",
+			url : "/jtys/api/bindPhone.do",
 			data : prop,
 			cache : false,
 			success : function(responseJson) {
 				var obj = eval('(' + responseJson + ')');
 				if (obj.flag == 1) {
-					window.location.href = "${commonMapper.rootPath}/jtys/api/bindSuccess.do?phone="
+					window.location.href = "/jtys/api/bindSuccess.do?phone="
 							+ obj.phone;
 					return;
 				} else {
@@ -110,7 +110,7 @@
 				</p>
 			</div>
 			<!--提交
-			<img src="/images/yhbd_02.png" width="90%" height="65"
+			<img src="${pageContext.request.contextPath}/images/yhbd_02.png" width="90%" height="65"
 				onclick="bindPhone();" style="margin: 5%;" />-->
 			<div class="tijiao" onclick="bindPhone();">确&nbsp;认</div>
 		</div>

@@ -12,7 +12,7 @@
 <title>部门详细</title>
 </head>
 <body>
-	<form:form action="${commonMapper.rootPath}/department/save.do" commandName="department">
+	<form:form action="${pageContext.request.contextPath}/department/save.do" commandName="department">
 		<table>
 			<tr>
 				<td>名称：</td>
@@ -26,7 +26,7 @@
 				<td>
 					<input type="hidden" name="parentId" id="parentId" value="${parentDepartment.id }"/>
 					<input type="text" id="parentName" readonly="readonly" value="${parentDepartment.name }">
-					<img alt="选择" title="选择上级部门" src="${commonMapper.rootPath}/images/choose.gif" style="margin: 0px;padding: 0px;">
+					<img alt="选择" title="选择上级部门" src="${pageContext.request.contextPath}/images/choose.gif" style="margin: 0px;padding: 0px;">
 				</td>
 			</tr>
 			<tr>

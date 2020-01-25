@@ -16,9 +16,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>家庭医生</title>
 <script type="text/javascript"
-	src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
+	src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="${commonMapper.rootPath}/css/jtys.css" media="screen" />
+	href="${pageContext.request.contextPath}/css/jtys.css" media="screen" />
 <script>
 	$(function() {
 		$(".pay-right").clic(".pay-right-nochoice", "click", function() {

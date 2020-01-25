@@ -11,7 +11,7 @@
 <title>角色详细</title>
 </head>
 <body>
-	<form:form action="${commonMapper.rootPath}/role/save.do" commandName="role">
+	<form:form action="${pageContext.request.contextPath}/role/save.do" commandName="role">
 		<table>
 		  <tr>
 		     <td>角色名称：</td>

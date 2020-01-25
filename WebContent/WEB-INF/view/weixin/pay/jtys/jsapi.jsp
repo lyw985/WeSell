@@ -15,10 +15,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>家庭医生</title>
 <script type="text/javascript"
-	src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
+	src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="${commonMapper.rootPath}/
-	css/jtys.css" media="screen" />
+	href="${pageContext.request.contextPath}/css/jtys.css" media="screen" />
 <script type="text/javascript">
 	$(function() {
 		$(".pay-item").click(function() {
@@ -36,7 +35,7 @@
 		$("#notice").html("提示：正在提交请求，请稍候……");
 		$
 				.ajax({
-					url : "${commonMapper.rootPath}/weixin/pay/createPrepayOrderByJsapi.do",
+					url : "/weixin/pay/createPrepayOrderByJsapi.do",
 					data : prop,
 					type : "POST",
 					cache : false,
@@ -82,7 +81,7 @@
 		var prop = {};
 		prop.id = orderId;
 		prop.status = status;
-		$.post('${commonMapper.rootPath}/weixin/pay/updateOrderStatus.do',
+		$.post('/weixin/pay/updateOrderStatus.do',
 				prop, function(data) {
 					if (data.flag) {
 						// do nothing

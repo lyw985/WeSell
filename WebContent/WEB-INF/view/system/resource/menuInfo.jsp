@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form action="${commonMapper.rootPath}/resource/menu/add.do" commandName="menu">
+	<form:form action="${pageContext.request.contextPath}/resource/menu/add.do" commandName="menu">
 		<table>
 			<tr>
 				<td>资源类型：</td>

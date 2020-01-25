@@ -11,7 +11,7 @@
 <title>人员详细</title>
 </head>
 <body>
-<form:form action="${commonMapper.rootPath}/user/save.do" commandName="user">
+<form:form action="${pageContext.request.contextPath}/user/save.do" commandName="user">
 	<table class="detail">
 		<tr>
 			<td>登录id：</td>

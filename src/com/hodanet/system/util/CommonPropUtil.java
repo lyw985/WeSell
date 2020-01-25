@@ -31,9 +31,6 @@ public class CommonPropUtil {
     // TODO ע⣬ֱͨӶȡļʽ
     // @Value("#{commonProperties['rootPath']}")
     private static final String                 CONSTANT_FILE_PATH          = "/common.properties";
-    private static final String                 CONSTANT_ROOT_PATH          = "rootPath";
-    private static final String                 CONSTANT_INDEX_PATH         = "indexPath";
-    private static final String                 CONSTANT_DEFAULT_PHOTO_PATH = "defaultPhotoPath";
     private static final String                 CONSTANT_TITLE              = "title";
 
     private static final String                 CONSTANT_SERVERNAMES        = "serverNames";
@@ -56,9 +53,6 @@ public class CommonPropUtil {
         InputStream in = CommonPropUtil.class.getClassLoader().getResourceAsStream(CONSTANT_FILE_PATH);
         try {
             prop.load(in);
-            commonMapper.setRootPath(StringUtil.trim(prop.getProperty(CONSTANT_ROOT_PATH)));
-            commonMapper.setIndexPath(StringUtil.trim(prop.getProperty(CONSTANT_INDEX_PATH)));
-            commonMapper.setDefaultPhotoPath(StringUtil.trim(prop.getProperty(CONSTANT_DEFAULT_PHOTO_PATH)));
             commonMapper.setTitle(StringUtil.trim(prop.getProperty(CONSTANT_TITLE)));
 
             String serverNames = StringUtil.trim(prop.getProperty(CONSTANT_SERVERNAMES));

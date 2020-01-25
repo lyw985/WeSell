@@ -14,9 +14,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>家庭医生</title>
 <script type="text/javascript"
-	src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
+	src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="${commonMapper.rootPath}/css/jtys.css" media="screen" />
+	href="${pageContext.request.contextPath}/css/jtys.css" media="screen" />
 <script type="text/javascript">
 	function updateUserInfo() {
 		var age = $("#age").val();
@@ -28,13 +28,13 @@
 		if(checkAge(age)){
 			$("#notice").html("提示：正在提交请求，请稍候……");
 			$.ajax({
-				url : "${commonMapper.rootPath}/jtys/api/updateUserInfo.do",
+				url : "/jtys/api/updateUserInfo.do",
 				data : prop,
 				cache : false,
 				success : function(responseJson) {
 					var obj = eval('(' + responseJson + ')');
 					if (obj.flag == 1) {
-						window.location.href = "${commonMapper.rootPath}/jtys/api/updateUserInfoSuccess.do?openId="
+						window.location.href = "/jtys/api/updateUserInfoSuccess.do?openId="
 								+ obj.openId;
 						return;
 					} else {
@@ -81,7 +81,7 @@
 				<p style="font-size: 16px;" id="notice"></p>
 			</div>
 			<!--提交
-			<img src="/images/yhbd_02.png" width="90%" height="65"
+			<img src="${pageContext.request.contextPath}/images/yhbd_02.png" width="90%" height="65"
 				onclick="updateUserInfo();" style="margin: 5%;" />
 			<div class="tijiao" onclick="updateUserInfo();">提交</div>-->
 			<div class="tijiao" onclick="updateUserInfo();">确&nbsp;认</div>

@@ -29,7 +29,7 @@
 </head>
 <body>
 	<form:form id="jtysContentForm"
-		action="${commonMapper.rootPath}/jtys/content/save.do" method="post"
+		action="${pageContext.request.contextPath}/jtys/content/save.do" method="post"
 		commandName="jtysContent">
 		<form:hidden path="id" />
 		<table>

@@ -7,11 +7,11 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>选择部门</title>
-<link href="${commonMapper.rootPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="${commonMapper.rootPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jstree/jquery.jstree.js"></script>
+<link href="${pageContext.request.contextPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="${pageContext.request.contextPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jstree/jquery.jstree.js"></script>
 <script type="text/javascript">
 $.ajaxSetup({cache:false});
 
@@ -20,7 +20,7 @@ $(function(){
 		"ui":{"select_limit" : 1},
 		"json_data":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/department/getChooseData.do",
+				"url":"${pageContext.request.contextPath}/department/getChooseData.do",
 				"data":function(node){//该函数用来获取提交参数
 					if(node!='-1'){
 						return {'pid':node.attr('id')};
@@ -51,7 +51,7 @@ $(function(){
 			return a1 > b1 ? 1 : -1;
 		},"search":{
 			"ajax":{
-				"url":"${commonMapper.rootPath}/department/search.do",
+				"url":"${pageContext.request.contextPath}/department/search.do",
 				"data":function(str){
 					return {"name":str};
 				}

@@ -9,10 +9,10 @@
 <meta http-equiv="Cache-Control" content="no-cache"> 
 <meta http-equiv="Expires" content="0"> 
 <title>${commonMapper.title}</title>
-<link rel="shortcut icon" href="${commonMapper.rootPath}/favicon.ico"/>
-<link href="${commonMapper.rootPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
-<link href="${commonMapper.rootPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="${commonMapper.rootPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico"/>
+<link href="${pageContext.request.contextPath}/css/cupertino/jquery-ui-1.8.15.custom.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/alert/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="${pageContext.request.contextPath}/css/hodanet.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 	.ui-layout-pane { /* all 'panes' */ 
 		border: 0px solid #91b5d7; 
@@ -25,16 +25,16 @@
 		background: #AAA; 
 	}
 	.ui-layout-toggler-north-open{
-		background: url(${commonMapper.rootPath}/images/closeV.jpg) repeat-x 0 0 !important;
+		background: url(/images/closeV.jpg) repeat-x 0 0 !important;
 	}
 	.ui-layout-toggler-north-closed{
-	    background: url(${commonMapper.rootPath}/images/openV.jpg) no-repeat 0 0 !important;
+	    background: url(/images/openV.jpg) no-repeat 0 0 !important;
 	}
 	.ui-layout-toggler-west-open{
-	    background: url(${commonMapper.rootPath}/images/close.jpg) no-repeat 0 0 !important;
+	    background: url(/images/close.jpg) no-repeat 0 0 !important;
 	}
 	.ui-layout-toggler-west-closed{
-	    background: url(${commonMapper.rootPath}/images/open.jpg) no-repeat 0 0 !important;
+	    background: url(/images/open.jpg) no-repeat 0 0 !important;
 	}
 	.paneClass {
 		border-color: red;
@@ -53,11 +53,11 @@
 		overflow-x: hidden;
 	}
 </style>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.layout.min.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.form.js"></script>
-<script type="text/javascript" src="${commonMapper.rootPath}/js/jquery.alerts.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.15.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.layout.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.alerts.js"></script>
 <script type="text/javascript">
 $.ajaxSetup({'cache':false});
 var outLayout,innerLayout;
@@ -73,7 +73,7 @@ function funSetData(key,data){
 function funModifySelf(){
 	if($('.divModifySelf').length > 0) $('.divModifySelf').remove(); 
 	var div = $("<div class='divModifySelf'></div>");
-	div.load("${commonMapper.rootPath}/user/modifySelf.do",function(){
+	div.load("${pageContext.request.contextPath}/user/modifySelf.do",function(){
 		div.dialog({title:'修改个人信息',modal:true,removeble:false,
 			'buttons':{
 				"保存":function(){
@@ -92,7 +92,7 @@ function funModifySelf(){
 						}
 						var id = div.find("#id").val();
 						var checkUser = true;
-						$.ajax({type:'post',url:'${commonMapper.rootPath}/user/checkPassword.do',data:"password="+showP+"&id="+id,dataType:'json',cache:false,async:false,success:function(json){
+						$.ajax({type:'post',url:'/user/checkPassword.do',data:"password="+showP+"&id="+id,dataType:'json',cache:false,async:false,success:function(json){
 							checkUser = json.flag;
 						},error:function(){checkUser=false}});
 						if(checkUser == false){
@@ -123,7 +123,7 @@ function funModifySelf(){
 /**退出系统*/
 function funLogout(){
 	$.post("home/logout.do",null,function(data){
-		window.location.href="${commonMapper.rootPath}/home.do";
+		window.location.href="${pageContext.request.contextPath}/home.do";
 	},'text');
 }
 
@@ -144,7 +144,7 @@ function funCreateLink(json){
 	var a = $("<a style='cursor: pointer;'><span>"+json.name+"</span></a>")
 		.attr("moduleId",	json.module.id)
 		.attr("mid",		json.id)
-		.attr("url",		json.address != null ? "${commonMapper.rootPath}" + json.address : "");
+		.attr("url",		json.address != null ? "${pageContext.request.contextPath}" + json.address : "");
 	if(a.attr("url")!="")
 		a.attr("href","#");
 	return a;
@@ -214,7 +214,7 @@ function funSideMenu(moduleId){
 		outLayout.show('west');
 	}
 	if(funGetData(moduleId)==null){
-		$.post("${commonMapper.rootPath}/home/getTopMenus.do",{'moduleId':moduleId,'parentMenuId':'-1'},function(data){
+		$.post("${pageContext.request.contextPath}/home/getTopMenus.do",{'moduleId':moduleId,'parentMenuId':'-1'},function(data){
 			funSetData(moduleId,data);
 			funShowSideMenu(data);
 		},'json');
@@ -258,7 +258,7 @@ $(function(){
 	
 	//防止内部嵌套项目
 	if (window.parent != window) {
-		window.parent.location.href = "${commonMapper.indexPath}";
+		window.parent.location.href = "${pageContext.request.contextPath}/index.jsp";
 	}
 });
 </script>
@@ -268,7 +268,7 @@ $(function(){
 	<div class="nav">
 	<ul>
 		<c:forEach items="${modules}" var="module" varStatus="vs">
-			<li mid="${module.id}"><a href="javascript:void(0);" rel="${module.id}" style="cursor: pointer;"><img src="${commonMapper.rootPath}/images/hodanet/nav_8.png" border="0" />${module.name}</a></li>
+			<li mid="${module.id}"><a href="javascript:void(0);" rel="${module.id}" style="cursor: pointer;"><img src="${pageContext.request.contextPath}/images/hodanet/nav_8.png" border="0" />${module.name}</a></li>
 		</c:forEach>
 		
 	</ul>
@@ -293,7 +293,7 @@ $(function(){
 		<div class="footer_left">
 		    <ul>
 			    <li class="liebiao1"></li>
-			    <li><img src="${commonMapper.rootPath}/images/hodanet/shu.jpg" /></li>
+			    <li><img src="${pageContext.request.contextPath}/images/hodanet/shu.jpg" /></li>
 			    <li>欢迎您，<c:out value="${user.name}"></c:out></li>
 			    <li>[上次登录时间：<fmt:formatDate value="${userLoginInfo.lastLoginTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>]</li>
 			    <li>[<a href="#" class="modifySelf">修改信息</a>]</li>

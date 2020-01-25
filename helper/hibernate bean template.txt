@@ -1,0 +1,452 @@
+
+package com.hodanet.sphxd.entity.po;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name = "original_data")
+public class OriginalData {
+
+	/** 主键 */
+	@Id
+	@GeneratedValue(generator = "incrementGenerator")
+	@GenericGenerator(name = "incrementGenerator", strategy = "increment")
+	private Integer id;
+
+	// 订单编号 810210048495003
+	@Column(name = "order_number")
+	private String orderNumber;
+
+	// 订单状态 已关闭
+	@Column(name = "order_status")
+	private String orderStatus;
+
+	// 订单类型 担保交易
+	@Column(name = "order_type")
+	private String orderType;
+
+	// 下单时间 2018-11-07 16:08:47
+	@Column(name = "order_create_time")
+	private Date orderCreateTime;
+
+	// 付款时间
+	@Column(name = "order_pay_time")
+	private Date orderPayTime;
+
+	// 商品名称 东海小眼睛油带鱼
+	@Column(name = "item_name")
+	private String itemName;
+
+	// 商品型号 带鱼4条2.65斤
+	@Column(name = "item_model_name")
+	private String itemModelName;
+
+	// 商品编码
+	@Column(name = "item_number")
+	private String itemNumber;
+
+	// 购买数量 4
+	@Column(name = "item_count")
+	private String itemCount;
+
+	// 商品价格 0.01
+	@Column(name = "item_price")
+	private String itemModelPrice;
+
+	// 商品积分
+	@Column(name = "item_integral")
+	private String ItemIntegral;
+
+	// 发货状态
+	@Column(name = "send_status")
+	private String sendStatus;
+
+	// 退款状态
+	@Column(name = "refund_status")
+	private String refundStatus;
+
+	// 退款金额 0.01
+	@Column(name = "refund_price")
+	private String refundPrice;
+
+	// 客服指派退款
+	@Column(name = "service_refund")
+	private String serviceRefund;
+
+	// 商品原价 0.01
+	@Column(name = "original_price")
+	private String originalPrice;
+
+	// 运费退款 0.01
+	@Column(name = "freight_refund")
+	private String freightRefund;
+
+	// 收件人姓名 张三
+	@Column(name = "receiver_name")
+	private String receiverName;
+
+	// 收件人手机 1300000000
+	@Column(name = "receiver_phone")
+	private String receiverPhone;
+
+	// 省 上海
+	@Column(name = "receiver_province")
+	private String receiverProvince;
+
+	// 市 黄浦区
+	@Column(name = "receiver_city")
+	private String receiverCity;
+
+	// 区 城区
+	@Column(name = "receiver_area")
+	private String receiverArea;
+
+	// 收货详细地址 上海 黄浦区 城区 斜土路1号
+	@Column(name = "receiver_address")
+	private String receiverAddress;
+
+	// 订单描述 2年左右放山老母鸡 老母鸡一只(净重3.8~4.5斤) [数量:1]
+	@Column(name = "order_detail")
+	private String orderDetail;
+
+	// 买家留言
+	@Column(name = "buyer_remark")
+	private String buyerRemark;
+
+	// 下单模板信息
+	@Column(name = "order_template")
+	private String orderTemplate;
+
+	// 卖家留言
+	@Column(name = "seller_remark")
+	private String sellerRemark;
+
+	// 分销商店铺ID
+	@Column(name = "distribution_storeid")
+	private String distributionStoreId;
+
+	// 分销商注册姓名
+	@Column(name = "distribution_name")
+	private String distributionName;
+
+	// 分销商手机号
+	@Column(name = "distribution_phone")
+	private String distributionPhone;
+
+	// 下单账号
+	@Column(name = "order_phone")
+	private String orderPhone;
+
+	// 是否已成团
+	@Column(name = "group_status")
+	private String groupStatus;
+
+	// 身份证号
+	@Column(name = "identification_card")
+	private String identificationCard;
+
+	// 支付方式
+	@Column(name = "pay_type")
+	private String payType;
+
+	// 是否自提
+	@Column(name = "self_mention")
+	private String selfMention;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getOrderNumber() {
+		return orderNumber;
+	}
+
+	public void setOrderNumber(String orderNumber) {
+		this.orderNumber = orderNumber;
+	}
+
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	public String getOrderType() {
+		return orderType;
+	}
+
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
+	}
+
+	public Date getOrderCreateTime() {
+		return orderCreateTime;
+	}
+
+	public void setOrderCreateTime(Date orderCreateTime) {
+		this.orderCreateTime = orderCreateTime;
+	}
+
+	public Date getOrderPayTime() {
+		return orderPayTime;
+	}
+
+	public void setOrderPayTime(Date orderPayTime) {
+		this.orderPayTime = orderPayTime;
+	}
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public String getItemModelName() {
+		return itemModelName;
+	}
+
+	public void setItemModelName(String itemModelName) {
+		this.itemModelName = itemModelName;
+	}
+
+	public String getItemNumber() {
+		return itemNumber;
+	}
+
+	public void setItemNumber(String itemNumber) {
+		this.itemNumber = itemNumber;
+	}
+
+	public String getItemCount() {
+		return itemCount;
+	}
+
+	public void setItemCount(String itemCount) {
+		this.itemCount = itemCount;
+	}
+
+	public String getItemModelPrice() {
+		return itemModelPrice;
+	}
+
+	public void setItemModelPrice(String itemModelPrice) {
+		this.itemModelPrice = itemModelPrice;
+	}
+
+	public String getItemIntegral() {
+		return ItemIntegral;
+	}
+
+	public void setItemIntegral(String itemIntegral) {
+		ItemIntegral = itemIntegral;
+	}
+
+	public String getSendStatus() {
+		return sendStatus;
+	}
+
+	public void setSendStatus(String sendStatus) {
+		this.sendStatus = sendStatus;
+	}
+
+	public String getRefundStatus() {
+		return refundStatus;
+	}
+
+	public void setRefundStatus(String refundStatus) {
+		this.refundStatus = refundStatus;
+	}
+
+	public String getRefundPrice() {
+		return refundPrice;
+	}
+
+	public void setRefundPrice(String refundPrice) {
+		this.refundPrice = refundPrice;
+	}
+
+	public String getServiceRefund() {
+		return serviceRefund;
+	}
+
+	public void setServiceRefund(String serviceRefund) {
+		this.serviceRefund = serviceRefund;
+	}
+
+	public String getOriginalPrice() {
+		return originalPrice;
+	}
+
+	public void setOriginalPrice(String originalPrice) {
+		this.originalPrice = originalPrice;
+	}
+
+	public String getFreightRefund() {
+		return freightRefund;
+	}
+
+	public void setFreightRefund(String freightRefund) {
+		this.freightRefund = freightRefund;
+	}
+
+	public String getReceiverName() {
+		return receiverName;
+	}
+
+	public void setReceiverName(String receiverName) {
+		this.receiverName = receiverName;
+	}
+
+	public String getReceiverPhone() {
+		return receiverPhone;
+	}
+
+	public void setReceiverPhone(String receiverPhone) {
+		this.receiverPhone = receiverPhone;
+	}
+
+	public String getReceiverProvince() {
+		return receiverProvince;
+	}
+
+	public void setReceiverProvince(String receiverProvince) {
+		this.receiverProvince = receiverProvince;
+	}
+
+	public String getReceiverCity() {
+		return receiverCity;
+	}
+
+	public void setReceiverCity(String receiverCity) {
+		this.receiverCity = receiverCity;
+	}
+
+	public String getReceiverArea() {
+		return receiverArea;
+	}
+
+	public void setReceiverArea(String receiverArea) {
+		this.receiverArea = receiverArea;
+	}
+
+	public String getReceiverAddress() {
+		return receiverAddress;
+	}
+
+	public void setReceiverAddress(String receiverAddress) {
+		this.receiverAddress = receiverAddress;
+	}
+
+	public String getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(String orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+
+	public String getBuyerRemark() {
+		return buyerRemark;
+	}
+
+	public void setBuyerRemark(String buyerRemark) {
+		this.buyerRemark = buyerRemark;
+	}
+
+	public String getOrderTemplate() {
+		return orderTemplate;
+	}
+
+	public void setOrderTemplate(String orderTemplate) {
+		this.orderTemplate = orderTemplate;
+	}
+
+	public String getSellerRemark() {
+		return sellerRemark;
+	}
+
+	public void setSellerRemark(String sellerRemark) {
+		this.sellerRemark = sellerRemark;
+	}
+
+	public String getDistributionStoreId() {
+		return distributionStoreId;
+	}
+
+	public void setDistributionStoreId(String distributionStoreId) {
+		this.distributionStoreId = distributionStoreId;
+	}
+
+	public String getDistributionName() {
+		return distributionName;
+	}
+
+	public void setDistributionName(String distributionName) {
+		this.distributionName = distributionName;
+	}
+
+	public String getDistributionPhone() {
+		return distributionPhone;
+	}
+
+	public void setDistributionPhone(String distributionPhone) {
+		this.distributionPhone = distributionPhone;
+	}
+
+	public String getOrderPhone() {
+		return orderPhone;
+	}
+
+	public void setOrderPhone(String orderPhone) {
+		this.orderPhone = orderPhone;
+	}
+
+	public String getGroupStatus() {
+		return groupStatus;
+	}
+
+	public void setGroupStatus(String groupStatus) {
+		this.groupStatus = groupStatus;
+	}
+
+	public String getIdentificationCard() {
+		return identificationCard;
+	}
+
+	public void setIdentificationCard(String identificationCard) {
+		this.identificationCard = identificationCard;
+	}
+
+	public String getPayType() {
+		return payType;
+	}
+
+	public void setPayType(String payType) {
+		this.payType = payType;
+	}
+
+	public String getSelfMention() {
+		return selfMention;
+	}
+
+	public void setSelfMention(String selfMention) {
+		this.selfMention = selfMention;
+	}
+
+}

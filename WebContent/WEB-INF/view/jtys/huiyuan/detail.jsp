@@ -15,9 +15,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>家庭医生</title>
 <script type="text/javascript"
-	src="/js/jquery-1.6.2.min.js"></script>
+	src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="/css/jtys.css" media="screen" />
+	href="${pageContext.request.contextPath}/css/jtys.css" media="screen" />
 <script type="text/javascript">
 	function gotoHuiyuan() {
 		window.location.href = "/weixin/pay/jtys/jsapi.do?showwxpaytitle=1&openId="
@@ -58,10 +58,10 @@
 				<div class="tequan-detail">
 					<div class="left">全家享用</div>
 					<div class="center">
-						<img src="/images/success.png" width="20" height="20" />
+						<img src="${pageContext.request.contextPath}/images/success.png" width="20" height="20" />
 					</div>
 					<div class="right">
-						<img src="/images/error.png" width="20" height="20" />
+						<img src="${pageContext.request.contextPath}/images/error.png" width="20" height="20" />
 					</div>
 				</div>
 				<div class="tequan-detail">
@@ -69,28 +69,28 @@
 						专家阵容<br /> <span style="font-size: 12px">全国3万余名专家医生</span>
 					</div>
 					<div class="center_2">
-						<img src="/images/success.png" width="20" height="20" />
+						<img src="${pageContext.request.contextPath}/images/success.png" width="20" height="20" />
 					</div>
 					<div class="right_2">
-						<img src="/images/error.png" width="20" height="20" />
+						<img src="${pageContext.request.contextPath}/images/error.png" width="20" height="20" />
 					</div>
 				</div>
 				<div class="tequan-detail">
 					<div class="left">30分钟内回复</div>
 					<div class="center">
-						<img src="/images/success.png" width="20" height="20" />
+						<img src="${pageContext.request.contextPath}/images/success.png" width="20" height="20" />
 					</div>
 					<div class="right">
-						<img src="/images/error.png" width="20" height="20" />
+						<img src="${pageContext.request.contextPath}/images/error.png" width="20" height="20" />
 					</div>
 				</div>
 				<div class="tequan-detail">
 					<div class="left">24小时响应</div>
 					<div class="center">
-						<img src="/images/success.png" width="20" height="20" />
+						<img src="${pageContext.request.contextPath}/images/success.png" width="20" height="20" />
 					</div>
 					<div class="right">
-						<img src="/images/error.png" width="20" height="20" />
+						<img src="${pageContext.request.contextPath}/images/error.png" width="20" height="20" />
 					</div>
 				</div>
 			</div>

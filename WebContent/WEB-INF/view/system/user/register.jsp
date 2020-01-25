@@ -12,7 +12,7 @@
 	<style>.errorClass{color:red}</style>
 	</head>
 	<body>
-		<form:form id="registerForm" modelAttribute="user" action="${commonMapper.rootPath}/user/register.do" method="post">
+		<form:form id="registerForm" modelAttribute="user" action="${pageContext.request.contextPath}/user/register.do" method="post">
 		    <table>
 			  <tr>
 			     <td>用户名：</td>
@@ -37,6 +37,6 @@
 			  </tr>
 		    </table>
 		</form:form>
-		<a href="${commonMapper.indexPath}">&#9666;返回首页</a>
+		<a href="${pageContext.request.contextPath}/index.jsp">&#9666;返回首页</a>
 	</body>
 </html>
