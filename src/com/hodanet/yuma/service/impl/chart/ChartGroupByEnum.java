@@ -6,16 +6,17 @@ public enum ChartGroupByEnum {
 	GROUPBY_YEAR_MONTH_DAY(13, "DATE_FORMAT(yumaOrderItem.pay_time, '%Y-%m-%d') "),
 	GROUPBY_YEAR_WEEKS(14, "CONCAT(YEAR(yumaOrderItem.pay_time),'-',LPAD(WEEK(yumaOrderItem.pay_time)+1,2,'0')) "),
 	GROUPBY_WEEK_MONDAY_TO_SUNDAY(15, "CONCAT('周',weekday(yumaOrderItem.pay_time)+1) "),
-	GROUPBY_HOUR_0_TO_23(16,
+	GROUPBY_HOUR_0_TO_24(16,
 			"CONCAT(LPAD(HOUR(yumaOrderItem.pay_time),2,'0'),':00-',LPAD(HOUR(yumaOrderItem.pay_time)+1,2,'0'),':00') "),
-	GROUPBY_MONTH_1_TO_12(17,
-			"CONCAT(DATE_FORMAT(yumaOrderItem.pay_time, '%m'),'月') "),
+	GROUPBY_MONTH_1_TO_12(17, "CONCAT(DATE_FORMAT(yumaOrderItem.pay_time, '%m'),'月') "),
+	GROUPBY_WEEKS_1_TO_53(18, "CONCAT('第',LPAD(WEEK(yumaOrderItem.pay_time)+1,2,'0'),'周') "),
 
 	GROUPBY_PROVINCE(21, "pro.name "), GROUPBY_CITY(22, "CONCAT(pro.name,'-',cit.name) "),
 	GROUPBY_AREA(23, "CONCAT(pro.name,'-',cit.name,'-',are.name) "),
 
-	GROUPBY_ITEM(31, "yumaItem.name "), GROUPBY_ITEM_MODEL(32, "CONCAT(yumaItem.name,'-',yumaItemModel.name) ");
-	
+	GROUPBY_ITEM(31, "yumaItem.name "), GROUPBY_ITEM_MODEL(32, "CONCAT(yumaItem.name,'-',yumaItemModel.name) "),
+
+	GROUPBY_RECEIVER_PHONE(41, "yumaReceiver.phone "), GROUPBY_USER_NAME(42, "yumaUser.name ");
 
 	private int type;
 	private String sql;
@@ -45,9 +46,11 @@ public enum ChartGroupByEnum {
 			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM };
 		case GROUPBY_WEEK_MONDAY_TO_SUNDAY:
 			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM };
-		case GROUPBY_HOUR_0_TO_23:
+		case GROUPBY_HOUR_0_TO_24:
 			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM };
 		case GROUPBY_MONTH_1_TO_12:
+			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM };
+		case GROUPBY_WEEKS_1_TO_53:
 			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM };
 		case GROUPBY_PROVINCE:
 			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM, ChartTableEnum.TABLE_RECEIVER,
@@ -66,6 +69,11 @@ public enum ChartGroupByEnum {
 			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM,
 					ChartTableEnum.TABLE_WEIDIAN_IMTE_MODEL_MAPPING, ChartTableEnum.TABLE_ITEM_MODEL,
 					ChartTableEnum.TABLE_ITEM };
+		case GROUPBY_RECEIVER_PHONE:
+			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM, ChartTableEnum.TABLE_RECEIVER };
+		case GROUPBY_USER_NAME:
+			return new ChartTableEnum[] { ChartTableEnum.TABLE_ORDER_ITEM, ChartTableEnum.TABLE_RECEIVER,
+					ChartTableEnum.TABLE_USER };
 		}
 		return null;
 	}
@@ -83,9 +91,11 @@ public enum ChartGroupByEnum {
 		case 15:
 			return GROUPBY_WEEK_MONDAY_TO_SUNDAY;
 		case 16:
-			return GROUPBY_HOUR_0_TO_23;
+			return GROUPBY_HOUR_0_TO_24;
 		case 17:
 			return GROUPBY_MONTH_1_TO_12;
+		case 18:
+			return GROUPBY_WEEKS_1_TO_53;
 		case 21:
 			return GROUPBY_PROVINCE;
 		case 22:
@@ -96,6 +106,10 @@ public enum ChartGroupByEnum {
 			return GROUPBY_ITEM;
 		case 32:
 			return GROUPBY_ITEM_MODEL;
+		case 41:
+			return GROUPBY_RECEIVER_PHONE;
+		case 42:
+			return GROUPBY_USER_NAME;
 		}
 		return null;
 	}

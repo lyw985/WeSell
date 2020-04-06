@@ -133,6 +133,8 @@ public class YumaReceiverServiceImpl extends AbstractDaoService implements YumaR
 			sb.append(" and o.area.id = ? ");
 			params.add(area.getId());
 		}
+		sb.append(" and o.addressDetail = ? ");
+		params.add(address);
 		YumaReceiver yumaReceiver = this.getDao().queryHqlUniqueResult(sb.toString(),
 				params.toArray(new Object[params.size()]));
 		if (yumaReceiver == null) {

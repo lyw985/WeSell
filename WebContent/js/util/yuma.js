@@ -1,5 +1,6 @@
 var localObj = window.location;
-var contextPath = "/"+localObj.pathname.split("/")[1];
+// TODO
+var contextPath = ""
 function loadSelByJson(selId,json){
 	if(!!!json.length){ 
 		$("#"+selId).append("<option value=''>--没有数据--</option>");

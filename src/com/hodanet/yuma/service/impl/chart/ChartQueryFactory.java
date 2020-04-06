@@ -73,8 +73,21 @@ public class ChartQueryFactory {
 
 	private String loadOrderBySql() {
 		StringBuilder sb = new StringBuilder();
-		if (chartOrderBy != null) {
-			sb.append(" order by ").append(chartParameter).append(chartOrderBy);
+		if (chartOrderBy != null || (chartGroupBys != null && chartGroupBys.size() > 0)) {
+			sb.append(" order by ");
+			if (chartOrderBy != null) {
+				sb.append(chartParameter).append(chartOrderBy);
+				if (chartGroupBys != null && chartGroupBys.size() > 0) {
+					sb.append(",");
+				}
+			}
+			for (int i = 0; i < chartGroupBys.size(); i++) {
+				if (i != 0) {
+					sb.append(",");
+				}
+				ChartGroupByEnum chartGroupByEnum = chartGroupBys.get(i);
+				sb.append(" ").append(chartGroupByEnum);
+			}
 		}
 		return sb.toString();
 	}

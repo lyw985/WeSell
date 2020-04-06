@@ -87,8 +87,8 @@ public class YumaOrderItemServiceImpl extends AbstractDaoService implements Yuma
 		int itemCountInt = Integer.parseInt(itemCount);
 		float payPriceFloat = Float.parseFloat(payPrice);
 		float originalPriceFloat = Float.parseFloat(originalPrice);
-		String hql = "from YumaOrderItem o where o.yumaOrder.id = ? and o.yumaWeidianItemModel.id = ? and o.payTime = ?";
-		YumaOrderItem yumaOrderItem = this.getDao().queryHqlUniqueResult(hql, yumaOrder.getId(),
+		String hql = "from YumaOrderItem o where o.yumaOrder.id = ? and o.yumaReceiver.id = ? and o.yumaWeidianItemModel.id = ? and o.payTime = ?";
+		YumaOrderItem yumaOrderItem = this.getDao().queryHqlUniqueResult(hql, yumaOrder.getId(), yumaReceiver.getId(),
 				yumaWeidianItemModel.getId(), orderPayDateTime);
 		// TODO 不同订单状态需要增加功能，
 		if (yumaOrderItem == null && !YumaWeidianDataOrderStatus.CLOSED.toString().equals(orderStatus)) {

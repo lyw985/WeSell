@@ -47,6 +47,7 @@
 						<form:option value="2">只</form:option>
 						<form:option value="3">瓶</form:option>
 						<form:option value="4">个</form:option>
+						<form:option value="5">盒</form:option>
 					</form:select>
 				</td>
 			</tr>

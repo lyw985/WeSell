@@ -57,6 +57,7 @@ public class SyncYumaWeidianDataTask extends QuartzJobBean {
 								SyncStatus.SYNC_FAILED.getValue());
 					}
 				}
+				logger.info( pageData.getData().size() + "条微店数据同步完成");
 			}
 			logger.debug("微店导入的源数据同步结束.");
 		} catch (Exception e) {

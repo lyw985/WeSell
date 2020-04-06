@@ -143,7 +143,7 @@
 							<option value="21">商品总量</option>
 							<option value="22">商品总价</option>
 							<option value="23">商品均价</option>
-							<option value="31">客户数量</option>
+							<option value="31">用户数量(排重)</option>
 						</select> 
 					</td>
 				</tr>
@@ -154,16 +154,19 @@
 							<option value="">---选择分组条件---</option>
 							<option value="11">年</option>
 							<option value="12">月</option>
-							<option value="17">1月至12月</option>
-							<option value="13">天</option>
 							<option value="14">周</option>
+							<option value="13">天</option>
+							<option value="17">1月至12月</option>
+							<option value="18">1-53周</option>
 							<option value="15">周一至周日</option>
-							<option value="16">0-23时</option>
+							<option value="16">0时-24时</option>
 							<option value="21">省份</option>
 							<option value="22">城市</option>
 							<option value="23">地区</option>
 							<option value="31">商品</option>
 							<option value="32">商品型号</option>
+							<option value="41">收货人号码</option>
+							<option value="42">用户姓名</option>
 						</select> 
 					</td>
 					<td>
@@ -171,16 +174,19 @@
 							<option value="">---选择分组条件---</option>
 							<option value="11">年</option>
 							<option value="12">月</option>
-							<option value="17">1月至12月</option>
-							<option value="13">天</option>
 							<option value="14">周</option>
+							<option value="13">天</option>
+							<option value="17">1月至12月</option>
+							<option value="18">1-53周</option>
 							<option value="15">周一至周日</option>
-							<option value="16">0-23时</option>
+							<option value="16">0时-24时</option>
 							<option value="21">省份</option>
 							<option value="22">城市</option>
 							<option value="23">地区</option>
 							<option value="31">商品</option>
 							<option value="32">商品型号</option>
+							<option value="41">收货人号码</option>
+							<option value="42">用户姓名</option>
 						</select> 
 					</td>
 				</tr>

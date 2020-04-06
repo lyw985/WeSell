@@ -1,75 +1,74 @@
-SELECT * FROM yuma_weidian_data a where a.receiver_city = '上海'
+SELECT DATE_FORMAT(yumaOrderItem.pay_time, '%Y') AS label1
+	, CONCAT(DATE_FORMAT(yumaOrderItem.pay_time, '%m'), '月') AS label2
+	, COUNT(DISTINCT yumaReceiver.phone) AS data
+FROM yuma_order_item yumaOrderItem
+	LEFT JOIN yuma_receiver yumaReceiver ON yumaReceiver.id = yumaOrderItem.receiver_id
+WHERE 1 = 1
+	AND yumaOrderItem.status != -1
+GROUP BY DATE_FORMAT(yumaOrderItem.pay_time, '%Y'), CONCAT(DATE_FORMAT(yumaOrderItem.pay_time, '%m'), '月');
+  
+  SELECT DATEDIFF(CURDATE(),'2019-05-20') days FROM DUAL;
 
-SELECT * FROM yuma_weidian_data a order by a.id desc
+select yumaReceiver.phone,sum(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.COUNT),
+  sum(yumaOrderItem.COUNT * yumaWeidianItemModelMapping.COUNT)/count(yumaOrderItem.id),
+  DATEDIFF(max(yumaOrderItem.pay_time),min(yumaOrderItem.pay_time))
+  FROM yuma_order_item yumaOrderItem
+	LEFT JOIN yuma_weidian_item_model_mapping yumaWeidianItemModelMapping ON yumaWeidianItemModelMapping.weidian_item_model_id = yumaOrderItem.weidian_item_model_id
+	LEFT JOIN yuma_item_model yumaItemModel ON yumaItemModel.id = yumaWeidianItemModelMapping.item_model_id
+	LEFT JOIN yuma_item yumaItem ON yumaItem.id = yumaItemModel.item_id
+  LEFT JOIN yuma_receiver yumaReceiver on yumaReceiver.id = yumaOrderItem.receiver_id 
+  where yumaItemModel.id=140
+group by yumaReceiver.phone
+  
 
-SELECT * FROM yuma_weidian_data where receiver_name = '倪娜' order by order_create_time desc
-
-SELECT count(*) FROM yuma_order a where a.pay_date >= '2018-11-01' and a.pay_date < '2018-12-01'
-
-SELECT count(*) FROM yuma_weidian_data a where sync_status = 0 and a.order_pay_time is not null；
-
-select * from province ;
-
-select * from yuma_order_item where order_id = 58
-
-SELECT pay_time,WEEKDAY(pay_time)  FROM yuma_order_item 
-
-SELECT date(pay_time)
-	, CASE 
-		WHEN date(pay_time) = '2018-12-1' THEN 1
-		ELSE 0
-	END AS num
+SELECT DATE_FORMAT(yumaOrderItem.pay_time, '%Y') AS label1
+	, SUM(yumaOrderItem.pay_price * yumaOrderItem.count) AS data
 FROM yuma_order_item
-WHERE date(pay_time) = '2018-12-1'
-	OR date(pay_time) = '2018-12-2';
-  
-  SELECT t4.name, t3.num,t3.pay_price,t3.pay_price/t3.num
-FROM (
-	SELECT t1.user_id, SUM(1) AS num, sum(t1.pay_price) as pay_price
-	FROM yuma_order t1
-		LEFT JOIN yuma_user t2 ON t1.user_id = t2.id
-    where t1.pay_date >= '2019-10-01' and t1.pay_date < '2019-11-01'
-	GROUP BY t1.user_id
-) t3
-	LEFT JOIN yuma_user t4 ON t3.user_id = t4.id
-ORDER BY t3.pay_price desc
-limit 0,10
-
-select t1.pay_date,year(t1.pay_date) AS YEARS,MONTH(t1.pay_date) as MONTHS from yuma_order t1
-
-  SELECT t4.name, t3.num,t3.pay_price,t3.pay_price/t3.num
-FROM (
-	SELECT t1.user_id, SUM(1) AS num, sum(t1.pay_price) as pay_price
-	FROM yuma_order t1
-		LEFT JOIN yuma_user t2 ON t1.user_id = t2.id
-    where t1.pay_date >= '2019-10-01' and t1.pay_date < '2019-11-01'
-	GROUP BY t1.user_id
-) t3
-	LEFT JOIN yuma_user t4 ON t3.user_id = t4.id
-ORDER BY t3.pay_price desc
-limit 0,10
+WHERE 1 = 1
+GROUP BY DATE_FORMAT(yumaOrderItem.pay_time, '%Y')
 
 
-  select * from yuma_order t1 where t1.user_id != t1.receiver_id
-  
-#delete from yuma_weidian_item_model_mapping;
+delete select from yuma_order where pay_date > '2018-01-08' and pay_date < '2018-02-01';
+delete  from yuma_order_item where date(pay_time) > '2018-01-08' and date(pay_time) < '2018-02-01';
+select * from yuma_receiver t where date(t.create_time)='2020-01-25';
+select * from yuma_user t where t.phone =17317728912;
+select * from yuma_item t;
+select * from yuma_item_model t where t.id = 140;
+select * from yuma_weidian_data t order by order_create_time desc;
+select * from yuma_weidian_item t where id in (7,163,187);
+select * from yuma_weidian_item_model t where t.name like '%八爪鱼%';
+select * from yuma_weidian_item_model_mapping t where t.weidian_item_model_id = 862
+
+#UPDATE yuma_order_item s LEFT JOIN yuma_order c ON s.order_id = c.id SET s.receiver_id=c.receiver_id
+
+
+select count(*) from yuma_weidian_data where sync_status = 0;
+select count(*) from yuma_weidian_data where sync_status = 1;
+select count(*) from yuma_weidian_data where sync_status = 2;
+
+#多表删除
+#DELETE t1 FROM A t1 LEFT JOIN B t2 ON t1.id = t2.id WHERE t2.id IS NULL
+
+#多表更新
+#UPDATE A t1 LEFT JOIN B t2 ON t1.id = t2.id SET t1.data=t2.data
 
 /*
 #delete from province;
 #delete from city;
 #delete from area;
+#delete from yuma_weidian_data;
 #delete from yuma_weidian_item;
 #delete from yuma_weidian_item_model;
 #delete from yuma_weidian_item_model_mapping;
+
 delete from yuma_order;
 delete from yuma_order_item;
 delete from yuma_receiver;
 delete from yuma_user;
-delete from yuma_weidian_data;
-
-update yuma_weidian_item set body_id = 0
 update yuma_weidian_data set sync_status = 0
 update yuma_order set pay_price = 0 , original_price = 0
+
+/*
 SELECT
             n1.i + n10.i * 10 + n100.i * 100 + n1000.i * 1000+ n10000.i * 10000 AS id
         FROM
@@ -102,4 +101,4 @@ FROM
         CROSS JOIN num AS n1000
         CROSS JOIN num AS n10000
     ) AS numlist;
-
+*/

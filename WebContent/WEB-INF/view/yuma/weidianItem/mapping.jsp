@@ -33,8 +33,8 @@
 			<tr>
 				<th>商品：</th>
 				<td><select id="mapping_item_id"
-					onchange="initItemModelSel('mapping_item_model_id',this.value)"></select> <form:select
-						id="mapping_item_model_id" path="yumaItemModel.id"></form:select></td>
+					onchange="initItemModelSel('mapping_item_model_id',this.value)" cssClass="validate[required]" ></select> <form:select
+						id="mapping_item_model_id" path="yumaItemModel.id" cssClass="validate[required]" ></form:select></td>
 			</tr>
 			<tr>
 				<th>数量：</th>
