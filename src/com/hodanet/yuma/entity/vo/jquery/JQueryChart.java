@@ -33,12 +33,9 @@ public abstract class JQueryChart {
 
 	protected enum Colour {
 		RED("rgb(255, 99, 132)"), ORANGE("rgb(255, 159, 64)"), YELLOW("rgb(255, 205, 86)"), GREEN("rgb(75, 192, 192)"),
-		BLUE("rgb(54, 162, 235)"), PURPLE("rgb(153, 102, 255)"), GREY("rgb(201, 203, 207)");
-
-//		RED("rgb(255, 0, 0)"), ORANGE("rgb(255, 160, 0)"), YELLOW("rgb(255, 255, 0)"), GREEN("rgb(0, 255, 0)"),
-//		BLUE("rgb(0, 0, 255)"), PURPLE("rgb(160, 32, 240)"), GREY("rgb(190, 190, 190)"), CYAN("rgb(0, 255, 255)"),
-//		GOLD("rgb(255, 215 , 0)"), PINK("rgb(255, 192 , 203)"), LIGHTGREEN("rgb(144, 238 , 144)"),
-//		WHEAT("rgb(245, 222 , 179)"), BEIGE("rgb(245, 245 , 220)"), BLACK("rgb(0, 0 , 0)"), AZURE("rgb(240, 255, 255)");
+		BLUE("rgb(54, 162, 235)"), PURPLE("rgb(153, 102, 255)"), GREY("rgb(201, 203, 207)")
+		, CYAN("rgb(0, 255, 255)"), GOLD("rgb(255, 215 , 0)"), PINK("rgb(255, 192 , 203)"),
+		LIGHTGREEN("rgb(144, 238 , 144)");
 		private String rgb;
 
 		private Colour(String rgb) {

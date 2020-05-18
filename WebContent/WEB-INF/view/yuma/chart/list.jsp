@@ -207,6 +207,7 @@
 							<option value="20">20条</option>
 							<option value="30">30条</option>
 							<option value="50">50条</option>
+							<option value="100">100条</option>
 						</select> 
 					</td>
 					<td>

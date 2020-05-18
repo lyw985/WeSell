@@ -104,7 +104,7 @@ public class YumaChartController {
 			chartQueryFactory.setCondition("area_id", area_id);
 		}
 		JQueryChart chart = yumaChartService.getChart(chartQueryFactory);
-//		System.out.println(JSONObject.toJSONString(chart));
+		logger.info(JSONObject.toJSONString(chart));
 		model.addAttribute("chartConfig", StringEscapeUtils.escapeHtml(JSONObject.toJSONString(chart)));
 		model.addAttribute("chartParamertType", chartParamertType);
 		model.addAttribute("chartGroupByType1", chartGroupByType1);

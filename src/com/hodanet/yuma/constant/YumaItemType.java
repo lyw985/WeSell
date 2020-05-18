@@ -2,8 +2,7 @@ package com.hodanet.yuma.constant;
 
 public enum YumaItemType {
 	WEIGHT_JIN(0, "斤"), NUMBER_TIAO(1, "条"), NUMBER_ZHI(2, "只"), NUMBER_PING(3, "瓶"), NUMBER_GE(4, "个"),
-	NUMBER_HE(5, "盒");
-
+	NUMBER_HE(5, "盒"), NUMBER_ZHI2(6, "支"),NUMBER_BAO(7, "包");
 	private int status;
 	private String tip;
 
@@ -34,6 +33,10 @@ public enum YumaItemType {
 			return NUMBER_GE;
 		case 5:
 			return NUMBER_HE;
+		case 6:
+			return NUMBER_ZHI2;
+		case 7:
+			return NUMBER_BAO;
 		}
 		return null;
 	}

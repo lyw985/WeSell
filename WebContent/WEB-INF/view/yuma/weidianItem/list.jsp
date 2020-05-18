@@ -399,13 +399,18 @@
 									<c:if test="${ fn:length(yumaWeidianItem.shadows) == 0 }">
 										<select rel="${yumaWeidianItem.id}" class="beShadow" style="width: 150px;">
 											<option>寻找本体</option>
-											<c:forEach
+											<c:forEach items="${pageData.data }" var="yumaWeidianItem2" varStatus="vs3">
+												<c:if test="${ empty yumaWeidianItem2.body && yumaWeidianItem2.id!=yumaWeidianItem.id}">
+													<option value="${yumaWeidianItem2.id }">${yumaWeidianItem2.name }</option>
+												</c:if>
+											</c:forEach>
+											<!--<c:forEach
 												items="${bodys }"
 												var="body" varStatus="vs3">
 												<c:if test="${body.id !=yumaWeidianItem.id }">
 													<option value="${body.id }">${body.name }</option>
 												</c:if>
-											</c:forEach>
+											</c:forEach>-->
 										</select>
 									</c:if>
 									<c:if test="${ fn:length(yumaWeidianItem.shadows) != 0 }">

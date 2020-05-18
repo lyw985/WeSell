@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,8 @@ import com.hodanet.yuma.service.YumaWeidianItemService;
 @Controller
 @RequestMapping(value = "/yuma/weidianItem")
 public class YumaWeidianItemController {
+	
+	private final Logger logger = Logger.getLogger(YumaWeidianItemController.class);
 
 	private static final String LIST_PAGE = "yuma/weidianItem/list";
 	private static final String INFO_PAGE = "yuma/weidianItem/info";
@@ -58,11 +61,11 @@ public class YumaWeidianItemController {
 		long l = System.currentTimeMillis();
 		YumaWeidianItem yumaWeidianItem = new YumaWeidianItem();
 		pageData = yumaWeidianItemService.getYumaWeidianItemByPage(pageData, yumaWeidianItem);
-		System.out.println(System.currentTimeMillis() - l);
-		List<YumaWeidianItem> bodys = yumaWeidianItemService.getBodyYumaWeidianItems(yumaWeidianItem);
-		System.out.println(System.currentTimeMillis() - l);
+		logger.info(System.currentTimeMillis() - l);
+//		List<YumaWeidianItem> bodys = yumaWeidianItemService.getBodyYumaWeidianItems(yumaWeidianItem);
+//		model.addAttribute("bodys", bodys);
+		logger.info(System.currentTimeMillis() - l);
 		model.addAttribute("pageData", pageData);
-		model.addAttribute("bodys", bodys);
 		return LIST_PAGE;
 	}
 
@@ -76,6 +79,7 @@ public class YumaWeidianItemController {
 	 */
 	@RequestMapping(value = "/query")
 	public String query(Model model, PageData<YumaWeidianItem> pageData, HttpServletRequest request) {
+		long l = System.currentTimeMillis();
 		String SHADOW = "0";
 		String BODY = "1";
 		String BODY_WITH_SHADOW = "11";
@@ -104,6 +108,7 @@ public class YumaWeidianItemController {
 			pageData.setPageSize(Integer.MAX_VALUE);
 		}
 		pageData = yumaWeidianItemService.getYumaWeidianItemByPage(pageData, yumaWeidianItem);
+		logger.info(System.currentTimeMillis() - l);
 		if (pageData.getData().size() > 0) {
 			List<YumaWeidianItem> yumaWeidianItems = pageData.getData();
 			for (int i = yumaWeidianItems.size() - 1; i >= 0; i--) {
@@ -163,10 +168,12 @@ public class YumaWeidianItemController {
 				pageData.setTotal(yumaWeidianItems.size());
 			}
 		}
-		List<YumaWeidianItem> bodys = yumaWeidianItemService.getBodyYumaWeidianItems(yumaWeidianItem);
+		logger.info(System.currentTimeMillis() - l);
+
 		model.addAttribute("weidianItemName", weidianItemName);
 		model.addAttribute("pageData", pageData);
-		model.addAttribute("bodys", bodys);
+//		List<YumaWeidianItem> bodys = yumaWeidianItemService.getBodyYumaWeidianItems(yumaWeidianItem);
+//		model.addAttribute("bodys", bodys);
 		model.addAttribute("bodyType", bodyType);
 		model.addAttribute("mappingType", mappingType);
 		model.addAttribute("mappingShowType", mappingShowType);

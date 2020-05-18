@@ -48,6 +48,8 @@
 						<form:option value="3">瓶</form:option>
 						<form:option value="4">个</form:option>
 						<form:option value="5">盒</form:option>
+						<form:option value="6">支</form:option>
+						<form:option value="7">包</form:option>
 					</form:select>
 				</td>
 			</tr>

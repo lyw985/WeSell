@@ -146,6 +146,7 @@ public class YumaWeidianItemServiceImpl extends AbstractDaoService implements Yu
 	}
 
 	@Override
+	@Deprecated
 	public List<YumaWeidianItem> getBodyYumaWeidianItems(YumaWeidianItem yumaWeidianItem) {
 		PageData<YumaWeidianItem> pageData = new PageData<YumaWeidianItem>();
 		YumaWeidianItem body = new YumaWeidianItem();
