@@ -17,7 +17,7 @@ public class SyncYumaUserTask extends QuartzJobBean {
 	private final Logger logger = Logger.getLogger(SyncYumaUserTask.class);
 	private final int SYNC_NUMBER_PER_TIME = 500;
 
-	private static YumaUserService yumaUserService ;
+	private static YumaUserService yumaUserService;
 
 	@Override
 	protected void executeInternal(JobExecutionContext arg0) throws JobExecutionException {
@@ -27,18 +27,27 @@ public class SyncYumaUserTask extends QuartzJobBean {
 	public void syncYumaWeidianData() {
 		logger.debug("开始同步" + SYNC_NUMBER_PER_TIME + "条数据");
 		WebApplicationContext webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
-		yumaUserService = (YumaUserService) webApplicationContext
-				.getBean(YumaUserService.class);
+		yumaUserService = (YumaUserService) webApplicationContext.getBean(YumaUserService.class);
 		yumaUserService.updateUnsycUserToSyncing(SYNC_NUMBER_PER_TIME);
 		PageData<YumaUser> pageData = new PageData<YumaUser>();
 		pageData.setPageNumber(1);
 		pageData.setPageSize(SYNC_NUMBER_PER_TIME);
 		YumaUser yumaUser = new YumaUser();
-		yumaUser.setSyncStatus(SyncStatus.INIT.getValue());
+		yumaUser.setSyncStatus(SyncStatus.SYNC_ING.getValue());
 		pageData = yumaUserService.getYumaUserByPage(pageData, yumaUser);
-		for (int i = 0; i < pageData.getData().size(); i++) {
-			yumaUser = pageData.getData().get(i);
-			yumaUserService.updateSingleYumaUser(yumaUser);
+		if (pageData != null && pageData.getData().size() > 0) {
+			logger.info("本次共有" + pageData.getData().size() + "条微店数据需要同步");
+			for (int i = 0; i < pageData.getData().size(); i++) {
+				yumaUser = pageData.getData().get(i);
+				try {
+					yumaUserService.updateSingleYumaUser(yumaUser);
+					yumaUserService.updateYumaUserSyncStatus(yumaUser.getId(), SyncStatus.SYNC_SUCCESS.getValue());
+				} catch (Exception e) {
+					logger.error(e.getMessage());
+					yumaUserService.updateYumaUserSyncStatus(yumaUser.getId(), SyncStatus.SYNC_FAILED.getValue());
+				}
+			}
+			logger.info(pageData.getData().size() + "条微店数据同步完成");
 		}
 		logger.debug("微店同步完成");
 	}

@@ -24,7 +24,7 @@
 				<ref bean="noticeSoonExpireUserBean" />
 				 -->
 				 <ref bean="syncYumaWeidianDataBean" />
-				 <!-- <ref bean="verifyInformationBean" /> -->
+				 <ref bean="syncYumaReceiverBean" />
 			</list>
 		</property>
 	</bean>
@@ -38,6 +38,17 @@
 	<bean id="syncYumaWeidianDataTask" class="org.springframework.scheduling.quartz.JobDetailBean">
 		<property name="jobClass"
 			value="com.hodanet.yuma.task.SyncYumaWeidianDataTask"></property>
+	</bean>
+	
+	<!-- 定时同步微店客户百度定位 -->
+	<bean id="syncYumaReceiverBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="syncYumaReceiverTask"></property>
+		<property name="cronExpression" value="5 * * * * ?" />
+	</bean>
+	
+	<bean id="syncYumaReceiverTask" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass"
+			value="com.hodanet.yuma.task.SyncYumaReceiverTask"></property>
 	</bean>
 	
 	<!-- 定时检查信息是否正确 -->

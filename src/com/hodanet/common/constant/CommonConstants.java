@@ -18,6 +18,15 @@ public class CommonConstants {
 	
 	public static int SYSC_WEIDIAN_DATA_LOCK = 0;
 
+	public static int SYSC_RECEIVER_DATA_LOCK = 0;
+	/**
+	 * 1.eX0d4EPG7wrIDjTKjQ9MYgSBhUwdw43v
+	 * 2.disgVtFX4iDBQvDMeLGCFikyWzK36Nhz
+	 */
+	public static String API_BAIDU_AK="eX0d4EPG7wrIDjTKjQ9MYgSBhUwdw43v";
+	
+	public static String API_BAIDU_GET_LOCATION_URL="http://api.map.baidu.com/place/v2/search?";
+	
 //	private static AddressService addressService;
 
 //    public static List<Address>   addressList        = null;

@@ -32,7 +32,7 @@
 			</tr>
 			<tr>
 				<th>商品：</th>
-				<td><select id="mapping_item_id"
+				<td><select id="mapping_item_id" name="mapping_item_id"
 					onchange="initItemModelSel('mapping_item_model_id',this.value)" cssClass="validate[required]" ></select> <form:select
 						id="mapping_item_model_id" path="yumaItemModel.id" cssClass="validate[required]" ></form:select></td>
 			</tr>

@@ -55,4 +55,10 @@ public interface YumaReceiverService {
 
 	public void updateBatchYumaReceiverProvince(Integer fromProvinceId, Integer toProvinceId);
 
+	public void updateUnsycReceiverToSyncing(int number);
+
+	public void updateYumaReceiverSyncStatus(Integer id, int syncStatus);
+
+	public void updateSingleYumaReceiver(YumaReceiver yumaReceiver);
+
 }

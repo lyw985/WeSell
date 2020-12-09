@@ -107,7 +107,7 @@ public class YumaUserServiceImpl extends AbstractDaoService implements YumaUserS
 
 	@Override
 	public void updateUnsycUserToSyncing(int number) {
-		String sql = "update yuma_user a set a.sync_status = ? where a.id in ( select b.id from (SELECT id FROM yuma_user c where c.sync_status = ? ORDER BY c.order_create_time asc LIMIT 0,?) b)";
+		String sql = "update yuma_user a set a.sync_status = ? where a.id in ( select b.id from (SELECT id FROM yuma_user c where c.sync_status = ? ORDER BY c.create_time asc LIMIT 0,?) b)";
 		this.getDao().getJdbcTemplate().update(sql, SyncStatus.SYNC_ING.getValue(), SyncStatus.INIT.getValue(), number);
 	}
 

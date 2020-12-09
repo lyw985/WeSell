@@ -3,14 +3,20 @@ package com.hodanet.yuma.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.httpclient.NameValuePair;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.hodanet.common.constant.CommonConstants;
 import com.hodanet.common.dao.AbstractDaoService;
 import com.hodanet.common.entity.po.Area;
 import com.hodanet.common.entity.po.City;
 import com.hodanet.common.entity.po.Province;
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.common.util.StringUtil;
+import com.hodanet.common.util.WebUtil;
+import com.hodanet.yuma.constant.SyncStatus;
 import com.hodanet.yuma.entity.po.YumaReceiver;
 import com.hodanet.yuma.entity.po.YumaUser;
 import com.hodanet.yuma.service.YumaReceiverService;
@@ -39,6 +45,10 @@ public class YumaReceiverServiceImpl extends AbstractDaoService implements YumaR
 		if (yumaReceiver.getStatus() != null) {
 			sb.append(" and o.status = ? ");
 			params.add(yumaReceiver.getStatus());
+		}
+		if (yumaReceiver.getSyncStatus() != null) {
+			sb.append(" and o.syncStatus = ? ");
+			params.add(yumaReceiver.getSyncStatus());
 		}
 		sb.append(" order by o.createTime desc");
 		return this.getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
@@ -167,6 +177,53 @@ public class YumaReceiverServiceImpl extends AbstractDaoService implements YumaR
 	public void updateBatchYumaReceiverProvince(Integer fromProvinceId, Integer toProvinceId) {
 		String hql = "update YumaReceiver o set o.province.id = ? where o.province.id = ?";
 		this.getDao().executeUpdate(hql, toProvinceId, fromProvinceId);
+	}
+
+	@Override
+	public void updateUnsycReceiverToSyncing(int number) {
+		String sql = "update yuma_receiver a set a.sync_status = ? where a.id in ( select b.id from (SELECT id FROM yuma_receiver c where c.sync_status = ? ORDER BY c.create_time asc LIMIT 0,?) b)";
+		this.getDao().getJdbcTemplate().update(sql, SyncStatus.SYNC_ING.getValue(), SyncStatus.INIT.getValue(), number);
+	}
+
+	@Override
+	public void updateYumaReceiverSyncStatus(Integer id, int syncStatus) {
+		String hql = "update YumaReceiver o set o.syncStatus = ? where o.id = ?";
+		this.getDao().executeUpdate(hql, syncStatus, id);
+	}
+
+	@Override
+	public void updateSingleYumaReceiver(YumaReceiver yumaReceiver) {
+		String region = yumaReceiver.getProvince().getName();
+		String query = yumaReceiver.getAddressDetail();
+		ArrayList<NameValuePair> arr = new ArrayList<NameValuePair>();
+		arr.add(new NameValuePair("query", query));
+		arr.add(new NameValuePair("region", region));
+		arr.add(new NameValuePair("page_size", "1"));
+		arr.add(new NameValuePair("output", "json"));
+		arr.add(new NameValuePair("ak", CommonConstants.API_BAIDU_AK));
+		boolean done = false;
+		JSONObject obj=null;
+		while (!done) {
+			obj = WebUtil.getJsonStringFromUrl(CommonConstants.API_BAIDU_GET_LOCATION_URL,
+					arr.toArray(new NameValuePair[arr.size()]));
+			System.out.println(obj.toJSONString());
+
+			int jsonStatus = obj.getIntValue("status");
+			if (jsonStatus != 0 ) {
+				throw new RuntimeException("调用api异常");
+			}
+			done=true;
+		}
+		
+		JSONArray results = obj.getJSONArray("results");
+		if (results.size() == 0) {
+			throw new RuntimeException("未找到对应定位");
+		}
+		JSONObject jsonLocation = results.getJSONObject(0).getJSONObject("location");
+		String lat = jsonLocation.getString("lat");
+		String lng = jsonLocation.getString("lng");
+		String hql = "update YumaReceiver o set o.lat = ?, o.lng = ? where o.id = ?";
+		this.getDao().executeUpdate(hql, lat, lng, yumaReceiver.getId());
 	}
 
 }

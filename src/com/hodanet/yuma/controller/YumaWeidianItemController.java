@@ -19,6 +19,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.hodanet.common.entity.vo.JsonMessage;
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.common.util.WebUtil;
+import com.hodanet.yuma.constant.YumaCached;
 import com.hodanet.yuma.entity.po.YumaWeidianItem;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModelMapping;
@@ -33,7 +34,7 @@ import com.hodanet.yuma.service.YumaWeidianItemService;
 @Controller
 @RequestMapping(value = "/yuma/weidianItem")
 public class YumaWeidianItemController {
-	
+
 	private final Logger logger = Logger.getLogger(YumaWeidianItemController.class);
 
 	private static final String LIST_PAGE = "yuma/weidianItem/list";
@@ -239,16 +240,19 @@ public class YumaWeidianItemController {
 		YumaWeidianItemModel yumaWeidianItemModel = yumaWeidianItemModelService.getWeidianItemModelById(id);
 		yumaWeidianItemModelMapping.setYumaWeidianItemModel(yumaWeidianItemModel);
 		model.addAttribute("yumaWeidianItemModelMapping", yumaWeidianItemModelMapping);
+		model.addAttribute("item_id", YumaCached.ADD_MAPPING_DEFAULT_ITEM_ID);
 		return MAPPING_PAGE;
 	}
 
 	@RequestMapping(value = "/saveMapping", method = RequestMethod.POST)
 	public void saveMapping(Model model, HttpServletRequest request, HttpServletResponse response,
-			YumaWeidianItemModelMapping yumaWeidianItemModelMapping) {
+			YumaWeidianItemModelMapping yumaWeidianItemModelMapping,
+			@RequestParam("mapping_item_id") Integer mapping_item_id) {
 		yumaWeidianItemModelMapping = yumaWeidianItemModelMappingService
 				.saveYumaWeidianItemModelMapping(yumaWeidianItemModelMapping);
 		yumaWeidianItemModelMappingService.updateYumaWeidianItemModelMappingPercent(
 				yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId());
+		YumaCached.ADD_MAPPING_DEFAULT_ITEM_ID=mapping_item_id;
 		WebUtil.responseText(response, JSONObject.toJSONString(new JsonMessage(true, "成功")));
 	}
 

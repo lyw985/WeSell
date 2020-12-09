@@ -61,7 +61,14 @@ public class YumaReceiver {
 	@Column(name = "address_detail")
 	private String addressDetail;
 
+	private String lat;
+
+	private String lng;
+
 	private Integer status;
+
+	@Column(name = "sync_status")
+	private Integer syncStatus;
 
 	@Column(name = "default_address")
 	private Integer defaultAddress;
@@ -116,6 +123,30 @@ public class YumaReceiver {
 
 	public Integer getStatus() {
 		return status;
+	}
+
+	public String getLat() {
+		return lat;
+	}
+
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+
+	public String getLng() {
+		return lng;
+	}
+
+	public void setLng(String lng) {
+		this.lng = lng;
+	}
+
+	public Integer getSyncStatus() {
+		return syncStatus;
+	}
+
+	public void setSyncStatus(Integer syncStatus) {
+		this.syncStatus = syncStatus;
 	}
 
 	public void setStatus(Integer status) {

@@ -585,7 +585,7 @@ public class YumaWeidianData {
 				orderCreateTimeStr = value;
 				continue;
 			}
-			if ("付款时间".equals(title)) {
+			if ("付款时间".equals(title) || "支付时间".equals(title)) {
 				orderPayTimeStr = value;
 				continue;
 			}
@@ -597,7 +597,7 @@ public class YumaWeidianData {
 				itemModelName = value;
 				continue;
 			}
-			if ("商品id".equals(title)) {
+			if ("商品id".equals(title) || "商品ID".equals(title)) {
 				itemId = value;
 				continue;
 			}
@@ -605,11 +605,11 @@ public class YumaWeidianData {
 				itemNumber = value;
 				continue;
 			}
-			if ("购买数量".equals(title)) {
+			if ("购买数量".equals(title) || "商品件数".equals(title)) {
 				itemCount = value;
 				continue;
 			}
-			if ("商品价格".equals(title)) {
+			if ("商品价格".equals(title) || "单品折扣后价格".equals(title)) {
 				itemModelPrice = value;
 				continue;
 			}
@@ -633,7 +633,7 @@ public class YumaWeidianData {
 				serviceRefund = value;
 				continue;
 			}
-			if ("商品原价".equals(title)) {
+			if ("商品原价".equals(title) || "商品原始单价".equals(title)) {
 				originalPrice = value;
 				continue;
 			}
@@ -641,11 +641,11 @@ public class YumaWeidianData {
 				freightRefund = value;
 				continue;
 			}
-			if ("收件人姓名".equals(title)) {
+			if ("收件人姓名".equals(title)||"收件人/提货人姓名".equals(title)) {
 				receiverName = value;
 				continue;
 			}
-			if ("收件人手机".equals(title)) {
+			if ("收件人手机".equals(title)||"收件人/提货人手机号".equals(title)) {
 				receiverPhone = value;
 				continue;
 			}
@@ -661,7 +661,7 @@ public class YumaWeidianData {
 				receiverArea = value;
 				continue;
 			}
-			if ("收货详细地址".equals(title)) {
+			if ("收货详细地址".equals(title) || "收货/提货详细地址".equals(title)) {
 				receiverAddress = value;
 				continue;
 			}
@@ -722,12 +722,28 @@ public class YumaWeidianData {
 			logger.warn("--------------- 不存在对应的字段title:[" + title + "] -----------------------");
 		}
 
+		// 202006微店新版本文件更新
+		if (itemModelName == null) {
+			int rightIndex = itemName.lastIndexOf(")");
+			int leftIndex = itemName.lastIndexOf("(");
+			String back = itemName.substring(leftIndex + 1, rightIndex);
+			String front = itemName.substring(0, leftIndex);
+			while (back.lastIndexOf(")") != -1) {
+				rightIndex = back.lastIndexOf(")") + leftIndex + 1;
+				leftIndex = front.lastIndexOf("(");
+				back =  itemName.substring(leftIndex + 1, rightIndex);
+				front =  itemName.substring(0, leftIndex);
+			}
+			itemModelName=  itemName.substring(leftIndex + 1, itemName.lastIndexOf(")"));
+			itemName =  itemName.substring(0, leftIndex);
+		}
+		
 		return new YumaWeidianData(orderNumber, orderStatus, orderType, orderCreateTimeStr, orderPayTimeStr, itemName,
 				itemModelName, itemId, itemNumber, itemCount, itemModelPrice, itemIntegral, sendStatus, refundStatus,
 				refundPrice, serviceRefund, originalPrice, freightRefund, receiverName, receiverPhone, receiverProvince,
 				receiverCity, receiverArea, receiverAddress, orderDetail, buyerRemark, orderTemplate, sellerRemark,
 				distributionStoreId, distributionName, distributionPhone, orderPhone, groupStatus, identificationCard,
 				payType, selfMention);
-	}
 
+	}
 }

@@ -27,7 +27,7 @@ public class SyncYumaWeidianDataTask extends QuartzJobBean {
 
 	public void syncYumaWeidianData() {
 		if (CommonConstants.SYSC_WEIDIAN_DATA_LOCK != 0) {
-			logger.warn("微店数据正在同步");
+			logger.warn("微店源数据正在同步");
 			return;
 		}
 		try {
@@ -44,7 +44,7 @@ public class SyncYumaWeidianDataTask extends QuartzJobBean {
 			yumaWeidianData.setSyncStatus(SyncStatus.SYNC_ING.getValue());
 			pageData = yumaWeidianDataService.getYumaWeidianDataByPage(pageData, yumaWeidianData);
 			if (pageData != null && pageData.getData().size() > 0) {
-				logger.info("本次共有" + pageData.getData().size() + "条微店数据需要同步");
+				logger.info("本次共有" + pageData.getData().size() + "条微店源数据需要同步");
 				for (int i = 0; i < pageData.getData().size(); i++) {
 					yumaWeidianData = pageData.getData().get(i);
 					try {
@@ -57,7 +57,7 @@ public class SyncYumaWeidianDataTask extends QuartzJobBean {
 								SyncStatus.SYNC_FAILED.getValue());
 					}
 				}
-				logger.info( pageData.getData().size() + "条微店数据同步完成");
+				logger.info( pageData.getData().size() + "条微店源数据同步完成");
 			}
 			logger.debug("微店导入的源数据同步结束.");
 		} catch (Exception e) {

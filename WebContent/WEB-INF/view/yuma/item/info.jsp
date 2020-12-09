@@ -50,6 +50,7 @@
 						<form:option value="5">盒</form:option>
 						<form:option value="6">支</form:option>
 						<form:option value="7">包</form:option>
+						<form:option value="8">份</form:option>
 					</form:select>
 				</td>
 			</tr>
