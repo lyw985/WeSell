@@ -49,10 +49,14 @@ public class YumaOrder {
 	@NotFound(action = NotFoundAction.IGNORE)
 	private YumaReceiver yumaReceiver;
 
-	@OneToMany(targetEntity = YumaOrderItem.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@Fetch(FetchMode.JOIN)
-	@JoinColumn(name = "order_id", updatable = false)
+//	@OneToMany(targetEntity = YumaOrderItem.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@Fetch(FetchMode.JOIN)
+//	@JoinColumn(name = "order_id", updatable = false)
+	@Transient
 	private List<YumaOrderItem> yumaOrderItems;
+
+	@Transient
+	private boolean showOrderItems = false;
 
 	/**  **/
 	@Column(name = "pay_date")
@@ -231,6 +235,14 @@ public class YumaOrder {
 
 	public void setIncludeItemModelId(Integer includeItemModelId) {
 		this.includeItemModelId = includeItemModelId;
+	}
+
+	public boolean isShowOrderItems() {
+		return showOrderItems;
+	}
+
+	public void setShowOrderItems(boolean showOrderItems) {
+		this.showOrderItems = showOrderItems;
 	}
 
 }

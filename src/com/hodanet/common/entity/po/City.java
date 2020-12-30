@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -42,9 +43,10 @@ public class City {
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Province province;
 
-	@OneToMany(targetEntity = Area.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@Fetch(FetchMode.JOIN)
-	@JoinColumn(name = "city_id", updatable = false)
+//	@OneToMany(targetEntity = Area.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@Fetch(FetchMode.JOIN)
+//	@JoinColumn(name = "city_id", updatable = false)
+	@Transient
 	private List<Area> areas;
 
 	public Integer getId() {

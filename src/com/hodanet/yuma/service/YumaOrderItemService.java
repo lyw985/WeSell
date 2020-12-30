@@ -1,6 +1,7 @@
 package com.hodanet.yuma.service;
 
 import java.util.Date;
+import java.util.List;
 
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.yuma.entity.po.YumaOrder;
@@ -31,6 +32,8 @@ public interface YumaOrderItemService {
 	public PageData<YumaOrderItem> getYumaOrderItemByPage(PageData<YumaOrderItem> pageData,
 			YumaOrderItem yumaOrderItem);
 
+	public List<YumaOrderItem> getYumaOrderItemList(YumaOrderItem yumaOrderItem);
+
 	/**
 	 * 
 	 * 
@@ -53,4 +56,5 @@ public interface YumaOrderItemService {
 			String itemModelPrice, String originalPrice);
 
 	public void updateBatchYumaOrderWeidianItemModel(Integer fromWeidianItemModelId, Integer toWeidianItemModelId);
+
 }

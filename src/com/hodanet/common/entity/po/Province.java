@@ -39,14 +39,19 @@ public class Province {
 	@NotFound(action = NotFoundAction.IGNORE)
 	private Province body;
 
-	@OneToMany(targetEntity = Province.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@Fetch(FetchMode.JOIN)
-	@JoinColumn(name = "body_id", updatable = false)
+//	@OneToMany(targetEntity = Province.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@Fetch(FetchMode.JOIN)
+//	@JoinColumn(name = "body_id", updatable = false)
+	@Transient
 	private List<Province> shadows;
 
-	@OneToMany(targetEntity = City.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@Fetch(FetchMode.JOIN)
-	@JoinColumn(name = "province_id", updatable = false)
+	@Transient
+	private boolean showCitys;
+
+//	@OneToMany(targetEntity = City.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@Fetch(FetchMode.JOIN)
+//	@JoinColumn(name = "province_id", updatable = false)
+	@Transient
 	private List<City> citys;
 
 	@Transient
@@ -98,6 +103,14 @@ public class Province {
 
 	public void setCitys(List<City> citys) {
 		this.citys = citys;
+	}
+
+	public boolean isShowCitys() {
+		return showCitys;
+	}
+
+	public void setShowCitys(boolean showCitys) {
+		this.showCitys = showCitys;
 	}
 
 }

@@ -284,7 +284,7 @@
 									<a href="javascript:void(0)" rel="${yumaItem.id}" class="inavailableItem">设为禁用</a>
 								</c:if>
 								<a href="javascript:void(0)" rel="${yumaItem.id}" class="itemModelList">查看型号</a>
-								<a href="javascript:void(0)" rel="${yumaItem.id}" class="itemBuyOrder">购买力</a>
+								<!-- <a href="javascript:void(0)" rel="${yumaItem.id}" class="itemBuyOrder">购买力</a> -->
 								<a href="javascript:void(0)" rel="${yumaItem.id}" class="btnModify">修改</a>
 								<c:if test="${fn:length(yumaItem.yumaItemModels)==0 }">
 									<a href="javascript:void(0)" rel="${yumaItem.id}" class="singleDelete">删除</a>

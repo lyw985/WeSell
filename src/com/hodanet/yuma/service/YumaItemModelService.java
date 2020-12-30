@@ -1,5 +1,7 @@
 package com.hodanet.yuma.service;
 
+import java.util.List;
+
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.yuma.entity.po.YumaItemModel;
 
@@ -18,12 +20,20 @@ public interface YumaItemModelService {
     public YumaItemModel getYumaItemModelById(Integer id);
 
     /**
-     * ҳѯ
      * 
      * @param pageData
      * @return
      */
     public PageData<YumaItemModel> getYumaItemModelByPage(PageData<YumaItemModel> pageData, YumaItemModel yumaItemModel);
+    
+    /**
+     * ҳѯ
+     * 
+     * @param pageData
+     * @return
+     */
+    public List<YumaItemModel> getYumaItemModelList(YumaItemModel yumaItemModel);
+
 
     /**
      * 

@@ -34,14 +34,16 @@ public class YumaWeidianItem {
 
 	private String name;
 
-	@OneToMany(targetEntity = YumaWeidianItemModel.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@Fetch(FetchMode.JOIN)
-	@JoinColumn(name = "weidian_item_id", updatable = false)
+//	@OneToMany(targetEntity = YumaWeidianItemModel.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@Fetch(FetchMode.JOIN)
+//	@JoinColumn(name = "weidian_item_id", updatable = false)
+	@Transient
 	private List<YumaWeidianItemModel> yumaWeidianItemModels;
 	
-	@OneToMany(targetEntity = YumaWeidianItem.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@Fetch(FetchMode.JOIN)
-	@JoinColumn(name = "body_id", updatable = false)
+//	@OneToMany(targetEntity = YumaWeidianItem.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@Fetch(FetchMode.JOIN)
+//	@JoinColumn(name = "body_id", updatable = false)
+	@Transient
 	private List<YumaWeidianItem> shadows;
 
 	@ManyToOne

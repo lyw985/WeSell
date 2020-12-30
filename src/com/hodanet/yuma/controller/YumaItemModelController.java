@@ -50,6 +50,7 @@ public class YumaItemModelController {
 	@RequestMapping(value = "/list")
 	public String list(Model model, PageData<YumaItemModel> pageData, @RequestParam("item_id") Integer itemId) {
 		YumaItemModel yumaItemModel = new YumaItemModel();
+		yumaItemModel.setShowModelMappings(true);
 		YumaItem yumaItem = new YumaItem();
 		yumaItem.setId(itemId);
 		yumaItemModel.setYumaItem(yumaItem);
@@ -71,6 +72,7 @@ public class YumaItemModelController {
 	public String query(Model model, PageData<YumaItemModel> pageData, @RequestParam("name") String name,
 			@RequestParam("status") Integer status, @RequestParam("item_id") Integer itemId) {
 		YumaItemModel yumaItemModel = new YumaItemModel();
+		yumaItemModel.setShowModelMappings(true);
 		YumaItem yumaItem = new YumaItem();
 		yumaItem.setId(itemId);
 		yumaItemModel.setYumaItem(yumaItem);

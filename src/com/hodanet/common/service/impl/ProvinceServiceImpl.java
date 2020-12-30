@@ -15,6 +15,7 @@ import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.common.service.AreaService;
 import com.hodanet.common.service.CityService;
 import com.hodanet.common.service.ProvinceService;
+import com.hodanet.yuma.entity.po.YumaOrderItem;
 import com.hodanet.yuma.service.YumaReceiverService;
 
 /**
@@ -68,7 +69,19 @@ public class ProvinceServiceImpl extends AbstractDaoService implements ProvinceS
 			}
 		}
 		sb.append(" order by convert(o.name,'gbk')");
-		return getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
+		
+		pageData = getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
+
+		if (province.isShowCitys()&& pageData != null && pageData.getData().size() != 0) {
+			List<Province> provinceList = pageData.getData();
+			for (Province province2 : provinceList) {
+				City city=new City();
+				city.setProvince(province2);
+				province2.setCitys(cityService.getCityList(city));
+			}
+		}
+		return pageData;
+		
 	}
 
 	@Override

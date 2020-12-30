@@ -44,8 +44,29 @@ public class YumaOrderItemServiceImpl extends AbstractDaoService implements Yuma
 			sb.append(" and o.status = ? ");
 			params.add(yumaOrderItem.getStatus());
 		}
+		if (yumaOrderItem.getYumaOrder() != null && yumaOrderItem.getYumaOrder().getId() != null) {
+			sb.append(" and o.yumaOrder.id = ? ");
+			params.add(yumaOrderItem.getYumaOrder().getId());
+		}
 		sb.append(" order by o.createTime desc");
 		return this.getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
+	}
+
+	@Override
+	public List<YumaOrderItem> getYumaOrderItemList(YumaOrderItem yumaOrderItem) {
+		List<Object> params = new ArrayList<Object>();
+		StringBuilder sb = new StringBuilder();
+		sb.append("from YumaOrderItem o where 1=1");
+		if (yumaOrderItem.getStatus() != null) {
+			sb.append(" and o.status = ? ");
+			params.add(yumaOrderItem.getStatus());
+		}
+		if (yumaOrderItem.getYumaOrder() != null && yumaOrderItem.getYumaOrder().getId() != null) {
+			sb.append(" and o.yumaOrder.id = ? ");
+			params.add(yumaOrderItem.getYumaOrder().getId());
+		}
+		sb.append(" order by o.createTime desc");
+		return this.getDao().queryHql(sb.toString(), params.toArray(new Object[params.size()]));
 	}
 
 	@Override

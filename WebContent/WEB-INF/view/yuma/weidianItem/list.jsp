@@ -332,9 +332,9 @@
 					<td>
 						<select id="mappingShowType" name="mappingShowType" value="${mappingShowType}">
 							<option value="">--选择显示映射--</option>
-							<option value="1">绿色(单一映射)</option>
+							<option value="1">绿色(单映射)</option>
 							<option value="2">橙色(多映射)</option>
-							<option value="3">红色(未处理)</option>
+							<option value="3">红色(未映射)</option>
 						</select>
 					</td>
 					<td>

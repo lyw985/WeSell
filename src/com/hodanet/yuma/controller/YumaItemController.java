@@ -103,6 +103,7 @@ public class YumaItemController {
 	@RequestMapping(value = "/list")
 	public String list(Model model, PageData<YumaItem> pageData) {
 		YumaItem yumaItem = new YumaItem();
+		yumaItem.setShowModels(true);
 		pageData = yumaItemService.getYumaItemByPage(pageData, yumaItem);
 		model.addAttribute("pageData", pageData);
 		return LIST_PAGE;
@@ -120,6 +121,7 @@ public class YumaItemController {
 	public String query(Model model, PageData<YumaItem> pageData, @RequestParam("name") String name,
 			@RequestParam("status") Integer status) {
 		YumaItem yumaItem = new YumaItem();
+		yumaItem.setShowModels(true);
 		yumaItem.setName(name);
 		yumaItem.setStatus(status);
 		pageData = yumaItemService.getYumaItemByPage(pageData, yumaItem);

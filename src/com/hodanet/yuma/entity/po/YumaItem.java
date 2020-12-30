@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -40,10 +41,14 @@ public class YumaItem {
 	
 	private Integer type;
 
-	@OneToMany(targetEntity = YumaItemModel.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@Fetch(FetchMode.JOIN)
-	@JoinColumn(name = "item_id", updatable = false)
+//	@OneToMany(targetEntity = YumaItemModel.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@Fetch(FetchMode.JOIN)
+//	@JoinColumn(name = "item_id", updatable = false)
+	@Transient
 	private List<YumaItemModel> yumaItemModels;
+	
+	@Transient
+	private boolean showModels=false;
 
 	/** ʱ. */
 	@Column(name = "create_time")
@@ -117,4 +122,12 @@ public class YumaItem {
 		return YumaItemType.getYumaItemType(type).toString();
 	}
 
+	public boolean isShowModels() {
+		return showModels;
+	}
+
+	public void setShowModels(boolean showModels) {
+		this.showModels = showModels;
+	}
+	
 }

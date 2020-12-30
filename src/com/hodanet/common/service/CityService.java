@@ -38,6 +38,8 @@ public interface CityService {
 	 * @return
 	 */
 	public PageData<City> getCityByPage(PageData<City> pageData, City city);
+	
+	public List<City> getCityList(City city);
 
 	/**
 	 * 
@@ -57,5 +59,7 @@ public interface CityService {
 	public City getOrCreateCityByName(String name, Province province);
 
 	public void updateCityDisplayStatus(Integer id, Integer displayStatus);
+
+	
 
 }

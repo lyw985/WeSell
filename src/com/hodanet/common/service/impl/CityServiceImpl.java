@@ -39,12 +39,29 @@ public class CityServiceImpl extends AbstractDaoService implements CityService {
 			sb.append(" and o.province.id = ? ");
 			params.add(city.getProvince().getId());
 		}
-		if (city.getDisplayStatus()!=null) {
+		if (city.getDisplayStatus() != null) {
 			sb.append(" and o.displayStatus = ? ");
 			params.add(city.getDisplayStatus());
 		}
 		sb.append(" order by convert(o.name,'gbk')");
 		return getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
+	}
+
+	@Override
+	public List<City> getCityList(City city) {
+		List<Object> params = new ArrayList<Object>();
+		StringBuilder sb = new StringBuilder();
+		sb.append("from City o where 1=1 ");
+		if (city.getProvince() != null && city.getProvince().getId() != null) {
+			sb.append(" and o.province.id = ? ");
+			params.add(city.getProvince().getId());
+		}
+		if (city.getDisplayStatus() != null) {
+			sb.append(" and o.displayStatus = ? ");
+			params.add(city.getDisplayStatus());
+		}
+		sb.append(" order by convert(o.name,'gbk')");
+		return getDao().queryHql(sb.toString(), params.toArray(new Object[params.size()]));
 	}
 
 	@Override
@@ -97,4 +114,5 @@ public class CityServiceImpl extends AbstractDaoService implements CityService {
 		String hql = "update City o set o.displayStatus=? where o.id = ?";
 		this.getDao().executeUpdate(hql, displayStatus, id);
 	}
+
 }

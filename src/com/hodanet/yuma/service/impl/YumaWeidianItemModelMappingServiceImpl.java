@@ -38,7 +38,26 @@ public class YumaWeidianItemModelMappingServiceImpl extends AbstractDaoService
 		List<Object> params = new ArrayList<Object>();
 		StringBuilder sb = new StringBuilder();
 		sb.append("from YumaWeidianItemModelMapping o where 1=1");
+		if (yumaWeidianItemModelMapping.getYumaItemModel() != null
+				&& yumaWeidianItemModelMapping.getYumaItemModel().getId() != null) {
+			sb.append(" and o.yumaItemModel.id = ? ");
+			params.add(yumaWeidianItemModelMapping.getYumaItemModel().getId());
+		}
 		return this.getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
+	}
+
+	@Override
+	public List<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappingList(
+			YumaWeidianItemModelMapping yumaWeidianItemModelMapping) {
+		List<Object> params = new ArrayList<Object>();
+		StringBuilder sb = new StringBuilder();
+		sb.append("from YumaWeidianItemModelMapping o where 1=1");
+		if (yumaWeidianItemModelMapping.getYumaItemModel() != null
+				&& yumaWeidianItemModelMapping.getYumaItemModel().getId() != null) {
+			sb.append(" and o.yumaItemModel.id = ? ");
+			params.add(yumaWeidianItemModelMapping.getYumaItemModel().getId());
+		}
+		return this.getDao().queryHql(sb.toString(), params.toArray(new Object[params.size()]));
 	}
 
 	@Override

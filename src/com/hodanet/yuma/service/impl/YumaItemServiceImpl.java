@@ -3,6 +3,7 @@ package com.hodanet.yuma.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hodanet.common.dao.AbstractDaoService;
@@ -10,6 +11,8 @@ import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.yuma.constant.YumaCached;
 import com.hodanet.yuma.constant.YumaItemStatus;
 import com.hodanet.yuma.entity.po.YumaItem;
+import com.hodanet.yuma.entity.po.YumaItemModel;
+import com.hodanet.yuma.service.YumaItemModelService;
 import com.hodanet.yuma.service.YumaItemService;
 
 /**
@@ -18,6 +21,9 @@ import com.hodanet.yuma.service.YumaItemService;
  */
 @Service
 public class YumaItemServiceImpl extends AbstractDaoService implements YumaItemService {
+
+	@Autowired
+	private YumaItemModelService yumaItemModelService;
 
 	@Override
 	public YumaItem getYumaItemById(Integer id) {
@@ -38,7 +44,18 @@ public class YumaItemServiceImpl extends AbstractDaoService implements YumaItemS
 			params.add(yumaItem.getStatus());
 		}
 		sb.append(" order by convert(o.name,'gbk')");
-		return this.getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
+		PageData<YumaItem> pageDate = this.getDao().queryHqlPageData(sb.toString(), pageData,
+				params.toArray(new Object[params.size()]));
+
+		if (yumaItem.isShowModels() && pageData != null && pageData.getData().size() != 0) {
+			List<YumaItem> yumaitemList = pageData.getData();
+			for (YumaItem item : yumaitemList) {
+				YumaItemModel yumaItemModel = new YumaItemModel();
+				yumaItemModel.setYumaItem(item);
+				item.setYumaItemModels(yumaItemModelService.getYumaItemModelList(yumaItemModel));
+			}
+		}
+		return pageDate;
 	}
 
 	@Override
@@ -80,7 +97,7 @@ public class YumaItemServiceImpl extends AbstractDaoService implements YumaItemS
 		reloadYumaItemsForSelect();
 		return YumaCached.YUMA_ITEMS;
 	}
-	
+
 	private void reloadYumaItemsForSelect() {
 		YumaItem yumaItem = new YumaItem();
 		yumaItem.setStatus(YumaItemStatus.AVAILABLE.getValue());

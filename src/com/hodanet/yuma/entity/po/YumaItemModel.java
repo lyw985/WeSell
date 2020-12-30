@@ -47,10 +47,14 @@ public class YumaItemModel {
 
 	private Integer status;
 
-	@OneToMany(targetEntity = YumaWeidianItemModelMapping.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@Fetch(FetchMode.JOIN)
-	@JoinColumn(name = "item_model_id", updatable = false)
-	private Set<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings;
+//	@OneToMany(targetEntity = YumaWeidianItemModelMapping.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@Fetch(FetchMode.JOIN)
+//	@JoinColumn(name = "item_model_id", updatable = false)
+	@Transient
+	private List<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings;
+
+	@Transient
+	private boolean showModelMappings = false;
 
 	/** ʱ. */
 	@Column(name = "create_time")
@@ -112,12 +116,20 @@ public class YumaItemModel {
 		return YumaItemModelStatus.getYumaItemModelStatus(status).toString();
 	}
 
-	public Set<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappings() {
+	public List<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappings() {
 		return yumaWeidianItemModelMappings;
 	}
 
-	public void setYumaWeidianItemModelMappings(Set<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings) {
+	public void setYumaWeidianItemModelMappings(List<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings) {
 		this.yumaWeidianItemModelMappings = yumaWeidianItemModelMappings;
+	}
+
+	public boolean isShowModelMappings() {
+		return showModelMappings;
+	}
+
+	public void setShowModelMappings(boolean showModelMappings) {
+		this.showModelMappings = showModelMappings;
 	}
 
 }

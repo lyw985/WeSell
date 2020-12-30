@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -38,9 +39,10 @@ public class YumaWeidianItemModel {
 	@NotFound(action = NotFoundAction.IGNORE)
 	private YumaWeidianItem yumaWeidianItem;
 
-	@OneToMany(targetEntity = YumaWeidianItemModelMapping.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@Fetch(FetchMode.JOIN)
-	@JoinColumn(name = "weidian_item_model_id", updatable = false)
+//	@OneToMany(targetEntity = YumaWeidianItemModelMapping.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@Fetch(FetchMode.JOIN)
+//	@JoinColumn(name = "weidian_item_model_id", updatable = false)
+	@Transient
 	private Set<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings;
 
 	public Integer getId() {

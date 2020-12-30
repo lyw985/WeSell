@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hodanet.common.dao.AbstractDaoService;
@@ -13,8 +14,10 @@ import com.hodanet.common.util.StringUtil;
 import com.hodanet.yuma.constant.YumaOrderStatus;
 import com.hodanet.yuma.constant.YumaWeidianDataOrderStatus;
 import com.hodanet.yuma.entity.po.YumaOrder;
+import com.hodanet.yuma.entity.po.YumaOrderItem;
 import com.hodanet.yuma.entity.po.YumaReceiver;
 import com.hodanet.yuma.entity.po.YumaUser;
+import com.hodanet.yuma.service.YumaOrderItemService;
 import com.hodanet.yuma.service.YumaOrderService;
 
 /**
@@ -23,6 +26,9 @@ import com.hodanet.yuma.service.YumaOrderService;
  */
 @Service
 public class YumaOrderServiceImpl extends AbstractDaoService implements YumaOrderService {
+
+	@Autowired
+	private YumaOrderItemService yumaOrderItemService;
 
 	@Override
 	public YumaOrder getYumaOrderById(Integer id) {
@@ -99,7 +105,18 @@ public class YumaOrderServiceImpl extends AbstractDaoService implements YumaOrde
 		// i.yumaWeidianItemModel.name like ?) ");
 		// params.add("%红美人%");
 		sb.append(" order by o.payDate desc");
-		return this.getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
+
+		pageData = this.getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
+
+		if (yumaOrder.isShowOrderItems() && pageData != null && pageData.getData().size() != 0) {
+			List<YumaOrder> yumaOrderList = pageData.getData();
+			for (YumaOrder order : yumaOrderList) {
+				YumaOrderItem orderItem = new YumaOrderItem();
+				orderItem.setYumaOrder(order);
+				order.setYumaOrderItems(yumaOrderItemService.getYumaOrderItemList(orderItem));
+			}
+		}
+		return pageData;
 	}
 
 	@Override

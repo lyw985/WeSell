@@ -64,6 +64,7 @@ public class YumaOrderController {
 	@RequestMapping(value = "/list")
 	public String list(Model model, PageData<YumaOrder> pageData, HttpServletRequest request) {
 		YumaOrder yumaOrder = new YumaOrder();
+		yumaOrder.setShowOrderItems(true);
 		String userIdString = request.getParameter("user_id");
 		if (userIdString != null) {
 			YumaUser yumaUser = new YumaUser();
@@ -105,6 +106,7 @@ public class YumaOrderController {
 		String itemIdStr = request.getParameter("item_id");
 		String itemModelIdStr = request.getParameter("item_model_id");
 		YumaOrder yumaOrder = new YumaOrder();
+		yumaOrder.setShowOrderItems(true);
 		if (StringUtil.isNotBlank(status)) {
 			yumaOrder.setStatus(Integer.parseInt(status));
 		}

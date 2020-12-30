@@ -1,5 +1,7 @@
 package com.hodanet.yuma.service;
 
+import java.util.List;
+
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModelMapping;
 
@@ -23,7 +25,10 @@ public interface YumaWeidianItemModelMappingService {
 	 */
 	public PageData<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappingByPage(
 			PageData<YumaWeidianItemModelMapping> pageData,
-			YumaWeidianItemModelMapping yumaWeidianItemModelMappingService);
+			YumaWeidianItemModelMapping yumaWeidianItemModelMapping);
+
+	public List<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappingList(
+			YumaWeidianItemModelMapping yumaWeidianItemModelMapping);
 
 	/**
 	 * 

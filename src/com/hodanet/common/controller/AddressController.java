@@ -49,6 +49,7 @@ public class AddressController {
 	public String list(Model model, PageData<Province> pageData, HttpServletRequest request) {
 		List<Province> bodys = provinceService.getBodyProvinces();
 		Province province = new Province();
+		province.setShowCitys(true);
 		pageData = provinceService.getProvinceByPage(pageData, province);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("bodys", bodys);
@@ -69,6 +70,7 @@ public class AddressController {
 		String mappingType = request.getParameter("mappingType");
 
 		Province province = new Province();
+		province.setShowCitys(true);
 		province.setName(name);
 		if (SHADOW.equals(bodyType)) {
 			province.setIsBody(false);
