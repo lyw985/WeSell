@@ -57,6 +57,11 @@ public class YumaWeidianItemModelMappingServiceImpl extends AbstractDaoService
 			sb.append(" and o.yumaItemModel.id = ? ");
 			params.add(yumaWeidianItemModelMapping.getYumaItemModel().getId());
 		}
+		if (yumaWeidianItemModelMapping.getYumaWeidianItemModel() != null
+				&& yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId() != null) {
+			sb.append(" and o.yumaWeidianItemModel.id = ? ");
+			params.add(yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId());
+		}
 		return this.getDao().queryHql(sb.toString(), params.toArray(new Object[params.size()]));
 	}
 
@@ -95,14 +100,14 @@ public class YumaWeidianItemModelMappingServiceImpl extends AbstractDaoService
 				" left join yuma_weidian_item_model_mapping yumaWeidianItemModelMapping on yumaWeidianItemModelMapping.weidian_item_model_id = yumaItemModel.weidian_item_model_id");
 		sb.append(" where  yumaWeidianItemModelMapping.item_model_id = ?");
 		YumaWeidianItemModel yumaWeidianItemModel = yumaWeidianItemModelService
-				.getWeidianItemModelById(yumaWeidianItemModelId);
-		Set<YumaWeidianItemModelMapping> set = yumaWeidianItemModel.getYumaWeidianItemModelMappings();
-		if (set != null && set.size() > 0) {
+				.getWeidianItemModelById(yumaWeidianItemModelId, true);
+		List<YumaWeidianItemModelMapping> list = yumaWeidianItemModel.getYumaWeidianItemModelMappings();
+		if (list != null && list.size() > 0) {
 			if (exceptIds != null && exceptIds.length > 0) {
 				for (Integer id : exceptIds) {
-					for (YumaWeidianItemModelMapping mapping : set) {
+					for (YumaWeidianItemModelMapping mapping : list) {
 						if (mapping.getId() == id) {
-							set.remove(mapping);
+							list.remove(mapping);
 							break;
 						}
 					}
@@ -111,7 +116,7 @@ public class YumaWeidianItemModelMappingServiceImpl extends AbstractDaoService
 
 			Map<Integer, Double> map = new HashMap<Integer, Double>();
 			Double total = 0d;
-			for (YumaWeidianItemModelMapping mapping : set) {
+			for (YumaWeidianItemModelMapping mapping : list) {
 				int item_model_id = mapping.getYumaItemModel().getId();
 				Map<String, Object> avgMap = this.getDao().getJdbcTemplate().queryForMap(sb.toString(), item_model_id);
 				Double avgPrice = 0d;
@@ -124,7 +129,7 @@ public class YumaWeidianItemModelMappingServiceImpl extends AbstractDaoService
 				map.put(mapping.getId(), avgPrice * mapping.getCount());
 				total += avgPrice * mapping.getCount();
 			}
-			for (YumaWeidianItemModelMapping mapping : set) {
+			for (YumaWeidianItemModelMapping mapping : list) {
 				for (Integer key : map.keySet()) {
 					if (mapping.getId() == key) {
 						mapping.setPricePercent((float) (map.get(key) / total));
@@ -133,6 +138,22 @@ public class YumaWeidianItemModelMappingServiceImpl extends AbstractDaoService
 				}
 			}
 		}
+	}
+
+	@Override
+	public void updateYumaWeidianItemDetail(YumaWeidianItemModelMapping yumaWeidianItemModelMapping) {
+		YumaWeidianItemModel yumaWeidianItemModel = yumaWeidianItemModelService
+				.getWeidianItemModelById(yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId(), false);
+		
+		String sql = "update yuma_weidian_item_model t1 set t1.mapping_type = (select (case when count(*) >2 then 2 else count(*) end) from yuma_weidian_item_model_mapping t2 where t1.id=t2.weidian_item_model_id) ";
+		sql += " where t1.id = ? ";
+		this.getDao().getJdbcTemplate().update(sql, yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId());
+
+		
+		sql = "update yuma_weidian_item t1 set t1.done_status = (select (case when min(t2.mapping_type) >1 then 1 else min(t2.mapping_type) end) from yuma_weidian_item_model t2 where t1.id=t2.weidian_item_id)";
+		sql += " where t1.id = ? ";
+		
+		this.getDao().getJdbcTemplate().update(sql, yumaWeidianItemModel.getWeidianItem().getId());
 	}
 
 }

@@ -50,7 +50,7 @@ public class YumaItemModelServiceImpl extends AbstractDaoService implements Yuma
 		}
 		sb.append(" order by convert(o.name,'gbk')");
 
-		PageData<YumaItemModel> pageDate = this.getDao().queryHqlPageData(sb.toString(), pageData,
+		PageData<YumaItemModel> pageData2 = this.getDao().queryHqlPageData(sb.toString(), pageData,
 				params.toArray(new Object[params.size()]));
 
 		if (yumaItemModel.isShowModelMappings() && pageData != null && pageData.getData().size() != 0) {
@@ -62,7 +62,7 @@ public class YumaItemModelServiceImpl extends AbstractDaoService implements Yuma
 						.getYumaWeidianItemModelMappingList(yumaWeidianItemModelMapping));
 			}
 		}
-		return pageDate;
+		return pageData2;
 
 	}
 

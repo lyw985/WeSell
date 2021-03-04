@@ -641,11 +641,11 @@ public class YumaWeidianData {
 				freightRefund = value;
 				continue;
 			}
-			if ("收件人姓名".equals(title)||"收件人/提货人姓名".equals(title)) {
+			if ("收件人姓名".equals(title) || "收件人/提货人姓名".equals(title)) {
 				receiverName = value;
 				continue;
 			}
-			if ("收件人手机".equals(title)||"收件人/提货人手机号".equals(title)) {
+			if ("收件人手机".equals(title) || "收件人/提货人手机号".equals(title)) {
 				receiverPhone = value;
 				continue;
 			}
@@ -666,7 +666,8 @@ public class YumaWeidianData {
 				continue;
 			}
 			if ("订单描述".equals(title)) {
-				orderDetail = value;
+				// orderDetail = value;
+				orderDetail = "";
 				continue;
 			}
 			if ("买家留言".equals(title)) {
@@ -731,13 +732,13 @@ public class YumaWeidianData {
 			while (back.lastIndexOf(")") != -1) {
 				rightIndex = back.lastIndexOf(")") + leftIndex + 1;
 				leftIndex = front.lastIndexOf("(");
-				back =  itemName.substring(leftIndex + 1, rightIndex);
-				front =  itemName.substring(0, leftIndex);
+				back = itemName.substring(leftIndex + 1, rightIndex);
+				front = itemName.substring(0, leftIndex);
 			}
-			itemModelName=  itemName.substring(leftIndex + 1, itemName.lastIndexOf(")"));
-			itemName =  itemName.substring(0, leftIndex);
+			itemModelName = itemName.substring(leftIndex + 1, itemName.lastIndexOf(")"));
+			itemName = itemName.substring(0, leftIndex);
 		}
-		
+
 		return new YumaWeidianData(orderNumber, orderStatus, orderType, orderCreateTimeStr, orderPayTimeStr, itemName,
 				itemModelName, itemId, itemNumber, itemCount, itemModelPrice, itemIntegral, sendStatus, refundStatus,
 				refundPrice, serviceRefund, originalPrice, freightRefund, receiverName, receiverPhone, receiverProvince,

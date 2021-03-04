@@ -280,7 +280,7 @@
 		});
 		
 		$("#bodyType").val("${bodyType}")
-		$("#mappingType").val("${mappingType}")
+		$("#doneStatus").val("${doneStatus}")
 		$("#mappingShowType").val("${mappingShowType}")
 		$("#weidianItemName").val("${weidianItemName}")
 	});
@@ -332,16 +332,16 @@
 					<td>
 						<select id="mappingShowType" name="mappingShowType" value="${mappingShowType}">
 							<option value="">--选择显示映射--</option>
+							<option value="0">红色(未映射)</option>
 							<option value="1">绿色(单映射)</option>
 							<option value="2">橙色(多映射)</option>
-							<option value="3">红色(未映射)</option>
 						</select>
 					</td>
 					<td>
 						映射关系:
 					</td>
 					<td>
-						<select id="mappingType" name="mappingType" value="${mappingType}">
+						<select id="doneStatus" name="doneStatus" value="${doneStatus}">
 							<option value="">--是否完成映射关系--</option>
 							<option value="0">未完成</option>
 							<option value="1">已完成</option>

@@ -44,18 +44,18 @@ public class YumaItemServiceImpl extends AbstractDaoService implements YumaItemS
 			params.add(yumaItem.getStatus());
 		}
 		sb.append(" order by convert(o.name,'gbk')");
-		PageData<YumaItem> pageDate = this.getDao().queryHqlPageData(sb.toString(), pageData,
+		PageData<YumaItem> pageData2 = this.getDao().queryHqlPageData(sb.toString(), pageData,
 				params.toArray(new Object[params.size()]));
 
 		if (yumaItem.isShowModels() && pageData != null && pageData.getData().size() != 0) {
-			List<YumaItem> yumaitemList = pageData.getData();
-			for (YumaItem item : yumaitemList) {
+			List<YumaItem> yumaItemList = pageData.getData();
+			for (YumaItem item : yumaItemList) {
 				YumaItemModel yumaItemModel = new YumaItemModel();
 				yumaItemModel.setYumaItem(item);
 				item.setYumaItemModels(yumaItemModelService.getYumaItemModelList(yumaItemModel));
 			}
 		}
-		return pageDate;
+		return pageData2;
 	}
 
 	@Override

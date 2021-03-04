@@ -1,5 +1,7 @@
 package com.hodanet.yuma.service;
 
+import java.util.List;
+
 import com.hodanet.common.entity.vo.PageData;
 import com.hodanet.yuma.entity.po.YumaWeidianItem;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
@@ -16,7 +18,7 @@ public interface YumaWeidianItemModelService {
 	 * @param id
 	 * @return
 	 */
-	public YumaWeidianItemModel getWeidianItemModelById(Integer id);
+	public YumaWeidianItemModel getWeidianItemModelById(Integer id, boolean showMappings);
 
 	/**
 	 * ҳѯ
@@ -43,7 +45,11 @@ public interface YumaWeidianItemModelService {
 	public void deleteWeidianItemModel(Integer[] ids);
 
 	public void updateWeidianItemModelStatus(Integer id, Integer status);
+	
+	public void updateWeidianItemModelMappingCount(Integer id, Integer addCount);
 
 	public YumaWeidianItemModel getOrCreateWeidianItemModelByName(String modelName, YumaWeidianItem yumaWeidianItem);
+
+	List<YumaWeidianItemModel> getYumaWeidianItemModelList(YumaWeidianItemModel yumaWeidianItemModel);
 
 }

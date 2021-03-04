@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,13 +61,47 @@ public class YumaWeidianItemController {
 	@RequestMapping(value = "/list")
 	public String list(Model model, PageData<YumaWeidianItem> pageData) {
 		long l = System.currentTimeMillis();
+
 		YumaWeidianItem yumaWeidianItem = new YumaWeidianItem();
+
+		yumaWeidianItem.setShowModels(true);
+		yumaWeidianItem.setShowShadows(true);
+
+		String weidianItemName = "请输入";
+		yumaWeidianItem.setName(weidianItemName);
+
+		String SHADOW = "0";
+		String BODY = "1";
+		String bodyType = BODY;
+		if (SHADOW.equals(bodyType)) {
+			yumaWeidianItem.setIsBody(false);
+		}
+		if (BODY.equals(bodyType)) {
+			yumaWeidianItem.setIsBody(true);
+		}
+
+		String doneStatusStr = "0";
+		if (StringUtils.isNotEmpty(doneStatusStr)) {
+			Integer doneStatus = Integer.parseInt(doneStatusStr);
+			yumaWeidianItem.setDoneStatus(doneStatus);
+		}
+
+		String mappingShowTypeStr = "0";
+		if (StringUtils.isNotEmpty(mappingShowTypeStr)) {
+			Integer mappingShowType = Integer.parseInt(mappingShowTypeStr);
+			yumaWeidianItem.setMappingShowType(mappingShowType);
+		}
+
 		pageData = yumaWeidianItemService.getYumaWeidianItemByPage(pageData, yumaWeidianItem);
 		logger.info(System.currentTimeMillis() - l);
-//		List<YumaWeidianItem> bodys = yumaWeidianItemService.getBodyYumaWeidianItems(yumaWeidianItem);
-//		model.addAttribute("bodys", bodys);
+		List<YumaWeidianItem> bodys = yumaWeidianItemService.getBodyYumaWeidianItems(yumaWeidianItem, 0);
+		model.addAttribute("bodys", bodys);
 		logger.info(System.currentTimeMillis() - l);
 		model.addAttribute("pageData", pageData);
+		model.addAttribute("bodyType", bodyType);
+		model.addAttribute("doneStatus", doneStatusStr);
+		model.addAttribute("mappingShowType", mappingShowTypeStr);
+		model.addAttribute("weidianItemName", weidianItemName);
 		return LIST_PAGE;
 	}
 
@@ -81,103 +116,46 @@ public class YumaWeidianItemController {
 	@RequestMapping(value = "/query")
 	public String query(Model model, PageData<YumaWeidianItem> pageData, HttpServletRequest request) {
 		long l = System.currentTimeMillis();
+		YumaWeidianItem yumaWeidianItem = new YumaWeidianItem();
+
+		yumaWeidianItem.setShowModels(true);
+		yumaWeidianItem.setShowShadows(true);
+
+		String weidianItemName = request.getParameter("weidianItemName");
+		yumaWeidianItem.setName(weidianItemName);
+
 		String SHADOW = "0";
 		String BODY = "1";
-		String BODY_WITH_SHADOW = "11";
-		String BODY_WITHOUT_SHADOW = "12";
 		String bodyType = request.getParameter("bodyType");
-		String weidianItemName = request.getParameter("weidianItemName");
-		String MAPPING_NOT_DONE = "0";
-		String MAPPING_DONE = "1";
-		String mappingType = request.getParameter("mappingType");
-
-		String MAPPING_SHOW_ONE_MATCH = "1";
-		String MAPPING_SHOW_MANY_MATCH = "2";
-		String MAPPING_SHOW_NO_MATCH = "3";
-		String mappingShowType = request.getParameter("mappingShowType");
-
-		YumaWeidianItem yumaWeidianItem = new YumaWeidianItem();
-		yumaWeidianItem.setName(weidianItemName);
 		if (SHADOW.equals(bodyType)) {
 			yumaWeidianItem.setIsBody(false);
 		}
-		if (BODY.equals(bodyType) || BODY_WITH_SHADOW.equals(bodyType) || BODY_WITHOUT_SHADOW.equals(bodyType)) {
+		if (BODY.equals(bodyType)) {
 			yumaWeidianItem.setIsBody(true);
 		}
-		if (BODY_WITH_SHADOW.equals(bodyType) || BODY_WITHOUT_SHADOW.equals(bodyType)
-				|| MAPPING_NOT_DONE.equals(mappingType) || MAPPING_DONE.equals(mappingType)) {
-			pageData.setPageSize(Integer.MAX_VALUE);
+
+		String doneStatusStr = request.getParameter("doneStatus");
+		if (StringUtils.isNotEmpty(doneStatusStr)) {
+			Integer doneStatus = Integer.parseInt(doneStatusStr);
+			yumaWeidianItem.setDoneStatus(doneStatus);
 		}
+
+		String mappingShowTypeStr = request.getParameter("mappingShowType");
+		if (StringUtils.isNotEmpty(mappingShowTypeStr)) {
+			Integer mappingShowType = Integer.parseInt(mappingShowTypeStr);
+			yumaWeidianItem.setMappingShowType(mappingShowType);
+		}
+
 		pageData = yumaWeidianItemService.getYumaWeidianItemByPage(pageData, yumaWeidianItem);
-		logger.info(System.currentTimeMillis() - l);
-		if (pageData.getData().size() > 0) {
-			List<YumaWeidianItem> yumaWeidianItems = pageData.getData();
-			for (int i = yumaWeidianItems.size() - 1; i >= 0; i--) {
-				YumaWeidianItem p = yumaWeidianItems.get(i);
-				if (BODY_WITH_SHADOW.equals(bodyType) && p.getShadows().size() == 0) {
-					yumaWeidianItems.remove(i);
-					continue;
-				}
-				if (BODY_WITHOUT_SHADOW.equals(bodyType) && p.getShadows().size() > 0) {
-					yumaWeidianItems.remove(i);
-					continue;
-				}
-				if (MAPPING_NOT_DONE.equals(mappingType) || MAPPING_DONE.equals(mappingType)) {
-					List<YumaWeidianItemModel> list = p.getYumaWeidianItemModels();
-					boolean isDone = true;
-					if (list != null) {
-						for (YumaWeidianItemModel yumaWeidianItemModel : list) {
-							if (yumaWeidianItemModel.getYumaWeidianItemModelMappings() == null
-									|| yumaWeidianItemModel.getYumaWeidianItemModelMappings().size() == 0) {
-								isDone = false;
-								break;
-							}
-						}
-					}
-					if (MAPPING_NOT_DONE.equals(mappingType) && isDone) {
-						yumaWeidianItems.remove(i);
-					}
-					if (MAPPING_DONE.equals(mappingType) && !isDone) {
-						yumaWeidianItems.remove(i);
-					}
-				}
-			}
-			if (MAPPING_SHOW_ONE_MATCH.equals(mappingShowType) || MAPPING_SHOW_MANY_MATCH.equals(mappingShowType)
-					|| MAPPING_SHOW_NO_MATCH.equals(mappingShowType)) {
-				for (int i = yumaWeidianItems.size() - 1; i >= 0; i--) {
-					YumaWeidianItem p = yumaWeidianItems.get(i);
-					List<YumaWeidianItemModel> list = p.getYumaWeidianItemModels();
-					if (list != null) {
-						for (int j = list.size() - 1; j >= 0; j--) {
-							YumaWeidianItemModel model2 = list.get(j);
-							Set<YumaWeidianItemModelMapping> set = model2.getYumaWeidianItemModelMappings();
-							if (MAPPING_SHOW_ONE_MATCH.equals(mappingShowType) && set.size() != 1) {
-								list.remove(j);
-							}
-							if (MAPPING_SHOW_MANY_MATCH.equals(mappingShowType) && set.size() <= 1) {
-								list.remove(j);
-							}
-							if (MAPPING_SHOW_NO_MATCH.equals(mappingShowType) && set.size() > 0) {
-								list.remove(j);
-							}
-						}
-					}
-				}
-			}
-			if (BODY_WITH_SHADOW.equals(bodyType) || BODY_WITHOUT_SHADOW.equals(bodyType)
-					|| MAPPING_NOT_DONE.equals(mappingType) || MAPPING_DONE.equals(mappingType)) {
-				pageData.setTotal(yumaWeidianItems.size());
-			}
-		}
 		logger.info(System.currentTimeMillis() - l);
 
 		model.addAttribute("weidianItemName", weidianItemName);
 		model.addAttribute("pageData", pageData);
-//		List<YumaWeidianItem> bodys = yumaWeidianItemService.getBodyYumaWeidianItems(yumaWeidianItem);
-//		model.addAttribute("bodys", bodys);
+		List<YumaWeidianItem> bodys = yumaWeidianItemService.getBodyYumaWeidianItems(yumaWeidianItem, 0);
+		model.addAttribute("bodys", bodys);
 		model.addAttribute("bodyType", bodyType);
-		model.addAttribute("mappingType", mappingType);
-		model.addAttribute("mappingShowType", mappingShowType);
+		model.addAttribute("doneStatus", doneStatusStr);
+		model.addAttribute("mappingShowType", mappingShowTypeStr);
 		return LIST_PAGE;
 	}
 
@@ -237,7 +215,7 @@ public class YumaWeidianItemController {
 	@RequestMapping(value = "/addMapping/{id}", method = RequestMethod.GET)
 	public String addMapping(Model model, @PathVariable("id") Integer id) {
 		YumaWeidianItemModelMapping yumaWeidianItemModelMapping = new YumaWeidianItemModelMapping();
-		YumaWeidianItemModel yumaWeidianItemModel = yumaWeidianItemModelService.getWeidianItemModelById(id);
+		YumaWeidianItemModel yumaWeidianItemModel = yumaWeidianItemModelService.getWeidianItemModelById(id, false);
 		yumaWeidianItemModelMapping.setYumaWeidianItemModel(yumaWeidianItemModel);
 		model.addAttribute("yumaWeidianItemModelMapping", yumaWeidianItemModelMapping);
 		model.addAttribute("item_id", YumaCached.ADD_MAPPING_DEFAULT_ITEM_ID);
@@ -250,9 +228,10 @@ public class YumaWeidianItemController {
 			@RequestParam("mapping_item_id") Integer mapping_item_id) {
 		yumaWeidianItemModelMapping = yumaWeidianItemModelMappingService
 				.saveYumaWeidianItemModelMapping(yumaWeidianItemModelMapping);
+		yumaWeidianItemModelMappingService.updateYumaWeidianItemDetail(yumaWeidianItemModelMapping);
 		yumaWeidianItemModelMappingService.updateYumaWeidianItemModelMappingPercent(
 				yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId());
-		YumaCached.ADD_MAPPING_DEFAULT_ITEM_ID=mapping_item_id;
+		YumaCached.ADD_MAPPING_DEFAULT_ITEM_ID = mapping_item_id;
 		WebUtil.responseText(response, JSONObject.toJSONString(new JsonMessage(true, "成功")));
 	}
 
@@ -261,6 +240,7 @@ public class YumaWeidianItemController {
 		YumaWeidianItemModelMapping yumaWeidianItemModelMapping = yumaWeidianItemModelMappingService
 				.getYumaWeidianItemModelMappingById(id);
 		yumaWeidianItemModelMappingService.deleteYumaWeidianItemModelMapping(id);
+		yumaWeidianItemModelMappingService.updateYumaWeidianItemDetail(yumaWeidianItemModelMapping);
 		yumaWeidianItemModelMappingService.updateYumaWeidianItemModelMappingPercent(
 				yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId(), id);
 		WebUtil.responseText(response, JSONObject.toJSONString(new JsonMessage(true, "成功")));

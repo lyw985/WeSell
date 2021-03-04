@@ -7,7 +7,7 @@ import com.hodanet.yuma.entity.po.YumaWeidianItem;
 
 public interface YumaWeidianItemService {
 
-	public List<YumaWeidianItem> getBodyYumaWeidianItems(YumaWeidianItem yumaWeidianItem);
+	public List<YumaWeidianItem> getBodyYumaWeidianItems(YumaWeidianItem yumaWeidianItem, Integer bodyId);
 
 	/**
 	 * 

@@ -1,20 +1,16 @@
 package com.hodanet.yuma.entity.po;
 
-import java.util.Set;
+import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -43,7 +39,16 @@ public class YumaWeidianItemModel {
 //	@Fetch(FetchMode.JOIN)
 //	@JoinColumn(name = "weidian_item_model_id", updatable = false)
 	@Transient
-	private Set<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings;
+	private List<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings;
+
+	/*
+	 * 0.未映射 1.单一映射 2.多映射
+	 */
+	@Column(name = "mapping_type")
+	private Integer mappingType;
+
+	@Transient
+	private boolean showMappings = false;
 
 	public Integer getId() {
 		return id;
@@ -77,13 +82,28 @@ public class YumaWeidianItemModel {
 		this.yumaWeidianItem = yumaWeidianItem;
 	}
 
-	public Set<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappings() {
+	public List<YumaWeidianItemModelMapping> getYumaWeidianItemModelMappings() {
 		return yumaWeidianItemModelMappings;
 	}
 
-	public void setYumaWeidianItemModelMappings(Set<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings) {
+	public void setYumaWeidianItemModelMappings(List<YumaWeidianItemModelMapping> yumaWeidianItemModelMappings) {
 		this.yumaWeidianItemModelMappings = yumaWeidianItemModelMappings;
 	}
 
+	public boolean isShowMappings() {
+		return showMappings;
+	}
+
+	public void setShowMappings(boolean showMappings) {
+		this.showMappings = showMappings;
+	}
+
+	public Integer getMappingType() {
+		return mappingType;
+	}
+
+	public void setMappingType(Integer mappingType) {
+		this.mappingType = mappingType;
+	}
 
 }

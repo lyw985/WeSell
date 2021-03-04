@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.hodanet.common.dao.AbstractDaoService;
 import com.hodanet.common.entity.vo.PageData;
+import com.hodanet.yuma.entity.po.YumaItem;
+import com.hodanet.yuma.entity.po.YumaItemModel;
 import com.hodanet.yuma.entity.po.YumaWeidianItem;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModelMapping;
@@ -49,6 +51,10 @@ public class YumaWeidianItemServiceImpl extends AbstractDaoService implements Yu
 				sb.append(" and o.name like ? ");
 				params.add("%" + yumaWeidianItem.getName() + "%");
 			}
+			if (yumaWeidianItem.getDoneStatus() != null) {
+				sb.append(" and o.doneStatus = ? ");
+				params.add(yumaWeidianItem.getDoneStatus());
+			}
 			if (yumaWeidianItem.getBody() != null && yumaWeidianItem.getBody().getId() != null) {
 				sb.append(" and o.body.id = ? ");
 				params.add(yumaWeidianItem.getBody().getId());
@@ -64,7 +70,27 @@ public class YumaWeidianItemServiceImpl extends AbstractDaoService implements Yu
 				}
 			}
 		}
-		return this.getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
+		pageData = this.getDao().queryHqlPageData(sb.toString(), pageData, params.toArray(new Object[params.size()]));
+		if (pageData != null && pageData.getData().size() != 0) {
+			List<YumaWeidianItem> yumaWeidianItemList = pageData.getData();
+			for (YumaWeidianItem weidianItem : yumaWeidianItemList) {
+				if (yumaWeidianItem.isShowModels()) {
+					YumaWeidianItemModel yumaWeidianItemModel = new YumaWeidianItemModel();
+					if (yumaWeidianItem.getMappingShowType() != null) {
+						yumaWeidianItemModel.setMappingType(yumaWeidianItem.getMappingShowType());
+					}
+					yumaWeidianItemModel.setYumaWeidianItem(weidianItem);
+					yumaWeidianItemModel.setShowMappings(true);
+					weidianItem.setYumaWeidianItemModels(
+							yumaWeidianItemModelService.getYumaWeidianItemModelList(yumaWeidianItemModel));
+				}
+				if (yumaWeidianItem.isShowShadows()) {
+					weidianItem.setShadows(getBodyYumaWeidianItems(new YumaWeidianItem(), weidianItem.getId()));
+				}
+
+			}
+		}
+		return pageData;
 	}
 
 	@Override
@@ -146,13 +172,15 @@ public class YumaWeidianItemServiceImpl extends AbstractDaoService implements Yu
 	}
 
 	@Override
-	@Deprecated
-	public List<YumaWeidianItem> getBodyYumaWeidianItems(YumaWeidianItem yumaWeidianItem) {
+	public List<YumaWeidianItem> getBodyYumaWeidianItems(YumaWeidianItem yumaWeidianItem, Integer bodyId) {
 		PageData<YumaWeidianItem> pageData = new PageData<YumaWeidianItem>();
 		YumaWeidianItem body = new YumaWeidianItem();
-		body.setId(0);
+		body.setId(bodyId);
 		yumaWeidianItem.setBody(body);
 		pageData.setPageSize(Integer.MAX_VALUE);
+		yumaWeidianItem.setIsBody(null);
+		yumaWeidianItem.setShowModels(false);
+		yumaWeidianItem.setShowShadows(false);
 		pageData = getYumaWeidianItemByPage(pageData, yumaWeidianItem);
 		if (pageData != null && pageData.getData() != null) {
 			return pageData.getData();
