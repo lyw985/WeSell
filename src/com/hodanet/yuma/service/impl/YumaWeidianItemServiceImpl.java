@@ -47,6 +47,10 @@ public class YumaWeidianItemServiceImpl extends AbstractDaoService implements Yu
 		StringBuilder sb = new StringBuilder();
 		sb.append("from YumaWeidianItem o where 1=1");
 		if (yumaWeidianItem != null) {
+			if (yumaWeidianItem.getId() != null) {
+				sb.append(" and o.id = ? ");
+				params.add(yumaWeidianItem.getId());
+			}
 			if (yumaWeidianItem.getName() != null) {
 				sb.append(" and o.name like ? ");
 				params.add("%" + yumaWeidianItem.getName() + "%");
@@ -146,24 +150,33 @@ public class YumaWeidianItemServiceImpl extends AbstractDaoService implements Yu
 		String hql = "update YumaWeidianItem o set o.body.id = ? where o.id = ?";
 		this.getDao().executeUpdate(hql, bodyId, id);
 		if (bodyId != 0) {
-			YumaWeidianItem shadowYumaWeidianItem = getYumaWeidianItemById(id);
-			YumaWeidianItem bodyYumaWeidianItem = shadowYumaWeidianItem.getBody();
-			if (shadowYumaWeidianItem.getYumaWeidianItemModels() != null) {
-				for (YumaWeidianItemModel shadowYumaWeidianItemModel : shadowYumaWeidianItem
-						.getYumaWeidianItemModels()) {
-					YumaWeidianItemModel bodyYumaWeidianItemModel = yumaWeidianItemModelService
-							.getOrCreateWeidianItemModelByName(shadowYumaWeidianItemModel.getName(),
-									bodyYumaWeidianItem);
-					yumaOrderItemService.updateBatchYumaOrderWeidianItemModel(shadowYumaWeidianItemModel.getId(),
-							bodyYumaWeidianItemModel.getId());
-					if (shadowYumaWeidianItemModel.getYumaWeidianItemModelMappings() != null) {
-						for (YumaWeidianItemModelMapping shadowYumaWeidianItemModelMapping : shadowYumaWeidianItemModel
-								.getYumaWeidianItemModelMappings()) {
-							YumaWeidianItemModelMapping newMapping = new YumaWeidianItemModelMapping();
-							newMapping.setYumaItemModel(shadowYumaWeidianItemModelMapping.getYumaItemModel());
-							newMapping.setCount(shadowYumaWeidianItemModelMapping.getCount());
-							newMapping.setYumaWeidianItemModel(bodyYumaWeidianItemModel);
-							yumaWeidianItemModelMappingService.saveYumaWeidianItemModelMapping(newMapping);
+			// 判断是否需要把分身下的型号同步到主体上
+			YumaWeidianItem yumaWeidianItem = new YumaWeidianItem();
+			yumaWeidianItem.setId(id);
+			yumaWeidianItem.setShowModels(true);
+			yumaWeidianItem.setShowShadows(true);
+			PageData<YumaWeidianItem> pageData = new PageData<YumaWeidianItem>();
+			pageData = getYumaWeidianItemByPage(pageData, yumaWeidianItem);
+			if (pageData != null && pageData.getData() != null && pageData.getData().size() == 1) {
+				YumaWeidianItem shadowYumaWeidianItem = pageData.getData().get(0);
+				YumaWeidianItem bodyYumaWeidianItem = shadowYumaWeidianItem.getBody();
+				if (shadowYumaWeidianItem.getYumaWeidianItemModels() != null) {
+					for (YumaWeidianItemModel shadowYumaWeidianItemModel : shadowYumaWeidianItem
+							.getYumaWeidianItemModels()) {
+						YumaWeidianItemModel bodyYumaWeidianItemModel = yumaWeidianItemModelService
+								.getOrCreateWeidianItemModelByName(shadowYumaWeidianItemModel.getName(),
+										bodyYumaWeidianItem);
+						yumaOrderItemService.updateBatchYumaOrderWeidianItemModel(shadowYumaWeidianItemModel.getId(),
+								bodyYumaWeidianItemModel.getId());
+						if (shadowYumaWeidianItemModel.getYumaWeidianItemModelMappings() != null) {
+							for (YumaWeidianItemModelMapping shadowYumaWeidianItemModelMapping : shadowYumaWeidianItemModel
+									.getYumaWeidianItemModelMappings()) {
+								YumaWeidianItemModelMapping newMapping = new YumaWeidianItemModelMapping();
+								newMapping.setYumaItemModel(shadowYumaWeidianItemModelMapping.getYumaItemModel());
+								newMapping.setCount(shadowYumaWeidianItemModelMapping.getCount());
+								newMapping.setYumaWeidianItemModel(bodyYumaWeidianItemModel);
+								yumaWeidianItemModelMappingService.saveYumaWeidianItemModelMapping(newMapping);
+							}
 						}
 					}
 				}

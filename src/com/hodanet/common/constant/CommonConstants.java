@@ -19,6 +19,8 @@ public class CommonConstants {
 	public static int SYSC_WEIDIAN_DATA_LOCK = 0;
 
 	public static int SYSC_RECEIVER_DATA_LOCK = 0;
+	
+	public static int SYSC_VERIFY_LOCK = 0;
 	/**
 	 * 1.eX0d4EPG7wrIDjTKjQ9MYgSBhUwdw43v
 	 * 2.disgVtFX4iDBQvDMeLGCFikyWzK36Nhz

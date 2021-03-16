@@ -121,6 +121,7 @@ public class YumaWeidianItemModelServiceImpl extends AbstractDaoService implemen
 			yumaWeidianItemModel = new YumaWeidianItemModel();
 			yumaWeidianItemModel.setName(modelName);
 			yumaWeidianItemModel.setWeidianItem(yumaWeidianItem);
+			yumaWeidianItemModel.setMappingType(0);
 			yumaWeidianItemModel = saveWeidianItemModel(yumaWeidianItemModel);
 		}
 		return yumaWeidianItemModel;
