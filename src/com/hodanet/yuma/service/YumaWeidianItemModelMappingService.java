@@ -46,6 +46,6 @@ public interface YumaWeidianItemModelMappingService {
 
 	public void updateYumaWeidianItemModelMappingPercent(Integer yumaWeidianItemModelId, Integer... exceptIds);
 	
-	public void updateYumaWeidianItemDetail(YumaWeidianItemModelMapping yumaWeidianItemModelMapping);
+	public void updateYumaWeidianItemModelMappingType(YumaWeidianItemModelMapping yumaWeidianItemModelMapping);
 
 }

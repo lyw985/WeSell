@@ -98,7 +98,7 @@ public class YumaWeidianData {
 
 	// 运费退款 0.01
 	@Column(name = "freight_refund")
-	private String freightRefund;
+	private String freightRefund="";
 
 	// 收件人姓名 张三
 	@Column(name = "receiver_name")
@@ -126,7 +126,7 @@ public class YumaWeidianData {
 
 	// 订单描述 2年左右放山老母鸡 老母鸡一只(净重3.8~4.5斤) [数量:1]
 	@Column(name = "order_detail")
-	private String orderDetail;
+	private String orderDetail="";
 
 	// 买家留言
 	@Column(name = "buyer_remark")
@@ -609,11 +609,11 @@ public class YumaWeidianData {
 				itemCount = value;
 				continue;
 			}
-			if ("商品价格".equals(title) || "单品折扣后价格".equals(title)) {
+			if ("商品价格".equals(title) || "单品折扣后价格".equals(title) || "单品折扣后单价".equals(title)) {
 				itemModelPrice = value;
 				continue;
 			}
-			if ("商品积分".equals(title)) {
+			if ("商品积分".equals(title) || "商品积分合计".equals(title)  ) {
 				itemIntegral = value;
 				continue;
 			}
@@ -637,15 +637,15 @@ public class YumaWeidianData {
 				originalPrice = value;
 				continue;
 			}
-			if ("运费退款".equals(title)) {
+			if ("运费退款".equals(title) || "商品已退款金额".equals(title)) {
 				freightRefund = value;
 				continue;
 			}
-			if ("收件人姓名".equals(title) || "收件人/提货人姓名".equals(title)) {
+			if ("收件人姓名".equals(title) || "收件人/提货人姓名".equals(title) || "收货人/提货人姓名".equals(title)) {
 				receiverName = value;
 				continue;
 			}
-			if ("收件人手机".equals(title) || "收件人/提货人手机号".equals(title)) {
+			if ("收件人手机".equals(title) || "收件人/提货人手机号".equals(title) || "收货人/提货人手机号".equals(title)) {
 				receiverPhone = value;
 				continue;
 			}
@@ -678,7 +678,7 @@ public class YumaWeidianData {
 				orderTemplate = value;
 				continue;
 			}
-			if ("备注".equals(title)) {
+			if ("备注".equals(title)  || "卖家备注".equals(title)) {
 				sellerRemark = value;
 				continue;
 			}

@@ -8,15 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.hodanet.common.dao.AbstractDaoService;
 import com.hodanet.common.entity.vo.PageData;
-import com.hodanet.yuma.entity.po.YumaItemModel;
-import com.hodanet.yuma.entity.po.YumaOrder;
-import com.hodanet.yuma.entity.po.YumaOrderItem;
 import com.hodanet.yuma.entity.po.YumaWeidianItem;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModelMapping;
-import com.hodanet.yuma.service.YumaOrderItemService;
 import com.hodanet.yuma.service.YumaWeidianItemModelMappingService;
 import com.hodanet.yuma.service.YumaWeidianItemModelService;
+import com.hodanet.yuma.service.YumaWeidianItemService;
 
 /**
  * @anthor lyw
@@ -24,6 +21,10 @@ import com.hodanet.yuma.service.YumaWeidianItemModelService;
  */
 @Service
 public class YumaWeidianItemModelServiceImpl extends AbstractDaoService implements YumaWeidianItemModelService {
+	
+	@Autowired
+	private YumaWeidianItemService yumaWeidianItemService;
+	
 	@Autowired
 	private YumaWeidianItemModelMappingService yumaWeidianItemModelMappingService;
 
@@ -123,6 +124,7 @@ public class YumaWeidianItemModelServiceImpl extends AbstractDaoService implemen
 			yumaWeidianItemModel.setWeidianItem(yumaWeidianItem);
 			yumaWeidianItemModel.setMappingType(0);
 			yumaWeidianItemModel = saveWeidianItemModel(yumaWeidianItemModel);
+			yumaWeidianItemService.updateYumaWeidianItemDoneStatus(yumaWeidianItem.getId());
 		}
 		return yumaWeidianItemModel;
 	}

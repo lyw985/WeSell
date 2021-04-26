@@ -132,6 +132,7 @@ public class YumaWeidianItemServiceImpl extends AbstractDaoService implements Yu
 			YumaWeidianItem body = new YumaWeidianItem();
 			body.setId(0);
 			yumaYumaWeidianItem.setBody(body);
+			yumaYumaWeidianItem.setDoneStatus(0);
 			yumaYumaWeidianItem = saveYumaWeidianItem(yumaYumaWeidianItem);
 		} else {
 			if (yumaYumaWeidianItem.getBody() != null && yumaYumaWeidianItem.getBody().getId() != null
@@ -200,6 +201,14 @@ public class YumaWeidianItemServiceImpl extends AbstractDaoService implements Yu
 		} else {
 			return new ArrayList<YumaWeidianItem>();
 		}
+	}
+
+	@Override
+	public void updateYumaWeidianItemDoneStatus(Integer id) {
+		String sql="update yuma_weidian_item t1 set t1.done_status = (select (case when min(t2.mapping_type) >1 then 1 else min(t2.mapping_type) end) from yuma_weidian_item_model t2 where t1.id=t2.weidian_item_id)";
+		sql += " where t1.id = ? ";
+		
+		this.getDao().getJdbcTemplate().update(sql, id);		
 	}
 
 }

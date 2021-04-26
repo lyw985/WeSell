@@ -45,5 +45,8 @@ public interface YumaWeidianItemService {
 	public void updateYumaWeidianItemStatus(Integer id, Integer status);
 
 	public void updateYumaWeidianItemByBody(Integer id, Integer bodyId);
+	
+	public void updateYumaWeidianItemDoneStatus(Integer id);
+	
 
 }

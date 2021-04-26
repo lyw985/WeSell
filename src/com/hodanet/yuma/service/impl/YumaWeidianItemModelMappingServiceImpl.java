@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +14,7 @@ import com.hodanet.yuma.entity.po.YumaWeidianItemModel;
 import com.hodanet.yuma.entity.po.YumaWeidianItemModelMapping;
 import com.hodanet.yuma.service.YumaWeidianItemModelMappingService;
 import com.hodanet.yuma.service.YumaWeidianItemModelService;
+import com.hodanet.yuma.service.YumaWeidianItemService;
 
 /**
  * @anthor lyw
@@ -24,6 +24,9 @@ import com.hodanet.yuma.service.YumaWeidianItemModelService;
 public class YumaWeidianItemModelMappingServiceImpl extends AbstractDaoService
 		implements YumaWeidianItemModelMappingService {
 
+	@Autowired
+	private YumaWeidianItemService yumaWeidianItemService;
+	
 	@Autowired
 	private YumaWeidianItemModelService yumaWeidianItemModelService;
 
@@ -141,19 +144,15 @@ public class YumaWeidianItemModelMappingServiceImpl extends AbstractDaoService
 	}
 
 	@Override
-	public void updateYumaWeidianItemDetail(YumaWeidianItemModelMapping yumaWeidianItemModelMapping) {
+	public void updateYumaWeidianItemModelMappingType(YumaWeidianItemModelMapping yumaWeidianItemModelMapping) {
 		YumaWeidianItemModel yumaWeidianItemModel = yumaWeidianItemModelService
 				.getWeidianItemModelById(yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId(), false);
 		
 		String sql = "update yuma_weidian_item_model t1 set t1.mapping_type = (select (case when count(*) >2 then 2 else count(*) end) from yuma_weidian_item_model_mapping t2 where t1.id=t2.weidian_item_model_id) ";
 		sql += " where t1.id = ? ";
 		this.getDao().getJdbcTemplate().update(sql, yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId());
-
 		
-		sql = "update yuma_weidian_item t1 set t1.done_status = (select (case when min(t2.mapping_type) >1 then 1 else min(t2.mapping_type) end) from yuma_weidian_item_model t2 where t1.id=t2.weidian_item_id)";
-		sql += " where t1.id = ? ";
-		
-		this.getDao().getJdbcTemplate().update(sql, yumaWeidianItemModel.getWeidianItem().getId());
+		yumaWeidianItemService.updateYumaWeidianItemDoneStatus(yumaWeidianItemModel.getWeidianItem().getId());
 	}
 
 }

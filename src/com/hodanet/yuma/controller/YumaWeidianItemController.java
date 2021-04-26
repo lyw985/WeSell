@@ -228,7 +228,7 @@ public class YumaWeidianItemController {
 			@RequestParam("mapping_item_id") Integer mapping_item_id) {
 		yumaWeidianItemModelMapping = yumaWeidianItemModelMappingService
 				.saveYumaWeidianItemModelMapping(yumaWeidianItemModelMapping);
-		yumaWeidianItemModelMappingService.updateYumaWeidianItemDetail(yumaWeidianItemModelMapping);
+		yumaWeidianItemModelMappingService.updateYumaWeidianItemModelMappingType(yumaWeidianItemModelMapping);
 		yumaWeidianItemModelMappingService.updateYumaWeidianItemModelMappingPercent(
 				yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId());
 		YumaCached.ADD_MAPPING_DEFAULT_ITEM_ID = mapping_item_id;
@@ -240,7 +240,7 @@ public class YumaWeidianItemController {
 		YumaWeidianItemModelMapping yumaWeidianItemModelMapping = yumaWeidianItemModelMappingService
 				.getYumaWeidianItemModelMappingById(id);
 		yumaWeidianItemModelMappingService.deleteYumaWeidianItemModelMapping(id);
-		yumaWeidianItemModelMappingService.updateYumaWeidianItemDetail(yumaWeidianItemModelMapping);
+		yumaWeidianItemModelMappingService.updateYumaWeidianItemModelMappingType(yumaWeidianItemModelMapping);
 		yumaWeidianItemModelMappingService.updateYumaWeidianItemModelMappingPercent(
 				yumaWeidianItemModelMapping.getYumaWeidianItemModel().getId(), id);
 		WebUtil.responseText(response, JSONObject.toJSONString(new JsonMessage(true, "成功")));
