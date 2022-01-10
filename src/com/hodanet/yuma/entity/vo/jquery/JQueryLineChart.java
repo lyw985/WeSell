@@ -50,11 +50,13 @@ public class JQueryLineChart extends JQueryChart {
 	@Override
 	public void addDataset(String label, Object[] data) {
 		ConfigDataset[] newConfigDatasets;
+		Colour colour=Colour.randomColor(existColoursList);
+		existColoursList.add(colour);
 		if (this.data.datasets==null) {
-			newConfigDatasets=new ConfigDataset[] {new ConfigDataset()} ;
+			newConfigDatasets=new ConfigDataset[] {new ConfigDataset(colour)} ;
 		}else {
 			newConfigDatasets = new ConfigDataset[this.data.datasets.length + 1];
-			newConfigDatasets[this.data.datasets.length]=new ConfigDataset();
+			newConfigDatasets[this.data.datasets.length]=new ConfigDataset(colour);
 			System.arraycopy(this.data.datasets, 0, newConfigDatasets, 0, this.data.datasets.length);
 		}
 		

@@ -1,11 +1,14 @@
 package com.hodanet.yuma.entity.vo.jquery;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public abstract class JQueryChart {
 	protected String type;
 	protected ConfigData data = new ConfigData();
 	protected ConfigOptions options = new ConfigOptions();
+	protected List<Colour> existColoursList=new ArrayList<Colour>();
 
 	public String getType() {
 		return type;
@@ -46,6 +49,19 @@ public abstract class JQueryChart {
 			return rgb;
 		}
 
+		public static Colour randomColor(List<Colour> existColoursList) {
+			Colour[] colours = Colour.values();
+			if(existColoursList!=null && existColoursList.size()>0) {
+				for(Colour c1:colours) {
+					if(!existColoursList.contains(c1)) {
+						return c1;
+					}
+				}
+			}
+			Random ran = new Random();
+			return colours[ran.nextInt(colours.length)];
+		}
+		
 		public static Colour randomColor() {
 			Colour[] colours = Colour.values();
 			Random ran = new Random();
@@ -83,7 +99,12 @@ public abstract class JQueryChart {
 		protected Object[] data;
 
 		public ConfigDataset() {
-			Colour colour = Colour.randomColor();
+			Colour colour = Colour.randomColor( );
+			backgroundColor = colour.toString();
+			borderColor = colour.toString();
+		}
+		
+		public ConfigDataset(Colour colour) {
 			backgroundColor = colour.toString();
 			borderColor = colour.toString();
 		}
